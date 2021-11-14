@@ -1,0 +1,1388 @@
+Script started on Sun 14 Nov 2021 05:06:06 PM MSK
+]0;user@centos7:/data/33/4[?1034h[user@centos7 4]$ vagrant ssh server
+Last login: Sat Nov 13 13:19:14 2021 from 10.0.2.2
+]0;vagrant@server:~[vagrant@server ~]$ date
+Sun Nov 14 14:06:18 UTC 2021
+]0;vagrant@server:~[vagrant@server ~]$ history
+    1  sudo su
+    2  ls
+    3  exit
+    4  date
+    5  history
+]0;vagrant@server:~[vagrant@server ~]$ zfs set compre[K[K[K[K[K[K-h | grep compression
+invalid option 'h'
+usage:
+	set <property=value> ... <filesystem|volume|snapshot> ...
+
+The following properties are supported:
+
+	PROPERTY       EDIT  INHERIT   VALUES
+
+	available        NO       NO   <size>
+	clones           NO       NO   <dataset>[,...]
+	compressratio    NO       NO   <1.00x or higher if compressed>
+	createtxg        NO       NO   <uint64>
+	creation         NO       NO   <date>
+	defer_destroy    NO       NO   yes | no
+	encryptionroot   NO       NO   <filesystem | volume>
+	filesystem_count  NO       NO   <count>
+	guid             NO       NO   <uint64>
+	keystatus        NO       NO   none | unavailable | available
+	logicalreferenced  NO       NO   <size>
+	logicalused      NO       NO   <size>
+	mounted          NO       NO   yes | no
+	objsetid         NO       NO   <uint64>
+	origin           NO       NO   <snapshot>
+	receive_resume_token  NO       NO   <string token>
+	redact_snaps     NO       NO   <snapshot>[,...]
+	refcompressratio  NO       NO   <1.00x or higher if compressed>
+	referenced       NO       NO   <size>
+	snapshot_count   NO       NO   <count>
+	type             NO       NO   filesystem | volume | snapshot | bookmark
+	used             NO       NO   <size>
+	usedbychildren   NO       NO   <size>
+	usedbydataset    NO       NO   <size>
+	usedbyrefreservation  NO       NO   <size>
+	usedbysnapshots  NO       NO   <size>
+	userrefs         NO       NO   <count>
+	written          NO       NO   <size>
+	aclinherit      YES      YES   discard | noallow | restricted | passthrough | passthrough-x
+	aclmode         YES      YES   discard | groupmask | passthrough | restricted
+	acltype         YES      YES   off | nfsv4 | posix
+	atime           YES      YES   on | off
+	canmount        YES       NO   on | off | noauto
+	casesensitivity  NO      YES   sensitive | insensitive | mixed
+	checksum        YES      YES   on | off | fletcher2 | fletcher4 | sha256 | sha512 | skein | edonr
+	compression     YES      YES   on | off | lzjb | gzip | gzip-[1-9] | zle | lz4 | zstd | zstd-[1-19] | zstd-fast | zstd-fast-[1-10,20,30,40,50,60,70,80,90,100,500,1000]
+	context         YES       NO   <selinux context>
+	copies          YES      YES   1 | 2 | 3
+	dedup           YES      YES   on | off | verify | sha256[,verify] | sha512[,verify] | skein[,verify] | edonr,verify
+	defcontext      YES       NO   <selinux defcontext>
+	devices         YES      YES   on | off
+	dnodesize       YES      YES   legacy | auto | 1k | 2k | 4k | 8k | 16k
+	encryption       NO      YES   on | off | aes-128-ccm | aes-192-ccm | aes-256-ccm | aes-128-gcm | aes-192-gcm | aes-256-gcm
+	exec            YES      YES   on | off
+	filesystem_limit YES       NO   <count> | none
+	fscontext       YES       NO   <selinux fscontext>
+	keyformat        NO       NO   none | raw | hex | passphrase
+	keylocation     YES       NO   prompt | <file URI>
+	logbias         YES      YES   latency | throughput
+	mlslabel        YES      YES   <sensitivity label>
+	mountpoint      YES      YES   <path> | legacy | none
+	nbmand          YES      YES   on | off
+	normalization    NO      YES   none | formC | formD | formKC | formKD
+	overlay         YES      YES   on | off
+	pbkdf2iters      NO       NO   <iters>
+	primarycache    YES      YES   all | none | metadata
+	quota           YES       NO   <size> | none
+	readonly        YES      YES   on | off
+	recordsize      YES      YES   512 to 1M, power of 2
+	redundant_metadata YES      YES   all | most
+	refquota        YES       NO   <size> | none
+	refreservation  YES       NO   <size> | none
+	relatime        YES      YES   on | off
+	reservation     YES       NO   <size> | none
+	rootcontext     YES       NO   <selinux rootcontext>
+	secondarycache  YES      YES   all | none | metadata
+	setuid          YES      YES   on | off
+	sharenfs        YES      YES   on | off | NFS share options
+	sharesmb        YES      YES   on | off | SMB share options
+	snapdev         YES      YES   hidden | visible
+	snapdir         YES      YES   hidden | visible
+	snapshot_limit  YES       NO   <count> | none
+	special_small_blocks YES      YES   zero or 512 to 1M, power of 2
+	sync            YES      YES   standard | always | disabled
+	utf8only         NO      YES   on | off
+	version         YES       NO   1 | 2 | 3 | 4 | 5 | current
+	volblocksize     NO      YES   512 to 128k, power of 2
+	volmode         YES      YES   default | full | geom | dev | none
+	volsize         YES       NO   <size>
+	vscan           YES      YES   on | off
+	xattr           YES      YES   on | off | dir | sa
+	zoned           YES      YES   on | off
+	userused@...     NO       NO   <size>
+	groupused@...    NO       NO   <size>
+	projectused@...  NO       NO   <size>
+	userobjused@...  NO       NO   <size>
+	groupobjused@...  NO       NO   <size>
+	projectobjused@...  NO       NO   <size>
+	userquota@...   YES       NO   <size> | none
+	groupquota@...  YES       NO   <size> | none
+	projectquota@... YES       NO   <size> | none
+	userobjquota@... YES       NO   <size> | none
+	groupobjquota@... YES       NO   <size> | none
+	projectobjquota@... YES       NO   <size> | none
+	written@<snap>   NO       NO   <size>
+	written#<bookmark>  NO       NO   <size>
+
+Sizes are specified in bytes with standard units such as K, M, G, etc.
+
+User-defined properties can be specified by using a name containing a colon (:).
+
+The {user|group|project}[obj]{used|quota}@ properties must be appended with
+a user|group|project specifier of one of these forms:
+    POSIX name      (eg: "matt")
+    POSIX id        (eg: "126829")
+    SMB name@domain (eg: "matt@sun")
+    SMB SID         (eg: "S-1-234-567-89")
+]0;vagrant@server:~[vagrant@server ~]$ zfs set compression [K, [Kzle /[Kstripe/2
+cannot open 'compression,zle': invalid character ',' in name
+]0;vagrant@server:~[vagrant@server ~]$ zfs set compression,zle stripe/2[C[1@\[1@ [1P[1P[1P[1@ 
+cannot open 'compression': dataset does not exist
+cannot open 'zle': dataset does not exist
+]0;vagrant@server:~[vagrant@server ~]$ zfs set compression zle stripe/2,[C[C[C[C[C[C[C[C[C[C[C[C [C[C[C[C[C[C[C[C[C[C[C[C[1P[1@=
+cannot set property for 'stripe/2': permission denied
+]0;vagrant@server:~[vagrant@server ~]$ sudo su
+]0;root@server:/home/vagrant[root@server vagrant]# zfs ser[Kt compression zl[K[K[K=zle stripe/2
+]0;root@server:/home/vagrant[root@server vagrant]# zfs set compression=zle stripe/2[K3[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kzfs set compression=zle stripe/3[1P stripe/3[1P stripe/3[1P stripe/3l stripe/3z stripe/34 stripe/3
+]0;root@server:/home/vagrant[root@server vagrant]# zfs set compression=lz4 stripe/3[K4[1P stripe/4[1P stripe/4[1P stripe/4z stripe/4s stripe/4t stripe/4d stripe/4- stripe/41 stripe/49 stripe/4
+]0;root@server:/home/vagrant[root@server vagrant]# history
+    1  lsmod | grep zfs
+    2  modprobe zfs
+    3  lsblk
+    4  echo disk{1..6} | xargs -n 1 fallocate -l 500M
+    5  wget -O warANDpeace.txt http://az.lib.ru/t/tolstoj_lew_nikolaewich/text_0073.shtml
+    6  yum install -y wget
+    7  wget -O warANDpeace.txt http://az.lib.ru/t/tolstoj_lew_nikolaewich/text_0073.shtml
+    8  ls
+    9  zpool create stripe $PWD/disk[1-6]
+   10  zpool list
+   11  for i in {1..4} ;do zfs create stripe/$i; zfs set compression=on stripe/$i; done
+   12  zfs get compression, compressration
+   13  mount -t zfs
+   14  zfs get compression stripe/1
+   15  for i in {1..4}; do zfs get compression,compressratio stripe/$i; done
+   16  for i in {1..4}; do cp warANDpeace.txt stripe/$i; done
+   17  for i in {1..4}; do cp warANDpeace.txt /stripe/$i; done
+   18  for i in {1..4}; do zfs get compression,compressratio stripe/$i; done
+   19  free -m
+   20  exit
+   21  zfs set compression=zle stripe/2
+   22  zfs set compression=lz4 stripe/3
+   23  zfs set compression=zstd-19 stripe/4
+   24  history
+]0;root@server:/home/vagrant[root@server vagrant]# !18
+for i in {1..4}; do zfs get compression,compressratio stripe/$i; done
+NAME      PROPERTY       VALUE           SOURCE
+stripe/1  compression    on              local
+stripe/1  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/2  compression    zle             local
+stripe/2  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/3  compression    lz4             local
+stripe/3  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/4  compression    zstd-19         local
+stripe/4  compressratio  1.63x           -
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do zfs get compression,compressratio stripe/$i; done[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Chistory[Kzfs set compression=zstd-19 stripe/4[K1[C[C[C[C[1P stripe/1[1P stripe/1[1P stripe/1[1P stripe/1[1P stripe/1[1P stripe/1[1P stripe/1g stripe/1z stripe/1i stripe/1p stripe/1
+]0;root@server:/home/vagrant[root@server vagrant]# zfs set compression=gzip stripe/1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfor i in {1..4}; do zfs get compression,compressratio stripe/$i; done
+NAME      PROPERTY       VALUE           SOURCE
+stripe/1  compression    gzip            local
+stripe/1  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/2  compression    zle             local
+stripe/2  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/3  compression    lz4             local
+stripe/3  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/4  compression    zstd-19         local
+stripe/4  compressratio  1.63x           -
+]0;root@server:/home/vagrant[root@server vagrant]# cat /opt/
+cat: /opt/: Is a directory
+]0;root@server:/home/vagrant[root@server vagrant]# ls /opt/
+]0;root@server:/home/vagrant[root@server vagrant]# ls /v[K[K/etc[K[Kdh -h /etc
+bash: dh: command not found
+]0;root@server:/home/vagrant[root@server vagrant]# u[Kdu -h /etc/
+8.0K	/etc/dnf/modules.d
+0	/etc/dnf/aliases.d
+0	/etc/dnf/modules.defaults.d
+0	/etc/dnf/plugins/copr.d
+8.0K	/etc/dnf/plugins
+20K	/etc/dnf/protected.d
+8.0K	/etc/dnf/vars
+48K	/etc/dnf
+0	/etc/terminfo
+8.0K	/etc/libssh
+0	/etc/libreport/events
+4.0K	/etc/libreport/events.d
+0	/etc/libreport/plugins
+0	/etc/libreport/workflows.d
+4.0K	/etc/libreport
+36K	/etc/logrotate.d
+0	/etc/dbus-1/session.d
+28K	/etc/dbus-1/system.d
+36K	/etc/dbus-1
+12K	/etc/pki/rpm-gpg
+160K	/etc/pki/ca-trust/extracted/edk2
+160K	/etc/pki/ca-trust/extracted/java
+248K	/etc/pki/ca-trust/extracted/openssl
+376K	/etc/pki/ca-trust/extracted/pem
+948K	/etc/pki/ca-trust/extracted
+0	/etc/pki/ca-trust/source/anchors
+0	/etc/pki/ca-trust/source/blacklist
+4.0K	/etc/pki/ca-trust/source
+960K	/etc/pki/ca-trust
+0	/etc/pki/java
+0	/etc/pki/tls/certs
+0	/etc/pki/tls/misc
+0	/etc/pki/tls/private
+16K	/etc/pki/tls
+0	/etc/pki/rsyslog
+988K	/etc/pki
+4.0K	/etc/rpm
+412K	/etc/selinux/targeted/contexts/files
+28K	/etc/selinux/targeted/contexts/users
+512K	/etc/selinux/targeted/contexts
+0	/etc/selinux/targeted/logins
+8.2M	/etc/selinux/targeted/policy
+8.8M	/etc/selinux/targeted
+8.8M	/etc/selinux
+0	/etc/sssd/conf.d
+0	/etc/sssd/pki
+0	/etc/sssd
+92K	/etc/grub.d
+0	/etc/security/pwquality.conf.d
+0	/etc/security/console.apps
+0	/etc/security/console.perms.d
+0	/etc/security/limits.d
+0	/etc/security/namespace.d
+60K	/etc/security
+4.0K	/etc/depmod.d
+4.0K	/etc/dhcp/dhclient.d
+8.0K	/etc/dhcp
+0	/etc/pkcs11/modules
+0	/etc/pkcs11
+4.0K	/etc/rhsm/syspurpose
+4.0K	/etc/rhsm
+0	/etc/yum
+56K	/etc/yum.repos.d
+96K	/etc/pam.d
+12K	/etc/dracut.conf.d
+4.0K	/etc/systemd/system/multi-user.target.wants
+0	/etc/systemd/system/getty.target.wants
+0	/etc/systemd/system/sysinit.target.wants
+0	/etc/systemd/system/network-online.target.wants
+0	/etc/systemd/system/sockets.target.wants
+0	/etc/systemd/system/timers.target.wants
+0	/etc/systemd/system/remote-fs.target.wants
+0	/etc/systemd/system/vmtoolsd.service.requires
+0	/etc/systemd/system/dev-virtio\x2dports-org.qemu.guest_agent.0.device.wants
+0	/etc/systemd/system/sysstat.service.wants
+0	/etc/systemd/system/zfs-import.target.wants
+0	/etc/systemd/system/zfs.target.wants
+0	/etc/systemd/system/zfs-volumes.target.wants
+8.0K	/etc/systemd/system
+0	/etc/systemd/user
+32K	/etc/systemd
+0	/etc/sysctl.d
+0	/etc/binfmt.d
+0	/etc/tmpfiles.d
+0	/etc/modules-load.d
+88K	/etc/profile.d
+36K	/etc/iproute2
+4.0K	/etc/cron.daily
+4.0K	/etc/cron.hourly
+0	/etc/cron.monthly
+0	/etc/X11/applnk
+0	/etc/X11/fontpath.d
+4.0K	/etc/X11/xinit/xinitrc.d
+4.0K	/etc/X11/xinit
+4.0K	/etc/X11/xorg.conf.d
+8.0K	/etc/X11
+16K	/etc/bash_completion.d
+0	/etc/opt
+0	/etc/pm/config.d
+0	/etc/pm/power.d
+0	/etc/pm/sleep.d
+0	/etc/pm
+12K	/etc/skel
+8.0K	/etc/sysconfig/network-scripts
+0	/etc/sysconfig/console
+0	/etc/sysconfig/modules
+108K	/etc/sysconfig
+0	/etc/xdg/autostart
+0	/etc/xdg/systemd
+0	/etc/xdg
+0	/etc/xinetd.d
+0	/etc/cron.weekly
+8.0K	/etc/ld.so.conf.d
+0	/etc/ssl
+0	/etc/authselect/custom
+4.0K	/etc/authselect
+0	/etc/popt.d
+0	/etc/alternatives
+0	/etc/chkconfig.d
+24K	/etc/rc.d/init.d
+0	/etc/rc.d/rc0.d
+0	/etc/rc.d/rc1.d
+0	/etc/rc.d/rc2.d
+0	/etc/rc.d/rc3.d
+0	/etc/rc.d/rc4.d
+0	/etc/rc.d/rc5.d
+0	/etc/rc.d/rc6.d
+28K	/etc/rc.d
+4.0K	/etc/cron.d
+0	/etc/NetworkManager/conf.d
+0	/etc/NetworkManager/dispatcher.d/no-wait.d
+0	/etc/NetworkManager/dispatcher.d/pre-down.d
+0	/etc/NetworkManager/dispatcher.d/pre-up.d
+8.0K	/etc/NetworkManager/dispatcher.d
+0	/etc/NetworkManager/dnsmasq-shared.d
+0	/etc/NetworkManager/dnsmasq.d
+0	/etc/NetworkManager/system-connections
+12K	/etc/NetworkManager
+8.0K	/etc/rwtab.d
+4.0K	/etc/ssh/ssh_config.d
+604K	/etc/ssh
+24K	/etc/zfs/zed.d
+4.0K	/etc/zfs/zpool.d
+52K	/etc/zfs
+4.0K	/etc/gcrypt
+8.0K	/etc/libnl
+0	/etc/kernel/install.d
+0	/etc/kernel
+12K	/etc/request-key.d
+0	/etc/groff/site-font
+8.0K	/etc/groff/site-tmac
+8.0K	/etc/groff
+8.0K	/etc/polkit-1/rules.d
+0	/etc/polkit-1/localauthority/10-vendor.d
+0	/etc/polkit-1/localauthority/20-org.d
+0	/etc/polkit-1/localauthority/30-site.d
+0	/etc/polkit-1/localauthority/50-local.d
+0	/etc/polkit-1/localauthority/90-mandatory.d
+0	/etc/polkit-1/localauthority
+0	/etc/polkit-1/localauthority.conf.d
+8.0K	/etc/polkit-1
+20K	/etc/samba
+20K	/etc/unbound
+0	/etc/sasl2
+4.0K	/etc/prelink.conf.d
+20K	/etc/rdma/modules
+24K	/etc/rdma
+0	/etc/udev/rules.d
+0	/etc/udev/hwdb.d
+8.8M	/etc/udev
+24K	/etc/modprobe.d
+48K	/etc/libibverbs.d
+0	/etc/openldap/certs
+4.0K	/etc/openldap
+0	/etc/crypto-policies/back-ends
+0	/etc/crypto-policies/local.d
+0	/etc/crypto-policies/policies/modules
+0	/etc/crypto-policies/policies
+8.0K	/etc/crypto-policies/state
+12K	/etc/crypto-policies
+4.0K	/etc/gss/mech.d
+4.0K	/etc/gss
+4.0K	/etc/krb5.conf.d
+8.0K	/etc/default
+12K	/etc/gssproxy
+0	/etc/cifs-utils
+0	/etc/gnupg
+32K	/etc/nftables/osf
+44K	/etc/nftables
+0	/etc/firewalld/helpers
+0	/etc/firewalld/icmptypes
+0	/etc/firewalld/ipsets
+0	/etc/firewalld/services
+8.0K	/etc/firewalld/zones
+16K	/etc/firewalld
+0	/etc/tuned/recommend.d
+16K	/etc/tuned
+0	/etc/exports.d
+0	/etc/kdump/post.d
+0	/etc/kdump/pre.d
+0	/etc/kdump
+16K	/etc/vmware-tools/scripts/vmware
+16K	/etc/vmware-tools/scripts
+176K	/etc/vmware-tools/vgauth/schemas
+176K	/etc/vmware-tools/vgauth
+244K	/etc/vmware-tools
+4.0K	/etc/audit/plugins.d
+4.0K	/etc/audit/rules.d
+20K	/etc/audit
+0	/etc/rsyslog.d
+0	/etc/qemu-kvm
+0	/etc/qemu-ga/fsfreeze-hook.d
+4.0K	/etc/qemu-ga
+8.0K	/etc/sudoers.d
+22M	/etc/
+]0;root@server:/home/vagrant[root@server vagrant]# cp [K[K[K!27
+for i in {1..4}; do zfs get compression,compressratio stripe/$i; done
+NAME      PROPERTY       VALUE           SOURCE
+stripe/1  compression    gzip            local
+stripe/1  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/2  compression    zle             local
+stripe/2  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/3  compression    lz4             local
+stripe/3  compressratio  1.63x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/4  compression    zstd-19         local
+stripe/4  compressratio  1.63x           -
+]0;root@server:/home/vagrant[root@server vagrant]# !17
+for i in {1..4}; do cp warANDpeace.txt /stripe/$i; done
+cp: overwrite '/stripe/1/warANDpeace.txt'? y
+cp: overwrite '/stripe/2/warANDpeace.txt'? y
+cp: overwrite '/stripe/3/warANDpeace.txt'? y
+cp: overwrite '/stripe/4/warANDpeace.txt'? y
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do cp warANDpeace.txt /stripe/$i; done[14@zfs get compression,compressratio [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cdu -h /etc/[Kfor i in {1..4}; do zfs get compression,compressratio stripe/$i; done[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[14Pcp warANDpeace.txt /[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[15P[1@/[1@e[1@t[1@c[1@/
+cp: -r not specified; omitting directory '/etc/'
+cp: -r not specified; omitting directory '/etc/'
+cp: -r not specified; omitting directory '/etc/'
+cp: -r not specified; omitting directory '/etc/'
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do cp /etc/ /stripe/$i; done[1@*
+cp: -r not specified; omitting directory '/etc/alternatives'
+cp: -r not specified; omitting directory '/etc/audit'
+cp: -r not specified; omitting directory '/etc/authselect'
+cp: -r not specified; omitting directory '/etc/bash_completion.d'
+cp: -r not specified; omitting directory '/etc/binfmt.d'
+cp: -r not specified; omitting directory '/etc/chkconfig.d'
+cp: -r not specified; omitting directory '/etc/cifs-utils'
+cp: -r not specified; omitting directory '/etc/cron.d'
+cp: -r not specified; omitting directory '/etc/cron.daily'
+cp: -r not specified; omitting directory '/etc/cron.hourly'
+cp: -r not specified; omitting directory '/etc/cron.monthly'
+cp: -r not specified; omitting directory '/etc/cron.weekly'
+cp: -r not specified; omitting directory '/etc/crypto-policies'
+cp: -r not specified; omitting directory '/etc/dbus-1'
+cp: -r not specified; omitting directory '/etc/default'
+cp: -r not specified; omitting directory '/etc/depmod.d'
+cp: -r not specified; omitting directory '/etc/dhcp'
+cp: -r not specified; omitting directory '/etc/dnf'
+cp: -r not specified; omitting directory '/etc/dracut.conf.d'
+cp: -r not specified; omitting directory '/etc/exports.d'
+cp: -r not specified; omitting directory '/etc/firewalld'
+cp: -r not specified; omitting directory '/etc/gcrypt'
+cp: -r not specified; omitting directory '/etc/gnupg'
+cp: -r not specified; omitting directory '/etc/groff'
+cp: -r not specified; omitting directory '/etc/grub.d'
+cp: -r not specified; omitting directory '/etc/gss'
+cp: -r not specified; omitting directory '/etc/gssproxy'
+cp: -r not specified; omitting directory '/etc/init.d'
+cp: -r not specified; omitting directory '/etc/iproute2'
+cp: -r not specified; omitting directory '/etc/kdump'
+cp: -r not specified; omitting directory '/etc/kernel'
+cp: -r not specified; omitting directory '/etc/krb5.conf.d'
+cp: -r not specified; omitting directory '/etc/ld.so.conf.d'
+cp: -r not specified; omitting directory '/etc/libibverbs.d'
+cp: -r not specified; omitting directory '/etc/libnl'
+cp: -r not specified; omitting directory '/etc/libreport'
+cp: -r not specified; omitting directory '/etc/libssh'
+cp: -r not specified; omitting directory '/etc/logrotate.d'
+cp: -r not specified; omitting directory '/etc/modprobe.d'
+cp: -r not specified; omitting directory '/etc/modules-load.d'
+cp: -r not specified; omitting directory '/etc/NetworkManager'
+cp: -r not specified; omitting directory '/etc/nftables'
+cp: -r not specified; omitting directory '/etc/openldap'
+cp: -r not specified; omitting directory '/etc/opt'
+cp: -r not specified; omitting directory '/etc/pam.d'
+cp: -r not specified; omitting directory '/etc/pkcs11'
+cp: -r not specified; omitting directory '/etc/pki'
+cp: -r not specified; omitting directory '/etc/pm'
+cp: -r not specified; omitting directory '/etc/polkit-1'
+cp: -r not specified; omitting directory '/etc/popt.d'
+cp: -r not specified; omitting directory '/etc/prelink.conf.d'
+cp: -r not specified; omitting directory '/etc/profile.d'
+cp: -r not specified; omitting directory '/etc/qemu-ga'
+cp: -r not specified; omitting directory '/etc/qemu-kvm'
+cp: -r not specified; omitting directory '/etc/rc0.d'
+cp: -r not specified; omitting directory '/etc/rc1.d'
+cp: -r not specified; omitting directory '/etc/rc2.d'
+cp: -r not specified; omitting directory '/etc/rc3.d'
+cp: -r not specified; omitting directory '/etc/rc4.d'
+cp: -r not specified; omitting directory '/etc/rc5.d'
+cp: -r not specified; omitting directory '/etc/rc6.d'
+cp: -r not specified; omitting directory '/etc/rc.d'
+cp: -r not specified; omitting directory '/etc/rdma'
+cp: -r not specified; omitting directory '/etc/request-key.d'
+cp: -r not specified; omitting directory '/etc/rhsm'
+cp: -r not specified; omitting directory '/etc/rpm'
+cp: -r not specified; omitting directory '/etc/rsyslog.d'
+cp: -r not specified; omitting directory '/etc/rwtab.d'
+cp: -r not specified; omitting directory '/etc/samba'
+cp: -r not specified; omitting directory '/etc/sasl2'
+cp: -r not specified; omitting directory '/etc/security'
+cp: -r not specified; omitting directory '/etc/selinux'
+cp: -r not specified; omitting directory '/etc/skel'
+cp: -r not specified; omitting directory '/etc/ssh'
+cp: -r not specified; omitting directory '/etc/ssl'
+cp: -r not specified; omitting directory '/etc/sssd'
+cp: -r not specified; omitting directory '/etc/sudoers.d'
+cp: -r not specified; omitting directory '/etc/sysconfig'
+cp: -r not specified; omitting directory '/etc/sysctl.d'
+cp: -r not specified; omitting directory '/etc/systemd'
+cp: -r not specified; omitting directory '/etc/terminfo'
+cp: -r not specified; omitting directory '/etc/tmpfiles.d'
+cp: -r not specified; omitting directory '/etc/tuned'
+cp: -r not specified; omitting directory '/etc/udev'
+cp: -r not specified; omitting directory '/etc/unbound'
+cp: -r not specified; omitting directory '/etc/vmware-tools'
+cp: -r not specified; omitting directory '/etc/X11'
+cp: -r not specified; omitting directory '/etc/xdg'
+cp: -r not specified; omitting directory '/etc/xinetd.d'
+cp: -r not specified; omitting directory '/etc/yum'
+cp: -r not specified; omitting directory '/etc/yum.repos.d'
+cp: -r not specified; omitting directory '/etc/zfs'
+cp: -r not specified; omitting directory '/etc/alternatives'
+cp: -r not specified; omitting directory '/etc/audit'
+cp: -r not specified; omitting directory '/etc/authselect'
+cp: -r not specified; omitting directory '/etc/bash_completion.d'
+cp: -r not specified; omitting directory '/etc/binfmt.d'
+cp: -r not specified; omitting directory '/etc/chkconfig.d'
+cp: -r not specified; omitting directory '/etc/cifs-utils'
+cp: -r not specified; omitting directory '/etc/cron.d'
+cp: -r not specified; omitting directory '/etc/cron.daily'
+cp: -r not specified; omitting directory '/etc/cron.hourly'
+cp: -r not specified; omitting directory '/etc/cron.monthly'
+cp: -r not specified; omitting directory '/etc/cron.weekly'
+cp: -r not specified; omitting directory '/etc/crypto-policies'
+cp: -r not specified; omitting directory '/etc/dbus-1'
+cp: -r not specified; omitting directory '/etc/default'
+cp: -r not specified; omitting directory '/etc/depmod.d'
+cp: -r not specified; omitting directory '/etc/dhcp'
+cp: -r not specified; omitting directory '/etc/dnf'
+cp: -r not specified; omitting directory '/etc/dracut.conf.d'
+cp: -r not specified; omitting directory '/etc/exports.d'
+cp: -r not specified; omitting directory '/etc/firewalld'
+cp: -r not specified; omitting directory '/etc/gcrypt'
+cp: -r not specified; omitting directory '/etc/gnupg'
+cp: -r not specified; omitting directory '/etc/groff'
+cp: -r not specified; omitting directory '/etc/grub.d'
+cp: -r not specified; omitting directory '/etc/gss'
+cp: -r not specified; omitting directory '/etc/gssproxy'
+cp: -r not specified; omitting directory '/etc/init.d'
+cp: -r not specified; omitting directory '/etc/iproute2'
+cp: -r not specified; omitting directory '/etc/kdump'
+cp: -r not specified; omitting directory '/etc/kernel'
+cp: -r not specified; omitting directory '/etc/krb5.conf.d'
+cp: -r not specified; omitting directory '/etc/ld.so.conf.d'
+cp: -r not specified; omitting directory '/etc/libibverbs.d'
+cp: -r not specified; omitting directory '/etc/libnl'
+cp: -r not specified; omitting directory '/etc/libreport'
+cp: -r not specified; omitting directory '/etc/libssh'
+cp: -r not specified; omitting directory '/etc/logrotate.d'
+cp: -r not specified; omitting directory '/etc/modprobe.d'
+cp: -r not specified; omitting directory '/etc/modules-load.d'
+cp: -r not specified; omitting directory '/etc/NetworkManager'
+cp: -r not specified; omitting directory '/etc/nftables'
+cp: -r not specified; omitting directory '/etc/openldap'
+cp: -r not specified; omitting directory '/etc/opt'
+cp: -r not specified; omitting directory '/etc/pam.d'
+cp: -r not specified; omitting directory '/etc/pkcs11'
+cp: -r not specified; omitting directory '/etc/pki'
+cp: -r not specified; omitting directory '/etc/pm'
+cp: -r not specified; omitting directory '/etc/polkit-1'
+cp: -r not specified; omitting directory '/etc/popt.d'
+cp: -r not specified; omitting directory '/etc/prelink.conf.d'
+cp: -r not specified; omitting directory '/etc/profile.d'
+cp: -r not specified; omitting directory '/etc/qemu-ga'
+cp: -r not specified; omitting directory '/etc/qemu-kvm'
+cp: -r not specified; omitting directory '/etc/rc0.d'
+cp: -r not specified; omitting directory '/etc/rc1.d'
+cp: -r not specified; omitting directory '/etc/rc2.d'
+cp: -r not specified; omitting directory '/etc/rc3.d'
+cp: -r not specified; omitting directory '/etc/rc4.d'
+cp: -r not specified; omitting directory '/etc/rc5.d'
+cp: -r not specified; omitting directory '/etc/rc6.d'
+cp: -r not specified; omitting directory '/etc/rc.d'
+cp: -r not specified; omitting directory '/etc/rdma'
+cp: -r not specified; omitting directory '/etc/request-key.d'
+cp: -r not specified; omitting directory '/etc/rhsm'
+cp: -r not specified; omitting directory '/etc/rpm'
+cp: -r not specified; omitting directory '/etc/rsyslog.d'
+cp: -r not specified; omitting directory '/etc/rwtab.d'
+cp: -r not specified; omitting directory '/etc/samba'
+cp: -r not specified; omitting directory '/etc/sasl2'
+cp: -r not specified; omitting directory '/etc/security'
+cp: -r not specified; omitting directory '/etc/selinux'
+cp: -r not specified; omitting directory '/etc/skel'
+cp: -r not specified; omitting directory '/etc/ssh'
+cp: -r not specified; omitting directory '/etc/ssl'
+cp: -r not specified; omitting directory '/etc/sssd'
+cp: -r not specified; omitting directory '/etc/sudoers.d'
+cp: -r not specified; omitting directory '/etc/sysconfig'
+cp: -r not specified; omitting directory '/etc/sysctl.d'
+cp: -r not specified; omitting directory '/etc/systemd'
+cp: -r not specified; omitting directory '/etc/terminfo'
+cp: -r not specified; omitting directory '/etc/tmpfiles.d'
+cp: -r not specified; omitting directory '/etc/tuned'
+cp: -r not specified; omitting directory '/etc/udev'
+cp: -r not specified; omitting directory '/etc/unbound'
+cp: -r not specified; omitting directory '/etc/vmware-tools'
+cp: -r not specified; omitting directory '/etc/X11'
+cp: -r not specified; omitting directory '/etc/xdg'
+cp: -r not specified; omitting directory '/etc/xinetd.d'
+cp: -r not specified; omitting directory '/etc/yum'
+cp: -r not specified; omitting directory '/etc/yum.repos.d'
+cp: -r not specified; omitting directory '/etc/zfs'
+cp: -r not specified; omitting directory '/etc/alternatives'
+cp: -r not specified; omitting directory '/etc/audit'
+cp: -r not specified; omitting directory '/etc/authselect'
+cp: -r not specified; omitting directory '/etc/bash_completion.d'
+cp: -r not specified; omitting directory '/etc/binfmt.d'
+cp: -r not specified; omitting directory '/etc/chkconfig.d'
+cp: -r not specified; omitting directory '/etc/cifs-utils'
+cp: -r not specified; omitting directory '/etc/cron.d'
+cp: -r not specified; omitting directory '/etc/cron.daily'
+cp: -r not specified; omitting directory '/etc/cron.hourly'
+cp: -r not specified; omitting directory '/etc/cron.monthly'
+cp: -r not specified; omitting directory '/etc/cron.weekly'
+cp: -r not specified; omitting directory '/etc/crypto-policies'
+cp: -r not specified; omitting directory '/etc/dbus-1'
+cp: -r not specified; omitting directory '/etc/default'
+cp: -r not specified; omitting directory '/etc/depmod.d'
+cp: -r not specified; omitting directory '/etc/dhcp'
+cp: -r not specified; omitting directory '/etc/dnf'
+cp: -r not specified; omitting directory '/etc/dracut.conf.d'
+cp: -r not specified; omitting directory '/etc/exports.d'
+cp: -r not specified; omitting directory '/etc/firewalld'
+cp: -r not specified; omitting directory '/etc/gcrypt'
+cp: -r not specified; omitting directory '/etc/gnupg'
+cp: -r not specified; omitting directory '/etc/groff'
+cp: -r not specified; omitting directory '/etc/grub.d'
+cp: -r not specified; omitting directory '/etc/gss'
+cp: -r not specified; omitting directory '/etc/gssproxy'
+cp: -r not specified; omitting directory '/etc/init.d'
+cp: -r not specified; omitting directory '/etc/iproute2'
+cp: -r not specified; omitting directory '/etc/kdump'
+cp: -r not specified; omitting directory '/etc/kernel'
+cp: -r not specified; omitting directory '/etc/krb5.conf.d'
+cp: -r not specified; omitting directory '/etc/ld.so.conf.d'
+cp: -r not specified; omitting directory '/etc/libibverbs.d'
+cp: -r not specified; omitting directory '/etc/libnl'
+cp: -r not specified; omitting directory '/etc/libreport'
+cp: -r not specified; omitting directory '/etc/libssh'
+cp: -r not specified; omitting directory '/etc/logrotate.d'
+cp: -r not specified; omitting directory '/etc/modprobe.d'
+cp: -r not specified; omitting directory '/etc/modules-load.d'
+cp: -r not specified; omitting directory '/etc/NetworkManager'
+cp: -r not specified; omitting directory '/etc/nftables'
+cp: -r not specified; omitting directory '/etc/openldap'
+cp: -r not specified; omitting directory '/etc/opt'
+cp: -r not specified; omitting directory '/etc/pam.d'
+cp: -r not specified; omitting directory '/etc/pkcs11'
+cp: -r not specified; omitting directory '/etc/pki'
+cp: -r not specified; omitting directory '/etc/pm'
+cp: -r not specified; omitting directory '/etc/polkit-1'
+cp: -r not specified; omitting directory '/etc/popt.d'
+cp: -r not specified; omitting directory '/etc/prelink.conf.d'
+cp: -r not specified; omitting directory '/etc/profile.d'
+cp: -r not specified; omitting directory '/etc/qemu-ga'
+cp: -r not specified; omitting directory '/etc/qemu-kvm'
+cp: -r not specified; omitting directory '/etc/rc0.d'
+cp: -r not specified; omitting directory '/etc/rc1.d'
+cp: -r not specified; omitting directory '/etc/rc2.d'
+cp: -r not specified; omitting directory '/etc/rc3.d'
+cp: -r not specified; omitting directory '/etc/rc4.d'
+cp: -r not specified; omitting directory '/etc/rc5.d'
+cp: -r not specified; omitting directory '/etc/rc6.d'
+cp: -r not specified; omitting directory '/etc/rc.d'
+cp: -r not specified; omitting directory '/etc/rdma'
+cp: -r not specified; omitting directory '/etc/request-key.d'
+cp: -r not specified; omitting directory '/etc/rhsm'
+cp: -r not specified; omitting directory '/etc/rpm'
+cp: -r not specified; omitting directory '/etc/rsyslog.d'
+cp: -r not specified; omitting directory '/etc/rwtab.d'
+cp: -r not specified; omitting directory '/etc/samba'
+cp: -r not specified; omitting directory '/etc/sasl2'
+cp: -r not specified; omitting directory '/etc/security'
+cp: -r not specified; omitting directory '/etc/selinux'
+cp: -r not specified; omitting directory '/etc/skel'
+cp: -r not specified; omitting directory '/etc/ssh'
+cp: -r not specified; omitting directory '/etc/ssl'
+cp: -r not specified; omitting directory '/etc/sssd'
+cp: -r not specified; omitting directory '/etc/sudoers.d'
+cp: -r not specified; omitting directory '/etc/sysconfig'
+cp: -r not specified; omitting directory '/etc/sysctl.d'
+cp: -r not specified; omitting directory '/etc/systemd'
+cp: -r not specified; omitting directory '/etc/terminfo'
+cp: -r not specified; omitting directory '/etc/tmpfiles.d'
+cp: -r not specified; omitting directory '/etc/tuned'
+cp: -r not specified; omitting directory '/etc/udev'
+cp: -r not specified; omitting directory '/etc/unbound'
+cp: -r not specified; omitting directory '/etc/vmware-tools'
+cp: -r not specified; omitting directory '/etc/X11'
+cp: -r not specified; omitting directory '/etc/xdg'
+cp: -r not specified; omitting directory '/etc/xinetd.d'
+cp: -r not specified; omitting directory '/etc/yum'
+cp: -r not specified; omitting directory '/etc/yum.repos.d'
+cp: -r not specified; omitting directory '/etc/zfs'
+cp: -r not specified; omitting directory '/etc/alternatives'
+cp: -r not specified; omitting directory '/etc/audit'
+cp: -r not specified; omitting directory '/etc/authselect'
+cp: -r not specified; omitting directory '/etc/bash_completion.d'
+cp: -r not specified; omitting directory '/etc/binfmt.d'
+cp: -r not specified; omitting directory '/etc/chkconfig.d'
+cp: -r not specified; omitting directory '/etc/cifs-utils'
+cp: -r not specified; omitting directory '/etc/cron.d'
+cp: -r not specified; omitting directory '/etc/cron.daily'
+cp: -r not specified; omitting directory '/etc/cron.hourly'
+cp: -r not specified; omitting directory '/etc/cron.monthly'
+cp: -r not specified; omitting directory '/etc/cron.weekly'
+cp: -r not specified; omitting directory '/etc/crypto-policies'
+cp: -r not specified; omitting directory '/etc/dbus-1'
+cp: -r not specified; omitting directory '/etc/default'
+cp: -r not specified; omitting directory '/etc/depmod.d'
+cp: -r not specified; omitting directory '/etc/dhcp'
+cp: -r not specified; omitting directory '/etc/dnf'
+cp: -r not specified; omitting directory '/etc/dracut.conf.d'
+cp: -r not specified; omitting directory '/etc/exports.d'
+cp: -r not specified; omitting directory '/etc/firewalld'
+cp: -r not specified; omitting directory '/etc/gcrypt'
+cp: -r not specified; omitting directory '/etc/gnupg'
+cp: -r not specified; omitting directory '/etc/groff'
+cp: -r not specified; omitting directory '/etc/grub.d'
+cp: -r not specified; omitting directory '/etc/gss'
+cp: -r not specified; omitting directory '/etc/gssproxy'
+cp: -r not specified; omitting directory '/etc/init.d'
+cp: -r not specified; omitting directory '/etc/iproute2'
+cp: -r not specified; omitting directory '/etc/kdump'
+cp: -r not specified; omitting directory '/etc/kernel'
+cp: -r not specified; omitting directory '/etc/krb5.conf.d'
+cp: -r not specified; omitting directory '/etc/ld.so.conf.d'
+cp: -r not specified; omitting directory '/etc/libibverbs.d'
+cp: -r not specified; omitting directory '/etc/libnl'
+cp: -r not specified; omitting directory '/etc/libreport'
+cp: -r not specified; omitting directory '/etc/libssh'
+cp: -r not specified; omitting directory '/etc/logrotate.d'
+cp: -r not specified; omitting directory '/etc/modprobe.d'
+cp: -r not specified; omitting directory '/etc/modules-load.d'
+cp: -r not specified; omitting directory '/etc/NetworkManager'
+cp: -r not specified; omitting directory '/etc/nftables'
+cp: -r not specified; omitting directory '/etc/openldap'
+cp: -r not specified; omitting directory '/etc/opt'
+cp: -r not specified; omitting directory '/etc/pam.d'
+cp: -r not specified; omitting directory '/etc/pkcs11'
+cp: -r not specified; omitting directory '/etc/pki'
+cp: -r not specified; omitting directory '/etc/pm'
+cp: -r not specified; omitting directory '/etc/polkit-1'
+cp: -r not specified; omitting directory '/etc/popt.d'
+cp: -r not specified; omitting directory '/etc/prelink.conf.d'
+cp: -r not specified; omitting directory '/etc/profile.d'
+cp: -r not specified; omitting directory '/etc/qemu-ga'
+cp: -r not specified; omitting directory '/etc/qemu-kvm'
+cp: -r not specified; omitting directory '/etc/rc0.d'
+cp: -r not specified; omitting directory '/etc/rc1.d'
+cp: -r not specified; omitting directory '/etc/rc2.d'
+cp: -r not specified; omitting directory '/etc/rc3.d'
+cp: -r not specified; omitting directory '/etc/rc4.d'
+cp: -r not specified; omitting directory '/etc/rc5.d'
+cp: -r not specified; omitting directory '/etc/rc6.d'
+cp: -r not specified; omitting directory '/etc/rc.d'
+cp: -r not specified; omitting directory '/etc/rdma'
+cp: -r not specified; omitting directory '/etc/request-key.d'
+cp: -r not specified; omitting directory '/etc/rhsm'
+cp: -r not specified; omitting directory '/etc/rpm'
+cp: -r not specified; omitting directory '/etc/rsyslog.d'
+cp: -r not specified; omitting directory '/etc/rwtab.d'
+cp: -r not specified; omitting directory '/etc/samba'
+cp: -r not specified; omitting directory '/etc/sasl2'
+cp: -r not specified; omitting directory '/etc/security'
+cp: -r not specified; omitting directory '/etc/selinux'
+cp: -r not specified; omitting directory '/etc/skel'
+cp: -r not specified; omitting directory '/etc/ssh'
+cp: -r not specified; omitting directory '/etc/ssl'
+cp: -r not specified; omitting directory '/etc/sssd'
+cp: -r not specified; omitting directory '/etc/sudoers.d'
+cp: -r not specified; omitting directory '/etc/sysconfig'
+cp: -r not specified; omitting directory '/etc/sysctl.d'
+cp: -r not specified; omitting directory '/etc/systemd'
+cp: -r not specified; omitting directory '/etc/terminfo'
+cp: -r not specified; omitting directory '/etc/tmpfiles.d'
+cp: -r not specified; omitting directory '/etc/tuned'
+cp: -r not specified; omitting directory '/etc/udev'
+cp: -r not specified; omitting directory '/etc/unbound'
+cp: -r not specified; omitting directory '/etc/vmware-tools'
+cp: -r not specified; omitting directory '/etc/X11'
+cp: -r not specified; omitting directory '/etc/xdg'
+cp: -r not specified; omitting directory '/etc/xinetd.d'
+cp: -r not specified; omitting directory '/etc/yum'
+cp: -r not specified; omitting directory '/etc/yum.repos.d'
+cp: -r not specified; omitting directory '/etc/zfs'
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do cp /etc/* /stripe/$i; done[C[C[C[1@ [1@-[1@r
+cp: overwrite '/stripe/1/adjtime'? c^C
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do cp -r /etc/* /stripe/$i; done[1@f
+cp: overwrite '/stripe/1/adjtime'? ^C
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do cp -fr /etc/* /stripe/$i; done[C[C[1P[1@R
+cp: overwrite '/stripe/1/adjtime'? y
+cp: overwrite '/stripe/1/aliases'? y
+cp: overwrite '/stripe/1/anacrontab'? y
+cp: overwrite '/stripe/1/bashrc'? y
+cp: overwrite '/stripe/1/bindresvport.blacklist'? y
+cp: overwrite '/stripe/1/centos-release'? uy
+cp: overwrite '/stripe/1/centos-release-upstream'? y
+cp: overwrite '/stripe/1/chrony.conf'? y
+cp: overwrite '/stripe/1/chrony.keys'? y
+cp: overwrite '/stripe/1/cron.deny'? y
+cp: overwrite '/stripe/1/crontab'? y
+cp: overwrite '/stripe/1/crypttab'? y
+cp: overwrite '/stripe/1/csh.cshrc'? y
+cp: overwrite '/stripe/1/csh.login'? ^C
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do cp -fR /etc/* /stripe/$i; done[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kfor i in {1..4}; do cp -fR /etc/* /stripe/$i; done[C[C[C[C[C[C[C[1P
+cp: overwrite '/stripe/1/adjtime'? ^^C
+cp: overwrite '/stripe/1/aliases'? ^C
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do cp -f /etc/* /stripe/$i; done[C[1@y[1@ [1@y[1@e[1@s[1@ [1@"[1P[1@|[1@ 
+cp: overwrite '/stripe/1/adjtime'? bash: y: command not found
+cp: overwrite '/stripe/1/aliases'? cp: -r not specified; omitting directory '/etc/alternatives'
+cp: overwrite '/stripe/1/anacrontab'? cp: -r not specified; omitting directory '/etc/audit'
+cp: -r not specified; omitting directory '/etc/authselect'
+cp: -r not specified; omitting directory '/etc/bash_completion.d'
+cp: overwrite '/stripe/1/bashrc'? cp: overwrite '/stripe/1/bindresvport.blacklist'? cp: -r not specified; omitting directory '/etc/binfmt.d'
+cp: overwrite '/stripe/1/centos-release'? cp: overwrite '/stripe/1/centos-release-upstream'? cp: -r not specified; omitting directory '/etc/chkconfig.d'
+cp: overwrite '/stripe/1/chrony.conf'? cp: overwrite '/stripe/1/chrony.keys'? cp: -r not specified; omitting directory '/etc/cifs-utils'
+cp: -r not specified; omitting directory '/etc/cron.d'
+cp: -r not specified; omitting directory '/etc/cron.daily'
+cp: overwrite '/stripe/1/cron.deny'? cp: -r not specified; omitting directory '/etc/cron.hourly'
+cp: -r not specified; omitting directory '/etc/cron.monthly'
+cp: overwrite '/stripe/1/crontab'? cp: -r not specified; omitting directory '/etc/cron.weekly'
+cp: -r not specified; omitting directory '/etc/crypto-policies'
+cp: overwrite '/stripe/1/crypttab'? cp: overwrite '/stripe/1/csh.cshrc'? cp: overwrite '/stripe/1/csh.login'? cp: -r not specified; omitting directory '/etc/dbus-1'
+cp: -r not specified; omitting directory '/etc/default'
+cp: -r not specified; omitting directory '/etc/depmod.d'
+cp: -r not specified; omitting directory '/etc/dhcp'
+cp: overwrite '/stripe/1/DIR_COLORS'? cp: overwrite '/stripe/1/DIR_COLORS.256color'? cp: overwrite '/stripe/1/DIR_COLORS.lightbgcolor'? cp: -r not specified; omitting directory '/etc/dnf'
+cp: overwrite '/stripe/1/dracut.conf'? cp: -r not specified; omitting directory '/etc/dracut.conf.d'
+cp: overwrite '/stripe/1/environment'? cp: overwrite '/stripe/1/ethertypes'? cp: overwrite '/stripe/1/exports'? cp: -r not specified; omitting directory '/etc/exports.d'
+cp: overwrite '/stripe/1/filesystems'? cp: -r not specified; omitting directory '/etc/firewalld'
+cp: overwrite '/stripe/1/fstab'? cp: overwrite '/stripe/1/fuse.conf'? cp: -r not specified; omitting directory '/etc/gcrypt'
+cp: -r not specified; omitting directory '/etc/gnupg'
+cp: overwrite '/stripe/1/GREP_COLORS'? cp: -r not specified; omitting directory '/etc/groff'
+cp: overwrite '/stripe/1/group'? cp: overwrite '/stripe/1/group-'? cp: overwrite '/stripe/1/grub2.cfg'? cp: -r not specified; omitting directory '/etc/grub.d'
+cp: overwrite '/stripe/1/gshadow'? cp: overwrite '/stripe/1/gshadow-'? cp: -r not specified; omitting directory '/etc/gss'
+cp: -r not specified; omitting directory '/etc/gssproxy'
+cp: overwrite '/stripe/1/host.conf'? cp: overwrite '/stripe/1/hostname'? cp: overwrite '/stripe/1/hosts'? cp: overwrite '/stripe/1/idmapd.conf'? cp: -r not specified; omitting directory '/etc/init.d'
+cp: overwrite '/stripe/1/inittab'? cp: overwrite '/stripe/1/inputrc'? cp: -r not specified; omitting directory '/etc/iproute2'
+cp: overwrite '/stripe/1/issue'? cp: overwrite '/stripe/1/issue.net'? cp: -r not specified; omitting directory '/etc/kdump'
+cp: overwrite '/stripe/1/kdump.conf'? cp: -r not specified; omitting directory '/etc/kernel'
+cp: overwrite '/stripe/1/krb5.conf'? cp: -r not specified; omitting directory '/etc/krb5.conf.d'
+cp: overwrite '/stripe/1/ld.so.cache'? cp: overwrite '/stripe/1/ld.so.conf'? cp: -r not specified; omitting directory '/etc/ld.so.conf.d'
+cp: overwrite '/stripe/1/libaudit.conf'? cp: -r not specified; omitting directory '/etc/libibverbs.d'
+cp: -r not specified; omitting directory '/etc/libnl'
+cp: -r not specified; omitting directory '/etc/libreport'
+cp: -r not specified; omitting directory '/etc/libssh'
+cp: overwrite '/stripe/1/libuser.conf'? cp: overwrite '/stripe/1/locale.conf'? cp: overwrite '/stripe/1/localtime'? cp: overwrite '/stripe/1/login.defs'? cp: overwrite '/stripe/1/logrotate.conf'? cp: -r not specified; omitting directory '/etc/logrotate.d'
+cp: overwrite '/stripe/1/machine-id'? cp: overwrite '/stripe/1/magic'? cp: overwrite '/stripe/1/makedumpfile.conf.sample'? cp: overwrite '/stripe/1/man_db.conf'? cp: overwrite '/stripe/1/mke2fs.conf'? cp: -r not specified; omitting directory '/etc/modprobe.d'
+cp: -r not specified; omitting directory '/etc/modules-load.d'
+cp: overwrite '/stripe/1/motd'? cp: overwrite '/stripe/1/mtab'? cp: overwrite '/stripe/1/netconfig'? cp: -r not specified; omitting directory '/etc/NetworkManager'
+cp: overwrite '/stripe/1/networks'? cp: overwrite '/stripe/1/nfs.conf'? cp: overwrite '/stripe/1/nfsmount.conf'? cp: -r not specified; omitting directory '/etc/nftables'
+cp: overwrite '/stripe/1/nsswitch.conf'? cp: overwrite '/stripe/1/nsswitch.conf.bak'? cp: -r not specified; omitting directory '/etc/openldap'
+cp: -r not specified; omitting directory '/etc/opt'
+cp: overwrite '/stripe/1/os-release'? cp: -r not specified; omitting directory '/etc/pam.d'
+cp: overwrite '/stripe/1/passwd'? cp: overwrite '/stripe/1/passwd-'? cp: -r not specified; omitting directory '/etc/pkcs11'
+cp: -r not specified; omitting directory '/etc/pki'
+cp: -r not specified; omitting directory '/etc/pm'
+cp: -r not specified; omitting directory '/etc/polkit-1'
+cp: -r not specified; omitting directory '/etc/popt.d'
+cp: -r not specified; omitting directory '/etc/prelink.conf.d'
+cp: overwrite '/stripe/1/printcap'? cp: overwrite '/stripe/1/profile'? cp: -r not specified; omitting directory '/etc/profile.d'
+cp: overwrite '/stripe/1/protocols'? cp: -r not specified; omitting directory '/etc/qemu-ga'
+cp: -r not specified; omitting directory '/etc/qemu-kvm'
+cp: -r not specified; omitting directory '/etc/rc0.d'
+cp: -r not specified; omitting directory '/etc/rc1.d'
+cp: -r not specified; omitting directory '/etc/rc2.d'
+cp: -r not specified; omitting directory '/etc/rc3.d'
+cp: -r not specified; omitting directory '/etc/rc4.d'
+cp: -r not specified; omitting directory '/etc/rc5.d'
+cp: -r not specified; omitting directory '/etc/rc6.d'
+cp: -r not specified; omitting directory '/etc/rc.d'
+cp: overwrite '/stripe/1/rc.local'? cp: -r not specified; omitting directory '/etc/rdma'
+cp: overwrite '/stripe/1/redhat-release'? cp: overwrite '/stripe/1/request-key.conf'? cp: -r not specified; omitting directory '/etc/request-key.d'
+cp: overwrite '/stripe/1/resolv.conf'? cp: -r not specified; omitting directory '/etc/rhsm'
+cp: overwrite '/stripe/1/rpc'? cp: -r not specified; omitting directory '/etc/rpm'
+cp: overwrite '/stripe/1/rsyslog.conf'? cp: -r not specified; omitting directory '/etc/rsyslog.d'
+cp: -r not specified; omitting directory '/etc/rwtab.d'
+cp: -r not specified; omitting directory '/etc/samba'
+cp: -r not specified; omitting directory '/etc/sasl2'
+cp: -r not specified; omitting directory '/etc/security'
+cp: -r not specified; omitting directory '/etc/selinux'
+cp: overwrite '/stripe/1/services'? cp: overwrite '/stripe/1/sestatus.conf'? cp: overwrite '/stripe/1/shadow'? cp: overwrite '/stripe/1/shadow-'? cp: overwrite '/stripe/1/shells'? cp: -r not specified; omitting directory '/etc/skel'
+cp: -r not specified; omitting directory '/etc/ssh'
+cp: -r not specified; omitting directory '/etc/ssl'
+cp: -r not specified; omitting directory '/etc/sssd'
+cp: overwrite '/stripe/1/subgid'? cp: overwrite '/stripe/1/subgid-'? cp: overwrite '/stripe/1/subuid'? cp: overwrite '/stripe/1/subuid-'? cp: overwrite '/stripe/1/sudo.conf'? cp: overwrite '/stripe/1/sudoers'? cp: -r not specified; omitting directory '/etc/sudoers.d'
+cp: overwrite '/stripe/1/sudo-ldap.conf'? cp: -r not specified; omitting directory '/etc/sysconfig'
+cp: overwrite '/stripe/1/sysctl.conf'? cp: -r not specified; omitting directory '/etc/sysctl.d'
+cp: -r not specified; omitting directory '/etc/systemd'
+cp: overwrite '/stripe/1/system-release'? cp: overwrite '/stripe/1/system-release-cpe'? cp: overwrite '/stripe/1/tcsd.conf'? cp: -r not specified; omitting directory '/etc/terminfo'
+cp: -r not specified; omitting directory '/etc/tmpfiles.d'
+cp: -r not specified; omitting directory '/etc/tuned'
+cp: -r not specified; omitting directory '/etc/udev'
+cp: -r not specified; omitting directory '/etc/unbound'
+cp: overwrite '/stripe/1/vconsole.conf'? cp: overwrite '/stripe/1/virc'? cp: -r not specified; omitting directory '/etc/vmware-tools'
+cp: overwrite '/stripe/1/wgetrc'? cp: -r not specified; omitting directory '/etc/X11'
+cp: overwrite '/stripe/1/xattr.conf'? cp: -r not specified; omitting directory '/etc/xdg'
+cp: -r not specified; omitting directory '/etc/xinetd.d'
+cp: -r not specified; omitting directory '/etc/yum'
+cp: overwrite '/stripe/1/yum.conf'? cp: -r not specified; omitting directory '/etc/yum.repos.d'
+cp: -r not specified; omitting directory '/etc/zfs'
+cp: overwrite '/stripe/2/adjtime'? bash: y: command not found
+cp: overwrite '/stripe/2/aliases'? cp: -r not specified; omitting directory '/etc/alternatives'
+cp: overwrite '/stripe/2/anacrontab'? cp: -r not specified; omitting directory '/etc/audit'
+cp: -r not specified; omitting directory '/etc/authselect'
+cp: -r not specified; omitting directory '/etc/bash_completion.d'
+cp: overwrite '/stripe/2/bashrc'? cp: overwrite '/stripe/2/bindresvport.blacklist'? cp: -r not specified; omitting directory '/etc/binfmt.d'
+cp: overwrite '/stripe/2/centos-release'? cp: overwrite '/stripe/2/centos-release-upstream'? cp: -r not specified; omitting directory '/etc/chkconfig.d'
+cp: overwrite '/stripe/2/chrony.conf'? cp: overwrite '/stripe/2/chrony.keys'? cp: -r not specified; omitting directory '/etc/cifs-utils'
+cp: -r not specified; omitting directory '/etc/cron.d'
+cp: -r not specified; omitting directory '/etc/cron.daily'
+cp: overwrite '/stripe/2/cron.deny'? cp: -r not specified; omitting directory '/etc/cron.hourly'
+cp: -r not specified; omitting directory '/etc/cron.monthly'
+cp: overwrite '/stripe/2/crontab'? cp: -r not specified; omitting directory '/etc/cron.weekly'
+cp: -r not specified; omitting directory '/etc/crypto-policies'
+cp: overwrite '/stripe/2/crypttab'? cp: overwrite '/stripe/2/csh.cshrc'? cp: overwrite '/stripe/2/csh.login'? cp: -r not specified; omitting directory '/etc/dbus-1'
+cp: -r not specified; omitting directory '/etc/default'
+cp: -r not specified; omitting directory '/etc/depmod.d'
+cp: -r not specified; omitting directory '/etc/dhcp'
+cp: overwrite '/stripe/2/DIR_COLORS'? cp: overwrite '/stripe/2/DIR_COLORS.256color'? cp: overwrite '/stripe/2/DIR_COLORS.lightbgcolor'? cp: -r not specified; omitting directory '/etc/dnf'
+cp: overwrite '/stripe/2/dracut.conf'? cp: -r not specified; omitting directory '/etc/dracut.conf.d'
+cp: overwrite '/stripe/2/environment'? cp: overwrite '/stripe/2/ethertypes'? cp: overwrite '/stripe/2/exports'? cp: -r not specified; omitting directory '/etc/exports.d'
+cp: overwrite '/stripe/2/filesystems'? cp: -r not specified; omitting directory '/etc/firewalld'
+cp: overwrite '/stripe/2/fstab'? cp: overwrite '/stripe/2/fuse.conf'? cp: -r not specified; omitting directory '/etc/gcrypt'
+cp: -r not specified; omitting directory '/etc/gnupg'
+cp: overwrite '/stripe/2/GREP_COLORS'? cp: -r not specified; omitting directory '/etc/groff'
+cp: overwrite '/stripe/2/group'? cp: overwrite '/stripe/2/group-'? cp: overwrite '/stripe/2/grub2.cfg'? cp: -r not specified; omitting directory '/etc/grub.d'
+cp: overwrite '/stripe/2/gshadow'? cp: overwrite '/stripe/2/gshadow-'? cp: -r not specified; omitting directory '/etc/gss'
+cp: -r not specified; omitting directory '/etc/gssproxy'
+cp: overwrite '/stripe/2/host.conf'? cp: overwrite '/stripe/2/hostname'? cp: overwrite '/stripe/2/hosts'? cp: overwrite '/stripe/2/idmapd.conf'? cp: -r not specified; omitting directory '/etc/init.d'
+cp: overwrite '/stripe/2/inittab'? cp: overwrite '/stripe/2/inputrc'? cp: -r not specified; omitting directory '/etc/iproute2'
+cp: overwrite '/stripe/2/issue'? cp: overwrite '/stripe/2/issue.net'? cp: -r not specified; omitting directory '/etc/kdump'
+cp: overwrite '/stripe/2/kdump.conf'? cp: -r not specified; omitting directory '/etc/kernel'
+cp: overwrite '/stripe/2/krb5.conf'? cp: -r not specified; omitting directory '/etc/krb5.conf.d'
+cp: overwrite '/stripe/2/ld.so.cache'? cp: overwrite '/stripe/2/ld.so.conf'? cp: -r not specified; omitting directory '/etc/ld.so.conf.d'
+cp: overwrite '/stripe/2/libaudit.conf'? cp: -r not specified; omitting directory '/etc/libibverbs.d'
+cp: -r not specified; omitting directory '/etc/libnl'
+cp: -r not specified; omitting directory '/etc/libreport'
+cp: -r not specified; omitting directory '/etc/libssh'
+cp: overwrite '/stripe/2/libuser.conf'? cp: overwrite '/stripe/2/locale.conf'? cp: overwrite '/stripe/2/localtime'? cp: overwrite '/stripe/2/login.defs'? cp: overwrite '/stripe/2/logrotate.conf'? cp: -r not specified; omitting directory '/etc/logrotate.d'
+cp: overwrite '/stripe/2/machine-id'? cp: overwrite '/stripe/2/magic'? cp: overwrite '/stripe/2/makedumpfile.conf.sample'? cp: overwrite '/stripe/2/man_db.conf'? cp: overwrite '/stripe/2/mke2fs.conf'? cp: -r not specified; omitting directory '/etc/modprobe.d'
+cp: -r not specified; omitting directory '/etc/modules-load.d'
+cp: overwrite '/stripe/2/motd'? cp: overwrite '/stripe/2/mtab'? cp: overwrite '/stripe/2/netconfig'? cp: -r not specified; omitting directory '/etc/NetworkManager'
+cp: overwrite '/stripe/2/networks'? cp: overwrite '/stripe/2/nfs.conf'? cp: overwrite '/stripe/2/nfsmount.conf'? cp: -r not specified; omitting directory '/etc/nftables'
+cp: overwrite '/stripe/2/nsswitch.conf'? cp: overwrite '/stripe/2/nsswitch.conf.bak'? cp: -r not specified; omitting directory '/etc/openldap'
+cp: -r not specified; omitting directory '/etc/opt'
+cp: overwrite '/stripe/2/os-release'? cp: -r not specified; omitting directory '/etc/pam.d'
+cp: overwrite '/stripe/2/passwd'? cp: overwrite '/stripe/2/passwd-'? cp: -r not specified; omitting directory '/etc/pkcs11'
+cp: -r not specified; omitting directory '/etc/pki'
+cp: -r not specified; omitting directory '/etc/pm'
+cp: -r not specified; omitting directory '/etc/polkit-1'
+cp: -r not specified; omitting directory '/etc/popt.d'
+cp: -r not specified; omitting directory '/etc/prelink.conf.d'
+cp: overwrite '/stripe/2/printcap'? cp: overwrite '/stripe/2/profile'? cp: -r not specified; omitting directory '/etc/profile.d'
+cp: overwrite '/stripe/2/protocols'? cp: -r not specified; omitting directory '/etc/qemu-ga'
+cp: -r not specified; omitting directory '/etc/qemu-kvm'
+cp: -r not specified; omitting directory '/etc/rc0.d'
+cp: -r not specified; omitting directory '/etc/rc1.d'
+cp: -r not specified; omitting directory '/etc/rc2.d'
+cp: -r not specified; omitting directory '/etc/rc3.d'
+cp: -r not specified; omitting directory '/etc/rc4.d'
+cp: -r not specified; omitting directory '/etc/rc5.d'
+cp: -r not specified; omitting directory '/etc/rc6.d'
+cp: -r not specified; omitting directory '/etc/rc.d'
+cp: overwrite '/stripe/2/rc.local'? cp: -r not specified; omitting directory '/etc/rdma'
+cp: overwrite '/stripe/2/redhat-release'? cp: overwrite '/stripe/2/request-key.conf'? cp: -r not specified; omitting directory '/etc/request-key.d'
+cp: overwrite '/stripe/2/resolv.conf'? cp: -r not specified; omitting directory '/etc/rhsm'
+cp: overwrite '/stripe/2/rpc'? cp: -r not specified; omitting directory '/etc/rpm'
+cp: overwrite '/stripe/2/rsyslog.conf'? cp: -r not specified; omitting directory '/etc/rsyslog.d'
+cp: -r not specified; omitting directory '/etc/rwtab.d'
+cp: -r not specified; omitting directory '/etc/samba'
+cp: -r not specified; omitting directory '/etc/sasl2'
+cp: -r not specified; omitting directory '/etc/security'
+cp: -r not specified; omitting directory '/etc/selinux'
+cp: overwrite '/stripe/2/services'? cp: overwrite '/stripe/2/sestatus.conf'? cp: overwrite '/stripe/2/shadow'? cp: overwrite '/stripe/2/shadow-'? cp: overwrite '/stripe/2/shells'? cp: -r not specified; omitting directory '/etc/skel'
+cp: -r not specified; omitting directory '/etc/ssh'
+cp: -r not specified; omitting directory '/etc/ssl'
+cp: -r not specified; omitting directory '/etc/sssd'
+cp: overwrite '/stripe/2/subgid'? cp: overwrite '/stripe/2/subgid-'? cp: overwrite '/stripe/2/subuid'? cp: overwrite '/stripe/2/subuid-'? cp: overwrite '/stripe/2/sudo.conf'? cp: overwrite '/stripe/2/sudoers'? cp: -r not specified; omitting directory '/etc/sudoers.d'
+cp: overwrite '/stripe/2/sudo-ldap.conf'? cp: -r not specified; omitting directory '/etc/sysconfig'
+cp: overwrite '/stripe/2/sysctl.conf'? cp: -r not specified; omitting directory '/etc/sysctl.d'
+cp: -r not specified; omitting directory '/etc/systemd'
+cp: overwrite '/stripe/2/system-release'? cp: overwrite '/stripe/2/system-release-cpe'? cp: overwrite '/stripe/2/tcsd.conf'? cp: -r not specified; omitting directory '/etc/terminfo'
+cp: -r not specified; omitting directory '/etc/tmpfiles.d'
+cp: -r not specified; omitting directory '/etc/tuned'
+cp: -r not specified; omitting directory '/etc/udev'
+cp: -r not specified; omitting directory '/etc/unbound'
+cp: overwrite '/stripe/2/vconsole.conf'? cp: overwrite '/stripe/2/virc'? cp: -r not specified; omitting directory '/etc/vmware-tools'
+cp: overwrite '/stripe/2/wgetrc'? cp: -r not specified; omitting directory '/etc/X11'
+cp: overwrite '/stripe/2/xattr.conf'? cp: -r not specified; omitting directory '/etc/xdg'
+cp: -r not specified; omitting directory '/etc/xinetd.d'
+cp: -r not specified; omitting directory '/etc/yum'
+cp: overwrite '/stripe/2/yum.conf'? cp: -r not specified; omitting directory '/etc/yum.repos.d'
+cp: -r not specified; omitting directory '/etc/zfs'
+cp: overwrite '/stripe/3/adjtime'? bash: y: command not found
+cp: overwrite '/stripe/3/aliases'? cp: -r not specified; omitting directory '/etc/alternatives'
+cp: overwrite '/stripe/3/anacrontab'? cp: -r not specified; omitting directory '/etc/audit'
+cp: -r not specified; omitting directory '/etc/authselect'
+cp: -r not specified; omitting directory '/etc/bash_completion.d'
+cp: overwrite '/stripe/3/bashrc'? cp: overwrite '/stripe/3/bindresvport.blacklist'? cp: -r not specified; omitting directory '/etc/binfmt.d'
+cp: overwrite '/stripe/3/centos-release'? cp: overwrite '/stripe/3/centos-release-upstream'? cp: -r not specified; omitting directory '/etc/chkconfig.d'
+cp: overwrite '/stripe/3/chrony.conf'? cp: overwrite '/stripe/3/chrony.keys'? cp: -r not specified; omitting directory '/etc/cifs-utils'
+cp: -r not specified; omitting directory '/etc/cron.d'
+cp: -r not specified; omitting directory '/etc/cron.daily'
+cp: overwrite '/stripe/3/cron.deny'? cp: -r not specified; omitting directory '/etc/cron.hourly'
+cp: -r not specified; omitting directory '/etc/cron.monthly'
+cp: overwrite '/stripe/3/crontab'? cp: -r not specified; omitting directory '/etc/cron.weekly'
+cp: -r not specified; omitting directory '/etc/crypto-policies'
+cp: overwrite '/stripe/3/crypttab'? cp: overwrite '/stripe/3/csh.cshrc'? cp: overwrite '/stripe/3/csh.login'? cp: -r not specified; omitting directory '/etc/dbus-1'
+cp: -r not specified; omitting directory '/etc/default'
+cp: -r not specified; omitting directory '/etc/depmod.d'
+cp: -r not specified; omitting directory '/etc/dhcp'
+cp: overwrite '/stripe/3/DIR_COLORS'? cp: overwrite '/stripe/3/DIR_COLORS.256color'? cp: overwrite '/stripe/3/DIR_COLORS.lightbgcolor'? cp: -r not specified; omitting directory '/etc/dnf'
+cp: overwrite '/stripe/3/dracut.conf'? cp: -r not specified; omitting directory '/etc/dracut.conf.d'
+cp: overwrite '/stripe/3/environment'? cp: overwrite '/stripe/3/ethertypes'? cp: overwrite '/stripe/3/exports'? cp: -r not specified; omitting directory '/etc/exports.d'
+cp: overwrite '/stripe/3/filesystems'? cp: -r not specified; omitting directory '/etc/firewalld'
+cp: overwrite '/stripe/3/fstab'? cp: overwrite '/stripe/3/fuse.conf'? cp: -r not specified; omitting directory '/etc/gcrypt'
+cp: -r not specified; omitting directory '/etc/gnupg'
+cp: overwrite '/stripe/3/GREP_COLORS'? cp: -r not specified; omitting directory '/etc/groff'
+cp: overwrite '/stripe/3/group'? cp: overwrite '/stripe/3/group-'? cp: overwrite '/stripe/3/grub2.cfg'? cp: -r not specified; omitting directory '/etc/grub.d'
+cp: overwrite '/stripe/3/gshadow'? cp: overwrite '/stripe/3/gshadow-'? cp: -r not specified; omitting directory '/etc/gss'
+cp: -r not specified; omitting directory '/etc/gssproxy'
+cp: overwrite '/stripe/3/host.conf'? cp: overwrite '/stripe/3/hostname'? cp: overwrite '/stripe/3/hosts'? cp: overwrite '/stripe/3/idmapd.conf'? cp: -r not specified; omitting directory '/etc/init.d'
+cp: overwrite '/stripe/3/inittab'? cp: overwrite '/stripe/3/inputrc'? cp: -r not specified; omitting directory '/etc/iproute2'
+cp: overwrite '/stripe/3/issue'? cp: overwrite '/stripe/3/issue.net'? cp: -r not specified; omitting directory '/etc/kdump'
+cp: overwrite '/stripe/3/kdump.conf'? cp: -r not specified; omitting directory '/etc/kernel'
+cp: overwrite '/stripe/3/krb5.conf'? cp: -r not specified; omitting directory '/etc/krb5.conf.d'
+cp: overwrite '/stripe/3/ld.so.cache'? cp: overwrite '/stripe/3/ld.so.conf'? cp: -r not specified; omitting directory '/etc/ld.so.conf.d'
+cp: overwrite '/stripe/3/libaudit.conf'? cp: -r not specified; omitting directory '/etc/libibverbs.d'
+cp: -r not specified; omitting directory '/etc/libnl'
+cp: -r not specified; omitting directory '/etc/libreport'
+cp: -r not specified; omitting directory '/etc/libssh'
+cp: overwrite '/stripe/3/libuser.conf'? cp: overwrite '/stripe/3/locale.conf'? cp: overwrite '/stripe/3/localtime'? cp: overwrite '/stripe/3/login.defs'? cp: overwrite '/stripe/3/logrotate.conf'? cp: -r not specified; omitting directory '/etc/logrotate.d'
+cp: overwrite '/stripe/3/machine-id'? cp: overwrite '/stripe/3/magic'? cp: overwrite '/stripe/3/makedumpfile.conf.sample'? cp: overwrite '/stripe/3/man_db.conf'? cp: overwrite '/stripe/3/mke2fs.conf'? cp: -r not specified; omitting directory '/etc/modprobe.d'
+cp: -r not specified; omitting directory '/etc/modules-load.d'
+cp: overwrite '/stripe/3/motd'? cp: overwrite '/stripe/3/mtab'? cp: overwrite '/stripe/3/netconfig'? cp: -r not specified; omitting directory '/etc/NetworkManager'
+cp: overwrite '/stripe/3/networks'? cp: overwrite '/stripe/3/nfs.conf'? cp: overwrite '/stripe/3/nfsmount.conf'? cp: -r not specified; omitting directory '/etc/nftables'
+cp: overwrite '/stripe/3/nsswitch.conf'? cp: overwrite '/stripe/3/nsswitch.conf.bak'? cp: -r not specified; omitting directory '/etc/openldap'
+cp: -r not specified; omitting directory '/etc/opt'
+cp: overwrite '/stripe/3/os-release'? cp: -r not specified; omitting directory '/etc/pam.d'
+cp: overwrite '/stripe/3/passwd'? cp: overwrite '/stripe/3/passwd-'? cp: -r not specified; omitting directory '/etc/pkcs11'
+cp: -r not specified; omitting directory '/etc/pki'
+cp: -r not specified; omitting directory '/etc/pm'
+cp: -r not specified; omitting directory '/etc/polkit-1'
+cp: -r not specified; omitting directory '/etc/popt.d'
+cp: -r not specified; omitting directory '/etc/prelink.conf.d'
+cp: overwrite '/stripe/3/printcap'? cp: overwrite '/stripe/3/profile'? cp: -r not specified; omitting directory '/etc/profile.d'
+cp: overwrite '/stripe/3/protocols'? cp: -r not specified; omitting directory '/etc/qemu-ga'
+cp: -r not specified; omitting directory '/etc/qemu-kvm'
+cp: -r not specified; omitting directory '/etc/rc0.d'
+cp: -r not specified; omitting directory '/etc/rc1.d'
+cp: -r not specified; omitting directory '/etc/rc2.d'
+cp: -r not specified; omitting directory '/etc/rc3.d'
+cp: -r not specified; omitting directory '/etc/rc4.d'
+cp: -r not specified; omitting directory '/etc/rc5.d'
+cp: -r not specified; omitting directory '/etc/rc6.d'
+cp: -r not specified; omitting directory '/etc/rc.d'
+cp: overwrite '/stripe/3/rc.local'? cp: -r not specified; omitting directory '/etc/rdma'
+cp: overwrite '/stripe/3/redhat-release'? cp: overwrite '/stripe/3/request-key.conf'? cp: -r not specified; omitting directory '/etc/request-key.d'
+cp: overwrite '/stripe/3/resolv.conf'? cp: -r not specified; omitting directory '/etc/rhsm'
+cp: overwrite '/stripe/3/rpc'? cp: -r not specified; omitting directory '/etc/rpm'
+cp: overwrite '/stripe/3/rsyslog.conf'? cp: -r not specified; omitting directory '/etc/rsyslog.d'
+cp: -r not specified; omitting directory '/etc/rwtab.d'
+cp: -r not specified; omitting directory '/etc/samba'
+cp: -r not specified; omitting directory '/etc/sasl2'
+cp: -r not specified; omitting directory '/etc/security'
+cp: -r not specified; omitting directory '/etc/selinux'
+cp: overwrite '/stripe/3/services'? cp: overwrite '/stripe/3/sestatus.conf'? cp: overwrite '/stripe/3/shadow'? cp: overwrite '/stripe/3/shadow-'? cp: overwrite '/stripe/3/shells'? cp: -r not specified; omitting directory '/etc/skel'
+cp: -r not specified; omitting directory '/etc/ssh'
+cp: -r not specified; omitting directory '/etc/ssl'
+cp: -r not specified; omitting directory '/etc/sssd'
+cp: overwrite '/stripe/3/subgid'? cp: overwrite '/stripe/3/subgid-'? cp: overwrite '/stripe/3/subuid'? cp: overwrite '/stripe/3/subuid-'? cp: overwrite '/stripe/3/sudo.conf'? cp: overwrite '/stripe/3/sudoers'? cp: -r not specified; omitting directory '/etc/sudoers.d'
+cp: overwrite '/stripe/3/sudo-ldap.conf'? cp: -r not specified; omitting directory '/etc/sysconfig'
+cp: overwrite '/stripe/3/sysctl.conf'? cp: -r not specified; omitting directory '/etc/sysctl.d'
+cp: -r not specified; omitting directory '/etc/systemd'
+cp: overwrite '/stripe/3/system-release'? cp: overwrite '/stripe/3/system-release-cpe'? cp: overwrite '/stripe/3/tcsd.conf'? cp: -r not specified; omitting directory '/etc/terminfo'
+cp: -r not specified; omitting directory '/etc/tmpfiles.d'
+cp: -r not specified; omitting directory '/etc/tuned'
+cp: -r not specified; omitting directory '/etc/udev'
+cp: -r not specified; omitting directory '/etc/unbound'
+cp: overwrite '/stripe/3/vconsole.conf'? cp: overwrite '/stripe/3/virc'? cp: -r not specified; omitting directory '/etc/vmware-tools'
+cp: overwrite '/stripe/3/wgetrc'? cp: -r not specified; omitting directory '/etc/X11'
+cp: overwrite '/stripe/3/xattr.conf'? cp: -r not specified; omitting directory '/etc/xdg'
+cp: -r not specified; omitting directory '/etc/xinetd.d'
+cp: -r not specified; omitting directory '/etc/yum'
+cp: overwrite '/stripe/3/yum.conf'? cp: -r not specified; omitting directory '/etc/yum.repos.d'
+cp: -r not specified; omitting directory '/etc/zfs'
+cp: overwrite '/stripe/4/adjtime'? bash: y: command not found
+cp: overwrite '/stripe/4/aliases'? cp: -r not specified; omitting directory '/etc/alternatives'
+cp: overwrite '/stripe/4/anacrontab'? cp: -r not specified; omitting directory '/etc/audit'
+cp: -r not specified; omitting directory '/etc/authselect'
+cp: -r not specified; omitting directory '/etc/bash_completion.d'
+cp: overwrite '/stripe/4/bashrc'? cp: overwrite '/stripe/4/bindresvport.blacklist'? cp: -r not specified; omitting directory '/etc/binfmt.d'
+cp: overwrite '/stripe/4/centos-release'? cp: overwrite '/stripe/4/centos-release-upstream'? cp: -r not specified; omitting directory '/etc/chkconfig.d'
+cp: overwrite '/stripe/4/chrony.conf'? cp: overwrite '/stripe/4/chrony.keys'? cp: -r not specified; omitting directory '/etc/cifs-utils'
+cp: -r not specified; omitting directory '/etc/cron.d'
+cp: -r not specified; omitting directory '/etc/cron.daily'
+cp: overwrite '/stripe/4/cron.deny'? cp: -r not specified; omitting directory '/etc/cron.hourly'
+cp: -r not specified; omitting directory '/etc/cron.monthly'
+cp: overwrite '/stripe/4/crontab'? cp: -r not specified; omitting directory '/etc/cron.weekly'
+cp: -r not specified; omitting directory '/etc/crypto-policies'
+cp: overwrite '/stripe/4/crypttab'? cp: overwrite '/stripe/4/csh.cshrc'? cp: overwrite '/stripe/4/csh.login'? cp: -r not specified; omitting directory '/etc/dbus-1'
+cp: -r not specified; omitting directory '/etc/default'
+cp: -r not specified; omitting directory '/etc/depmod.d'
+cp: -r not specified; omitting directory '/etc/dhcp'
+cp: overwrite '/stripe/4/DIR_COLORS'? cp: overwrite '/stripe/4/DIR_COLORS.256color'? cp: overwrite '/stripe/4/DIR_COLORS.lightbgcolor'? cp: -r not specified; omitting directory '/etc/dnf'
+cp: overwrite '/stripe/4/dracut.conf'? cp: -r not specified; omitting directory '/etc/dracut.conf.d'
+cp: overwrite '/stripe/4/environment'? cp: overwrite '/stripe/4/ethertypes'? cp: overwrite '/stripe/4/exports'? cp: -r not specified; omitting directory '/etc/exports.d'
+cp: overwrite '/stripe/4/filesystems'? cp: -r not specified; omitting directory '/etc/firewalld'
+cp: overwrite '/stripe/4/fstab'? cp: overwrite '/stripe/4/fuse.conf'? cp: -r not specified; omitting directory '/etc/gcrypt'
+cp: -r not specified; omitting directory '/etc/gnupg'
+cp: overwrite '/stripe/4/GREP_COLORS'? cp: -r not specified; omitting directory '/etc/groff'
+cp: overwrite '/stripe/4/group'? cp: overwrite '/stripe/4/group-'? cp: overwrite '/stripe/4/grub2.cfg'? cp: -r not specified; omitting directory '/etc/grub.d'
+cp: overwrite '/stripe/4/gshadow'? cp: overwrite '/stripe/4/gshadow-'? cp: -r not specified; omitting directory '/etc/gss'
+cp: -r not specified; omitting directory '/etc/gssproxy'
+cp: overwrite '/stripe/4/host.conf'? cp: overwrite '/stripe/4/hostname'? cp: overwrite '/stripe/4/hosts'? cp: overwrite '/stripe/4/idmapd.conf'? cp: -r not specified; omitting directory '/etc/init.d'
+cp: overwrite '/stripe/4/inittab'? cp: overwrite '/stripe/4/inputrc'? cp: -r not specified; omitting directory '/etc/iproute2'
+cp: overwrite '/stripe/4/issue'? cp: overwrite '/stripe/4/issue.net'? cp: -r not specified; omitting directory '/etc/kdump'
+cp: overwrite '/stripe/4/kdump.conf'? cp: -r not specified; omitting directory '/etc/kernel'
+cp: overwrite '/stripe/4/krb5.conf'? cp: -r not specified; omitting directory '/etc/krb5.conf.d'
+cp: overwrite '/stripe/4/ld.so.cache'? cp: overwrite '/stripe/4/ld.so.conf'? cp: -r not specified; omitting directory '/etc/ld.so.conf.d'
+cp: overwrite '/stripe/4/libaudit.conf'? cp: -r not specified; omitting directory '/etc/libibverbs.d'
+cp: -r not specified; omitting directory '/etc/libnl'
+cp: -r not specified; omitting directory '/etc/libreport'
+cp: -r not specified; omitting directory '/etc/libssh'
+cp: overwrite '/stripe/4/libuser.conf'? cp: overwrite '/stripe/4/locale.conf'? cp: overwrite '/stripe/4/localtime'? cp: overwrite '/stripe/4/login.defs'? cp: overwrite '/stripe/4/logrotate.conf'? cp: -r not specified; omitting directory '/etc/logrotate.d'
+cp: overwrite '/stripe/4/machine-id'? cp: overwrite '/stripe/4/magic'? cp: overwrite '/stripe/4/makedumpfile.conf.sample'? cp: overwrite '/stripe/4/man_db.conf'? cp: overwrite '/stripe/4/mke2fs.conf'? cp: -r not specified; omitting directory '/etc/modprobe.d'
+cp: -r not specified; omitting directory '/etc/modules-load.d'
+cp: overwrite '/stripe/4/motd'? cp: overwrite '/stripe/4/mtab'? cp: overwrite '/stripe/4/netconfig'? cp: -r not specified; omitting directory '/etc/NetworkManager'
+cp: overwrite '/stripe/4/networks'? cp: overwrite '/stripe/4/nfs.conf'? cp: overwrite '/stripe/4/nfsmount.conf'? cp: -r not specified; omitting directory '/etc/nftables'
+cp: overwrite '/stripe/4/nsswitch.conf'? cp: overwrite '/stripe/4/nsswitch.conf.bak'? cp: -r not specified; omitting directory '/etc/openldap'
+cp: -r not specified; omitting directory '/etc/opt'
+cp: overwrite '/stripe/4/os-release'? cp: -r not specified; omitting directory '/etc/pam.d'
+cp: overwrite '/stripe/4/passwd'? cp: overwrite '/stripe/4/passwd-'? cp: -r not specified; omitting directory '/etc/pkcs11'
+cp: -r not specified; omitting directory '/etc/pki'
+cp: -r not specified; omitting directory '/etc/pm'
+cp: -r not specified; omitting directory '/etc/polkit-1'
+cp: -r not specified; omitting directory '/etc/popt.d'
+cp: -r not specified; omitting directory '/etc/prelink.conf.d'
+cp: overwrite '/stripe/4/printcap'? cp: overwrite '/stripe/4/profile'? cp: -r not specified; omitting directory '/etc/profile.d'
+cp: overwrite '/stripe/4/protocols'? cp: -r not specified; omitting directory '/etc/qemu-ga'
+cp: -r not specified; omitting directory '/etc/qemu-kvm'
+cp: -r not specified; omitting directory '/etc/rc0.d'
+cp: -r not specified; omitting directory '/etc/rc1.d'
+cp: -r not specified; omitting directory '/etc/rc2.d'
+cp: -r not specified; omitting directory '/etc/rc3.d'
+cp: -r not specified; omitting directory '/etc/rc4.d'
+cp: -r not specified; omitting directory '/etc/rc5.d'
+cp: -r not specified; omitting directory '/etc/rc6.d'
+cp: -r not specified; omitting directory '/etc/rc.d'
+cp: overwrite '/stripe/4/rc.local'? cp: -r not specified; omitting directory '/etc/rdma'
+cp: overwrite '/stripe/4/redhat-release'? cp: overwrite '/stripe/4/request-key.conf'? cp: -r not specified; omitting directory '/etc/request-key.d'
+cp: overwrite '/stripe/4/resolv.conf'? cp: -r not specified; omitting directory '/etc/rhsm'
+cp: overwrite '/stripe/4/rpc'? cp: -r not specified; omitting directory '/etc/rpm'
+cp: overwrite '/stripe/4/rsyslog.conf'? cp: -r not specified; omitting directory '/etc/rsyslog.d'
+cp: -r not specified; omitting directory '/etc/rwtab.d'
+cp: -r not specified; omitting directory '/etc/samba'
+cp: -r not specified; omitting directory '/etc/sasl2'
+cp: -r not specified; omitting directory '/etc/security'
+cp: -r not specified; omitting directory '/etc/selinux'
+cp: overwrite '/stripe/4/services'? cp: overwrite '/stripe/4/sestatus.conf'? cp: overwrite '/stripe/4/shadow'? cp: overwrite '/stripe/4/shadow-'? cp: overwrite '/stripe/4/shells'? cp: -r not specified; omitting directory '/etc/skel'
+cp: -r not specified; omitting directory '/etc/ssh'
+cp: -r not specified; omitting directory '/etc/ssl'
+cp: -r not specified; omitting directory '/etc/sssd'
+cp: overwrite '/stripe/4/subgid'? cp: overwrite '/stripe/4/subgid-'? cp: overwrite '/stripe/4/subuid'? cp: overwrite '/stripe/4/subuid-'? cp: overwrite '/stripe/4/sudo.conf'? cp: overwrite '/stripe/4/sudoers'? cp: -r not specified; omitting directory '/etc/sudoers.d'
+cp: overwrite '/stripe/4/sudo-ldap.conf'? cp: -r not specified; omitting directory '/etc/sysconfig'
+cp: overwrite '/stripe/4/sysctl.conf'? cp: -r not specified; omitting directory '/etc/sysctl.d'
+cp: -r not specified; omitting directory '/etc/systemd'
+cp: overwrite '/stripe/4/system-release'? cp: overwrite '/stripe/4/system-release-cpe'? cp: overwrite '/stripe/4/tcsd.conf'? cp: -r not specified; omitting directory '/etc/terminfo'
+cp: -r not specified; omitting directory '/etc/tmpfiles.d'
+cp: -r not specified; omitting directory '/etc/tuned'
+cp: -r not specified; omitting directory '/etc/udev'
+cp: -r not specified; omitting directory '/etc/unbound'
+cp: overwrite '/stripe/4/vconsole.conf'? cp: overwrite '/stripe/4/virc'? cp: -r not specified; omitting directory '/etc/vmware-tools'
+cp: overwrite '/stripe/4/wgetrc'? cp: -r not specified; omitting directory '/etc/X11'
+cp: overwrite '/stripe/4/xattr.conf'? cp: -r not specified; omitting directory '/etc/xdg'
+cp: -r not specified; omitting directory '/etc/xinetd.d'
+cp: -r not specified; omitting directory '/etc/yum'
+cp: overwrite '/stripe/4/yum.conf'? cp: -r not specified; omitting directory '/etc/yum.repos.d'
+cp: -r not specified; omitting directory '/etc/zfs'
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do y yes | cp -f /etc/* /stripe/$i; done[8P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8@y yes | [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@R[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cr[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10@warANDpeace.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[14@zfs get compression,compressratio [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+NAME      PROPERTY       VALUE           SOURCE
+stripe/1  compression    gzip            local
+stripe/1  compressratio  2.98x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/2  compression    zle             local
+stripe/2  compressratio  1.07x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/3  compression    lz4             local
+stripe/3  compressratio  1.90x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/4  compression    zstd-19         local
+stripe/4  compressratio  3.22x           -
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do zfs get compression,compressratio stripe/$i; done[9P; done[K[4P[4P[1@l[1@s[1@ [1@/[1P[1@/[1@s[1@t[1@r[1@i[1@p[1@e[1@/[1@T[1P[1@$[1@i
+adjtime                  [0m[01;34mchkconfig.d[0m      crypttab                 fuse.conf    inputrc        logrotate.conf            nsswitch.conf      rpc            sudoers
+aliases                  chrony.conf      csh.cshrc                GREP_COLORS  issue          machine-id                nsswitch.conf.bak  rsyslog.conf   sudo-ldap.conf
+[01;34malternatives[0m             chrony.keys      csh.login                group        issue.net      magic                     os-release         services       sysctl.conf
+anacrontab               [01;34mcifs-utils[0m       DIR_COLORS               group-       kdump.conf     makedumpfile.conf.sample  passwd             sestatus.conf  system-release
+[01;34maudit[0m                    [01;34mcron.d[0m           DIR_COLORS.256color      grub2.cfg    krb5.conf      man_db.conf               passwd-            shadow         system-release-cpe
+[01;34mauthselect[0m               [01;34mcron.daily[0m       DIR_COLORS.lightbgcolor  gshadow      ld.so.cache    mke2fs.conf               printcap           shadow-        tcsd.conf
+[01;34mbash_completion.d[0m        cron.deny        dracut.conf              gshadow-     ld.so.conf     motd                      profile            shells         vconsole.conf
+bashrc                   [01;34mcron.hourly[0m      environment              host.conf    libaudit.conf  mtab                      protocols          subgid         virc
+bindresvport.blacklist   [01;34mcron.monthly[0m     ethertypes               hostname     libuser.conf   netconfig                 rc.local           subgid-        warANDpeace.txt
+[01;34mbinfmt.d[0m                 crontab          exports                  hosts        locale.conf    networks                  redhat-release     subuid         wgetrc
+centos-release           [01;34mcron.weekly[0m      filesystems              idmapd.conf  localtime      nfs.conf                  request-key.conf   subuid-        xattr.conf
+centos-release-upstream  [01;34mcrypto-policies[0m  fstab                    inittab      login.defs     nfsmount.conf             resolv.conf        sudo.conf      yum.conf
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do ls /stripe/$i; done[C[1@ [1@e[1@c[1@h[1@o[C[1@ [1@s[1@t[1@r[1@e[1@i[1P[1P[1P[1P[1P[1@s[1@t[1@r[1@i[1@p[1@e[1@$[1@i[1@;[C[1@ 
+stripe1
+adjtime                  [0m[01;34mchkconfig.d[0m      crypttab                 fuse.conf    inputrc        logrotate.conf            nsswitch.conf      rpc            sudoers
+aliases                  chrony.conf      csh.cshrc                GREP_COLORS  issue          machine-id                nsswitch.conf.bak  rsyslog.conf   sudo-ldap.conf
+[01;34malternatives[0m             chrony.keys      csh.login                group        issue.net      magic                     os-release         services       sysctl.conf
+anacrontab               [01;34mcifs-utils[0m       DIR_COLORS               group-       kdump.conf     makedumpfile.conf.sample  passwd             sestatus.conf  system-release
+[01;34maudit[0m                    [01;34mcron.d[0m           DIR_COLORS.256color      grub2.cfg    krb5.conf      man_db.conf               passwd-            shadow         system-release-cpe
+[01;34mauthselect[0m               [01;34mcron.daily[0m       DIR_COLORS.lightbgcolor  gshadow      ld.so.cache    mke2fs.conf               printcap           shadow-        tcsd.conf
+[01;34mbash_completion.d[0m        cron.deny        dracut.conf              gshadow-     ld.so.conf     motd                      profile            shells         vconsole.conf
+bashrc                   [01;34mcron.hourly[0m      environment              host.conf    libaudit.conf  mtab                      protocols          subgid         virc
+bindresvport.blacklist   [01;34mcron.monthly[0m     ethertypes               hostname     libuser.conf   netconfig                 rc.local           subgid-        warANDpeace.txt
+[01;34mbinfmt.d[0m                 crontab          exports                  hosts        locale.conf    networks                  redhat-release     subuid         wgetrc
+centos-release           [01;34mcron.weekly[0m      filesystems              idmapd.conf  localtime      nfs.conf                  request-key.conf   subuid-        xattr.conf
+centos-release-upstream  [01;34mcrypto-policies[0m  fstab                    inittab      login.defs     nfsmount.conf             resolv.conf        sudo.conf      yum.conf
+stripe2
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+stripe3
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+stripe4
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do echo stripe$i;  ls /stripe/$i; done[1@-[1@e[1@ [C[C[C[C[C[C[C[C[1@n[1@\[1@n[1@\[C[1@ [C[C[C[C[C[1@"[1@"
+> ^C
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do echo -e "stripe$ in\n\";  ls /stripe/$i; done[1@ [C[C[C[1@ [C[1P
+> ^C
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do echo -e "stripe $i n\n\";  ls /stripe/$i; done[C[1P[1@"[1@\[C[C[C[C[1P
+stripe 1 
+
+
+adjtime                  [0m[01;34mchkconfig.d[0m      crypttab                 fuse.conf    inputrc        logrotate.conf            nsswitch.conf      rpc            sudoers
+aliases                  chrony.conf      csh.cshrc                GREP_COLORS  issue          machine-id                nsswitch.conf.bak  rsyslog.conf   sudo-ldap.conf
+[01;34malternatives[0m             chrony.keys      csh.login                group        issue.net      magic                     os-release         services       sysctl.conf
+anacrontab               [01;34mcifs-utils[0m       DIR_COLORS               group-       kdump.conf     makedumpfile.conf.sample  passwd             sestatus.conf  system-release
+[01;34maudit[0m                    [01;34mcron.d[0m           DIR_COLORS.256color      grub2.cfg    krb5.conf      man_db.conf               passwd-            shadow         system-release-cpe
+[01;34mauthselect[0m               [01;34mcron.daily[0m       DIR_COLORS.lightbgcolor  gshadow      ld.so.cache    mke2fs.conf               printcap           shadow-        tcsd.conf
+[01;34mbash_completion.d[0m        cron.deny        dracut.conf              gshadow-     ld.so.conf     motd                      profile            shells         vconsole.conf
+bashrc                   [01;34mcron.hourly[0m      environment              host.conf    libaudit.conf  mtab                      protocols          subgid         virc
+bindresvport.blacklist   [01;34mcron.monthly[0m     ethertypes               hostname     libuser.conf   netconfig                 rc.local           subgid-        warANDpeace.txt
+[01;34mbinfmt.d[0m                 crontab          exports                  hosts        locale.conf    networks                  redhat-release     subuid         wgetrc
+centos-release           [01;34mcron.weekly[0m      filesystems              idmapd.conf  localtime      nfs.conf                  request-key.conf   subuid-        xattr.conf
+centos-release-upstream  [01;34mcrypto-policies[0m  fstab                    inittab      login.defs     nfsmount.conf             resolv.conf        sudo.conf      yum.conf
+stripe 2 
+
+
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+stripe 3 
+
+
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+stripe 4 
+
+
+adjtime                  crontab                  exports      host.conf    ld.so.cache     makedumpfile.conf.sample  nsswitch.conf.bak  resolv.conf    subuid              virc
+aliases                  crypttab                 filesystems  hostname     ld.so.conf      man_db.conf               os-release         rpc            subuid-             warANDpeace.txt
+anacrontab               csh.cshrc                fstab        hosts        libaudit.conf   mke2fs.conf               passwd             rsyslog.conf   sudo.conf           wgetrc
+bashrc                   csh.login                fuse.conf    idmapd.conf  libuser.conf    motd                      passwd-            services       sudoers             xattr.conf
+bindresvport.blacklist   DIR_COLORS               GREP_COLORS  inittab      locale.conf     mtab                      printcap           sestatus.conf  sudo-ldap.conf      yum.conf
+centos-release           DIR_COLORS.256color      group        inputrc      localtime       netconfig                 profile            shadow         sysctl.conf
+centos-release-upstream  DIR_COLORS.lightbgcolor  group-       issue        login.defs      networks                  protocols          shadow-        system-release
+chrony.conf              dracut.conf              grub2.cfg    issue.net    logrotate.conf  nfs.conf                  rc.local           shells         system-release-cpe
+chrony.keys              environment              gshadow      kdump.conf   machine-id      nfsmount.conf             redhat-release     subgid         tcsd.conf
+cron.deny                ethertypes               gshadow-     krb5.conf    magic           nsswitch.conf             request-key.conf   subgid-        vconsole.conf
+]0;root@server:/home/vagrant[root@server vagrant]# for i in {1..4}; do echo -e "stripe $i \n\n";  ls /stripe/$i; donen\n\[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C\n\n[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kl[Kc=[K[Kcp /b[Kfor i in {1..4}; do echo -e "stripe $i \n\n";  ls /stripe/$i; donen\n\[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P$ i[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pstripe$i[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[16P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[16@echo stripe$i;  [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10@-e "stripe$ in\n\"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@ $i [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C\n\n[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccp /[Kfor i in {1..4}; do echo -e "stripe $i \n\n";  ls /stripe/$i; donen\n\[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P$ i[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pstripe$i[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[16P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[30@zfs get compression,compressratio [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[12Py yes | cp -f /etc/* /[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[12@zfs get compression,compressratio [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+NAME      PROPERTY       VALUE           SOURCE
+stripe/1  compression    gzip            local
+stripe/1  compressratio  2.98x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/2  compression    zle             local
+stripe/2  compressratio  1.07x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/3  compression    lz4             local
+stripe/3  compressratio  1.90x           -
+NAME      PROPERTY       VALUE           SOURCE
+stripe/4  compression    zstd-19         local
+stripe/4  compressratio  3.22x           -
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# 
+]0;root@server:/home/vagrant[root@server vagrant]# ршыещ[K[K[K[K[K[1P(reverse-i-search)`':[Cz': for i in {1..4}; do zfs get compression,compressratio stripe/$i; done[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@f[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@s[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[35Ps': zfs set compression=gzip stripe/1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@e[C[C[C[1@t[C[C[C[1@ [C[C[C[7P[root@server vagrant]#[C[C[C[C[C[C[C[C[C[C[C[C[C[C[
