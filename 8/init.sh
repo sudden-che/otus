@@ -9,7 +9,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 __EOF
 
-
+# enable firewall
 systemctl enable firewalld --now
 systemctl status firewalld
 ```
@@ -21,23 +21,24 @@ firewall-cmd --add-service="nfs3" \
 --permanent
 firewall-cmd --reload
 
+# config nfs v3
 sed -i 's/\# vers3/vers3/' /etc/nfs.conf
 
-systemctl enable nfs --now
-systemctl enable rpcbind
-systemctl start rpc-statd
-
+# create share dir
 mkdir -p /data/share/upload
 chmod 777 /data/share/upload
 
+# export share
+echo '/data/share/ *(rw,sync,root_squash)' > /etc/exports
 
-
-
-echo '/data/share/ 10.0.0.0/24 (rw,sync,root_squash)' > /etc/exports
-
+# check
 exportfs -rav
 exportfs -s
 
+# enable nfs,rpc for v3
+systemctl enable nfs --now
+systemctl enable rpcbind
+systemctl start rpc-statd
 
 
 

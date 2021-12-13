@@ -1,0 +1,14 @@
+Script started on Fri 10 Dec 2021 11:15:52 AM MSK
+]0;user@centos7:/data/33/9[?1034h[user@centos7 9]$ vagrant ssh
+]0;vagrant@localhost:~[vagrant@localhost ~]$ sudo su
+]0;root@localhost:/home/vagrant[root@localhost vagrant]# vgs
+bash: vgs: command not found
+]0;root@localhost:/home/vagrant[root@localhost vagrant]# lvs
+bash: lvs: command not found
+]0;root@localhost:/home/vagrant[root@localhost vagrant]# poweroff
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+]0;user@centos7:/data/33/9[user@centos7 9]$ cd .[K[K[K[Ksto[K[K[Kexit
+exit
+
+Script done on Fri 10 Dec 2021 11:16:30 AM MSK
