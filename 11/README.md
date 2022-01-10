@@ -18,3 +18,8 @@
 start_date="14 Aug 2019 04:12"
 end_date="15 Aug 2019 06:25"
 
+# EXAMPLE OF MANUAL RUN
+./log-analyze.sh > /tmp/result.txt && bash mail.sh  "/tmp/result.txt" "n.kuzmenko@mail.ru"
+
+
+
