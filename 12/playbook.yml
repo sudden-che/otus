@@ -1,0 +1,36 @@
+---
+- hosts: all
+  vars:
+    nginx_conf: "nginx.conf.j2"
+
+  tasks: 
+    - name: install epel
+      yum:
+        name: epel-release
+        state: present
+    - name: install others
+      yum:
+        name: nginx
+        state: present
+    - name: start services
+      service:
+        name: nginx
+        #state: started
+        enabled: yes
+
+    - name: copy conf
+      copy: 
+        src: "{{ nginx_conf }}"
+        dest: /etc/nginx/nginx.conf
+        force: yes
+      notify:
+        - start nginx
+
+  handlers:
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+  become: yes
+
+
