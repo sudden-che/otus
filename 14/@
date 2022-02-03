@@ -1,0 +1,12 @@
+#!/bin/bash
+# install
+yum install epel-release -y
+yum install nginx setools-console policycoreutils-python -y
+
+
+
+# change def port
+
+sed -i "s/80/21/g" /etc/nginx/nginx.conf
+
+
