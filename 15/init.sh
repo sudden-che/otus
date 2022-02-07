@@ -25,11 +25,29 @@ sed -i "s/nologin\.so/nologin\.so\naccount required pam_time\.so/" /etc/pam.d/ss
 
  cat > /usr/local/bin/test_login.sh<<EOF
 #!/bin/bash
-if  getent group admin | grep  \$PAM_USER ; then
-    exit 0
+
+
+
+if  [ $(date +%a) = "Sun" ];
+then
+  if  getent group admin | grep  \$PAM_USER ; then
+                exit 0
+           else
+                exit 1
+        fi
+
+elif [ $(date +%a) = "Sat" ];
+then
+ if  getent group admin | grep  \$PAM_USER ; then
+                exit 0
+           else
+                exit 1
+        fi
 else
-    exit 1
+  exit 0
 fi
+
+
 EOF
 chmod +x /usr/local/bin/test_login.sh
 
