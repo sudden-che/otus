@@ -1,0 +1,26 @@
+---
+- hosts: all  
+  become: yes
+  tasks: 
+    - name: install epel
+      yum:
+        name: epel-release
+        state: present
+
+- hosts: web  
+  tasks: 
+    - name: install others
+      yum:
+        name: nginx,audispd-plugins
+        state: present
+
+    - name: start services
+      service:
+        name: nginx
+        state: restarted
+        enabled: yes
+
+
+  become: yes
+
+
