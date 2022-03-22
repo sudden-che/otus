@@ -1,0 +1,25 @@
+---
+- hosts: all  
+  become: yes
+  tasks: 
+    - name: install epel
+      yum:
+        name: epel-release
+        state: present
+    - name: ins borg
+      yum:
+        name: borgbackup
+        state: present
+
+    - name: user add
+      user: 
+        name: borg
+        generate_ssh_key: yes
+        ssh_key_file: .ssh/id_rds
+        ssh_key_bits: 2048
+
+
+      
+  become: yes
+
+

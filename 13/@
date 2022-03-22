@@ -1,0 +1,5 @@
+FROM nginx:alpine
+RUN apk add php
+EXPOSEPORTS 80
+COPY index.html /root/
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
