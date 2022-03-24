@@ -46,7 +46,7 @@ systemctl restart rsyslog
 #curl -I 192.168.51.10
 #curl -I 192.168.51.10
 #curl -I 192.168.51.10
-#curl -I 192.168.51.10
+curl -I 192.168.51.10
 #url -I 192.168.51.10
 #
 #echo -e '\n\n\'
@@ -57,4 +57,5 @@ sed -i '/tcp_listen_port/s/^##//' /etc/audit/auditd.conf
 service auditd restart 
 #
 # check
-#grep web /var/log/audit/audit.log
+grep web /var/log/audit/audit.log
+
