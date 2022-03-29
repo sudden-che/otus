@@ -1,6 +1,17 @@
 #!/bin/bash
 
-. init.sh
+setenforce 0
+systemctl stop firewalld
+systemctl disable firewalld
+
+
+sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf
+
+sudo sed -i s/^#base/base/g /etc/yum.repos.d/CentOS-Base*
+sudo sed -i s/^mirr/#mirr/g /etc/yum.repos.d/CentOS-Base*
+sudo yum install -y epel-release 
+sudo yum install -y easy-rsa openvpn
+#dnf -y install easy-rsa openvpn
 cd /etc/openvpn
 
 /usr/share/easy-rsa/3.0.*/easyrsa init-pki
@@ -16,11 +27,12 @@ echo 'yes' | /usr/share/easy-rsa/3.0.*/easyrsa sign-req server server
 /usr/share/easy-rsa/3.0.*/easyrsa gen-dh
 openvpn --genkey --secret ta.key
 
-
+echo debug req-cli
 echo 'client' | /usr/share/easy-rsa/3.0.*/easyrsa gen-req client nopass
 echo 'yes' | /usr/share/easy-rsa/3.0.*/easyrsa sign-req client client
+echo debug srvconf start
 
-cat   > server.conf <<EOF
+cat   > /etc/openvpn/server.conf <<EOF
 port 35406
 proto udp
 dev tun
@@ -31,30 +43,48 @@ key /etc/openvpn/pki/private/server.key
 dh /etc/openvpn/pki/dh.pem
 
 server 192.168.148.0 255.255.255.0
+route 192.168.148.0 255.255.255.0
+push "route 192.168.148.0 255.255.255.0"
+# push "redirect-gateway local tun0"
+
+ifconfig-pool-persist ipp.txt
+client-to-client
+client-config-dir /etc/openvpn/client
+comp-lzo
 
 persist-key
 persist-tun
 keepalive 10 120
 cipher AES-256-CBC
-verb 3
+
 status /var/log/openvpn-status.log
 log /var/log/openvpn.log
 topology subnet
 tls-server
 resolv-retry infinite
-#  ifconfig-pool-persist ipp.txt
-#  client-to-client
-#  client-config-dir /etc/openvpn/client
-#  comp-lzo
-#  route 192.168.148.0 255.255.255.0
-#  push "route 192.168.148.0 255.255.255.0"
-#  push "redirect-gateway local tun0"
 
-
+verb 3
 
 EOF
+#usermod -aG openvpn vagrant
+#usermod -aG openvpn root
+systemctl start openvpn@server
+systemctl status openvpn@server
 
-openvpn --config server.conf
+ip -br a
+
+
+
+
+mkdir /vagrant/client
+
+client=/vagrant/client
+pki=/etc/openvpn/pki
+
+cp -f $pki/ca.crt $client
+cp -f  $pki/issued/client.crt $client
+cp -f  $pki/private/client.key $client
+
 
 
 

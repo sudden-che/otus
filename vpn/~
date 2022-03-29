@@ -10,11 +10,10 @@
 
 
 Vagrant.configure("2") do |config|
- config.vm.box = "centos/7"
+ config.vm.box = "centos/8"
  #config.vm.box_version = "2004.01"
 
-config.ssh.insert_key = true
-config.vm.synced_folder "vagrant", "/vagrant"
+config.ssh.insert_key = false
 
 # Base VM OS configuration.
 # config.vm.box = "centos/7"
@@ -22,7 +21,7 @@ config.vm.synced_folder "vagrant", "/vagrant"
  config.vm.provider :virtualbox do |v|
  v.memory = 1024
  v.cpus = 2
- #v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+ v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
  end
 
 # a# Define two VMs with static private IP addresses.
