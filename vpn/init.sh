@@ -15,7 +15,8 @@ sudo dnf install easy-rsa openvpn -y
 cat   > /etc/openvpn/client.conf <<EOF
 dev tun
 proto udp
-remote 192.168.148.1 35406
+remote 192.168.11.150 35406
+
 client
 resolv-retry infinite
 ca /vagrant/client/ca.crt
@@ -31,5 +32,4 @@ EOF
 systemctl start openvpn@client
 systemctl status openvpn@client
 
-ip -br a
 

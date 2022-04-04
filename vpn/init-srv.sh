@@ -42,15 +42,19 @@ cert /etc/openvpn/pki/issued/server.crt
 key /etc/openvpn/pki/private/server.key
 dh /etc/openvpn/pki/dh.pem
 
-server 192.168.148.0 255.255.255.0
-route 192.168.148.0 255.255.255.0
-push "route 192.168.148.0 255.255.255.0"
-# push "redirect-gateway local tun0"
+
+
+
+server 10.10.10.0 255.255.255.0
+#route 192.168.11.0 255.255.255.0
+#push "route 192.168.11.0 255.255.255.0"
+push "route 8.8.8.8 255.255.255.255"
+push "redirect-gateway local tun0"
+
 
 ifconfig-pool-persist ipp.txt
 client-to-client
 client-config-dir /etc/openvpn/client
-comp-lzo
 
 persist-key
 persist-tun
@@ -73,17 +77,19 @@ systemctl status openvpn@server
 
 ip -br a
 
+# masq for test
+sysctl net.ipv4.ip_forward=1
+iptables -A POSTROUTING -t nat -j MASQUERADE
 
 
 
 mkdir /vagrant/client
 
-client=/vagrant/client
 pki=/etc/openvpn/pki
 
-cp -f $pki/ca.crt $client
-cp -f  $pki/issued/client.crt $client
-cp -f  $pki/private/client.key $client
+cp -f  $pki/ca.crt /vagrant/client/
+cp -f  $pki/issued/client.crt /vagrant/client/
+cp -f  $pki/private/client.key /vagrant/client/
 
 
 

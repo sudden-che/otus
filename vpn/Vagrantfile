@@ -13,8 +13,8 @@ Vagrant.configure("2") do |config|
  config.vm.box = "centos/7"
  #config.vm.box_version = "2004.01"
 
-config.ssh.insert_key = true
-config.vm.synced_folder "vagrant", "/vagrant"
+#config.ssh.insert_key = false
+
 
 # Base VM OS configuration.
 # config.vm.box = "centos/7"
@@ -39,7 +39,7 @@ config.vm.synced_folder "vagrant", "/vagrant"
  config.vm.define opts[:name] do |config|
  config.vm.hostname = opts[:name]
  config.vm.network "private_network", ip: opts[:ip]
- 
+ config.vm.synced_folder "vagrant", "/vagrant"
 
  end
  end
