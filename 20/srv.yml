@@ -1,0 +1,60 @@
+---
+- name: IPA-srv
+  gather_facts: true
+  hosts: ipaserver
+  become: true
+
+  tasks:
+        - name: add DNS
+          lineinfile:
+            path: /etc/resolv.conf
+            state: present
+            line: nameserver 192.168.51.1
+
+        - name: disable selinux
+          selinux:
+            state: disabled
+
+        - name: enable chronyd
+          systemd:
+            name: chronyd
+            state: restarted
+            enabled: yes      
+        
+        - name: enable  firewalld
+          systemd:
+            name: firewalld
+            state: restarted
+            enabled: yes
+
+
+   
+ 
+             
+        - name: Install soft
+          yum:
+            name: epel-release, ipa-server, ipa-server-dns
+            state: present
+         
+
+           
+        - name: udpate nss
+          yum:
+            name: nss*
+            state: latest
+         
+           
+            #- name: firewall_conf
+            #firewalld:
+            #port: 53/udp, 53/tcp, 80/tcp, 443/tcp, 88/tcp, 88/udp, 464/tcp, 464/udp, 123/udp, 389/tcp, 636/tcp
+            #state: enabled
+            #permanent: yes
+            #immediate: yes
+
+        - name: ipv4 forward
+          sysctl:
+            name: net.ipv4.ip_forward
+            value: '1'
+            sysctl_set: yes
+
+

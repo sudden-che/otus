@@ -1,0 +1,32 @@
+Vagrant.configure(2) do |config|
+        config.vm.box = "centos/7"
+
+  config.vm.provider "virtualbox" do |v|
+        v.memory = 2048
+  v.cpus = 2
+  end
+
+
+        config.vm.define "ipaserver" do |ipaserver|
+    ipaserver.vm.network "private_network", ip: "192.168.51.1"
+                ipaserver.vm.hostname = "server.777.local"
+    ipaserver.vm.provision "shell", path: "init-srv.sh"
+	ipaserver.vm.provision "ansible" do |ansible|
+                        ansible.playbook =  "srv.yml"
+                end
+	
+
+  end
+
+
+        config.vm.define "ipaclient" do |ipaclient|
+                ipaclient.vm.network "private_network", ip: "192.168.51.2"
+                ipaclient.vm.hostname = "client.777.local"
+
+                ipaclient.vm.provision "shell", path: "init-cl.sh"
+                ipaclient.vm.provision "ansible" do |ansible|
+			ansible.playbook =  "provision.yml"
+		end
+
+  end
+end

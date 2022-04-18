@@ -1,0 +1,28 @@
+---
+- name: IPA-Client
+  gather_facts: true
+  hosts: ipaclient
+  become: true
+
+  tasks:
+        - name: add DNS
+          lineinfile:
+            path: /etc/resolv.conf
+            state: present
+            line: nameserver 192.168.51.1
+
+        - name: Restart network
+          systemd:
+            name: network
+            state: restarted
+            enabled: yes      
+            
+        - name: Install ipa-client
+          yum:
+            name: ipa-client
+            state: present
+         
+
+        - name: add hosts
+          command: 
+            cmd: ipa-client-install --domain=777.local --server=server.777.local --realm=777.LOCAL --principal admin -w password666! -U --mkhomedir
