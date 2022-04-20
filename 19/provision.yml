@@ -1,0 +1,137 @@
+---
+- name: all_host_provision
+  gather_facts: true
+  hosts: all
+  become: true
+
+
+  tasks:
+
+       - name: ipv4 forward
+         sysctl:
+           name: net.ipv4.conf.all.forwarding 
+           value: '1'
+           sysctl_set: yes
+         when: "'routers' in group_names"
+
+
+
+
+       - name: masquerade_conf
+         firewalld:
+           masquerade: yes
+           state: enabled
+           permanent: yes
+           immediate: yes
+         when: 'ansible_hostname == "inetRouter"'
+
+
+
+       - name: disable default route
+         lineinfile:
+           dest: /etc/sysconfig/network-scripts/ifcfg-eth0
+           line: DEFROUTE=no
+         when: (ansible_hostname == "centralRouter") or
+               (ansible_hostname == "centralServer")
+
+       - name: add default gateway for centralRouter
+         lineinfile:
+           dest: /etc/sysconfig/network-scripts/ifcfg-eth1
+           line: GATEWAY=192.168.255.1
+         when: (ansible_hostname == "centralRouter")
+
+       - name: add default gateway for centralServer
+         lineinfile:
+           dest: /etc/sysconfig/network-scripts/ifcfg-eth1
+           line: GATEWAY=192.168.0.1
+         when: (ansible_hostname == "centralServer")
+
+       - name: install mtr
+         yum:
+            name: mtr 
+            state: present
+            update_cache: true
+         when: "'yum' in group_names"  
+
+       - name: install traceroute
+         apt:
+            name: traceroute
+            state: present
+            update_cache: true
+         when: "'apt' in group_names"
+
+
+       - name: Copy route config to inetRouter
+         template:
+           src: templates/inetRouter/route-eth1
+           dest: /etc/sysconfig/network-scripts/route-eth1
+           owner: root
+           group: root
+           mode: 0600
+         when: (ansible_hostname == "inetRouter")
+
+
+       - name: Copy route config to centralRouter
+         template:
+           src: 'templates/centralRouter/{{item}}'
+           dest: '/etc/sysconfig/network-scripts/{{item}}'
+           owner: root
+           group: root
+         loop:
+           - route-eth5
+           - route-eth6
+         when: (ansible_hostname == "centralRouter")
+
+
+
+       - name: Copy route config to office1Router
+         template:
+           src: templates/office1Router/interfaces
+           dest: /etc/network/interfaces
+           owner: root
+           group: root
+         when: (ansible_hostname == "office1Router")
+
+
+       - name: Copy route config to office1Server
+         template:
+           src: templates/office1Server/interfaces
+           dest: /etc/network/interfaces
+           owner: root
+           group: root
+         when: (ansible_hostname == "office1Server")
+
+
+
+       - name: Copy route config to office2Router
+         template:
+           src: templates/office2Router/interfaces
+           dest: /etc/network/interfaces
+           owner: root
+           group: root
+         when: (ansible_hostname == "office2Router")
+
+
+       - name: Copy route config to office2Server
+         template:
+           src: templates/office2Server/interfaces
+           dest: /etc/network/interfaces
+           owner: root
+           group: root
+         when: (ansible_hostname == "office2Server")
+
+
+       - name: Restart network
+         systemd:
+           name: network
+           state: restarted
+         when: "'yum' in group_names"  
+ 
+       - name: Restart network
+         systemd:
+           name: networking
+           state: restarted
+         when: "'apt' in group_names"  
+
+
+
