@@ -1,0 +1,39 @@
+---
+- hosts: pxeserver
+  gather_facts: true
+  become: true
+
+  tasks:
+
+# Добавляем новый репозиторий взамен отключенного
+      - name: set up repo
+        replace:
+          path: "{{ item }}"
+          regexp: 'mirrorlist'
+          replace: '#mirrorlist'
+        with_items:
+          - /etc/yum.repos.d/CentOS-Linux-AppStream.repo
+          - /etc/yum.repos.d/CentOS-Linux-BaseOS.repo
+
+
+      - name: set up repo
+        replace:
+          path: "{{ item }}"
+          regexp: '#baseurl=http://mirror.centos.org'
+          replace: 'baseurl=http://vault.centos.org'
+        with_items:
+          - /etc/yum.repos.d/CentOS-Linux-AppStream.repo
+          - /etc/yum.repos.d/CentOS-Linux-BaseOS.repo
+
+#Установка пакета httpd (дополнительно сразу ставятся все пакеты, которые потребуются в данном задании
+      - name: install soft on CentOS
+        yum:
+          name: 
+            - nano
+            - wget
+            - epel-release
+            - httpd
+            - tftp-server
+            - dhcp-server
+          state: present
+          update_cache: true
