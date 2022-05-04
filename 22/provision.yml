@@ -1,0 +1,91 @@
+---
+- name: all_host_provision
+  gather_facts: true
+  hosts: all
+  become: true
+
+
+  tasks:
+      - name: install soft
+        yum:
+          name: epel-release, mtr, nmap
+          state: present
+          update_cache: true
+        
+      - name: install soft for knock
+        yum:
+          name: knock-server
+          state: present
+          update_cache: true
+        when: 'ansible_hostname == "inetRouter"'
+      
+      - name: ipv4 forward
+        sysctl:
+          name: net.ipv4.conf.all.forwarding 
+          value: '1'
+          sysctl_set: yes
+        when: "'routers' in group_names"
+
+      - name: disable default route
+        lineinfile:
+          dest: /etc/sysconfig/network-scripts/ifcfg-eth0
+          line: DEFROUTE=no
+        when: "'routers' in group_names"
+
+
+      - name: add default gateway for centralRouter
+        lineinfile:
+          dest: /etc/sysconfig/network-scripts/ifcfg-eth1
+          line: GATEWAY=192.168.255.1
+        when: (ansible_hostname == "centralRouter") or
+              (ansible_hostname == "inetRouter2")
+
+
+      - name: add default gateway for centralServer
+        lineinfile:
+          dest: /etc/sysconfig/network-scripts/ifcfg-eth1
+          line: GATEWAY=192.168.0.1
+        when: (ansible_hostname == "centralServer")
+
+        
+      - name: install nginx
+        yum:
+          name: nginx
+          state: present
+          update_cache: true
+        when: 'ansible_hostname == "centralServer"'
+
+      
+      - name: restart nginx
+        service:
+          name: nginx
+          enabled: yes
+      
+      - name: restart fw
+        service:
+          name: firewalld
+          enabled: yes
+          state: restarted
+
+      - name: masquerade_conf
+        firewalld:
+          masquerade: yes
+          state: enabled
+          permanent: yes
+          immediate: yes
+        when: 'ansible_hostname == "inetRouter"'
+
+      - name: add knockd interface conf
+        lineinfile:
+          path: /etc/sysconfig/knockd
+          line: OPTIONS="-i eth2"
+          state: present
+        when: 'ansible_hostname == "inetRouter"'
+
+      
+      - name: start knockd
+        service:
+          name: knockd
+          enabled: yes
+          state: restarted
+        when: 'ansible_hostname == "inetRouter"'

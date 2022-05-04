@@ -1,0 +1,8 @@
+[routers]
+inetRouter ansible_host=192.168.50.10 
+inetRouter2 ansible_host=192.168.50.11 
+centralRouter ansible_host=192.168.50.12 
+
+
+[servers]
+centralServer ansible_host=192.168.50.13
