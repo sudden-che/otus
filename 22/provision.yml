@@ -60,12 +60,23 @@
         service:
           name: nginx
           enabled: yes
+        when: 'ansible_hostname == "centralServer"'
       
       - name: restart fw
         service:
           name: firewalld
           enabled: yes
           state: restarted
+        when: (ansible_hostname == "centralRouter") or
+              (ansible_hostname == "inetRouter2")
+
+      - name: enable icmp to test inet
+        firewalld:
+          proto: icmp
+          state: enabled
+          permanent: yes
+          immediate: yes
+        when: "'routers' in group_names"
 
       - name: masquerade_conf
         firewalld:
@@ -82,6 +93,15 @@
           state: present
         when: 'ansible_hostname == "inetRouter"'
 
+
+      - name: Copy knockd config to inetRouter
+        template:
+          src: conf/knockd.conf
+          dest: /etc/knockd.conf
+          owner: root
+          group: root
+          mode: 060
+        when: (ansible_hostname == "inetRouter")
       
       - name: start knockd
         service:
@@ -89,3 +109,25 @@
           enabled: yes
           state: restarted
         when: 'ansible_hostname == "inetRouter"'
+
+      - name: Copy knock sh config to centralRouter
+        template:
+          src: conf/knock.sh
+          dest: /root/knock.sh
+        when: (ansible_hostname == "centralRouter")
+
+# dst-nat
+
+
+      - name: dst-nat
+        firewalld:
+          port-forward: 
+            port: 8080
+            proto: tcp
+            toaddr: 192.168.50.13
+            toport: 80
+          permanent: yes
+          immediate: yes
+        when: 'ansible_hostname == "inetRouter2"'
+
+

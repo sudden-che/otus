@@ -44,18 +44,14 @@ MACHINES = {
 
 Vagrant.configure("2") do |config|
 
-  config.vm.provider "virtualbox" do |v|
-        v.memory = 512
-  v.cpus = 1
-  end
-
-
   MACHINES.each do |boxname, boxconfig|
 
     config.vm.define boxname do |box|
 
         box.vm.box = boxconfig[:box_name]
         box.vm.host_name = boxname.to_s
+ 	box.vm.memory = 512
+	box.vm.cpus= 1
         boxconfig[:net].each do |ipconf|
           box.vm.network "private_network", ipconf
         end
