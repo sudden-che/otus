@@ -3,96 +3,60 @@
   gather_facts: true
   hosts: all
   become: true
-
-
   tasks:
       - name: install soft
         yum:
-          name: epel-release, mtr, nmap
+          name: epel-release, mtr, nmap, tcpdump
           state: present
           update_cache: true
-        
-      - name: install soft for knock
-        yum:
-          name: knock-server
-          state: present
-          update_cache: true
-        when: 'ansible_hostname == "inetRouter"'
-      
+     
       - name: ipv4 forward
         sysctl:
           name: net.ipv4.conf.all.forwarding 
           value: '1'
           sysctl_set: yes
-        when: "'routers' in group_names"
-
-      - name: disable default route
-        lineinfile:
-          dest: /etc/sysconfig/network-scripts/ifcfg-eth0
-          line: DEFROUTE=no
-        when: "'routers' in group_names"
-
-
-      - name: add default gateway for centralRouter
-        lineinfile:
-          dest: /etc/sysconfig/network-scripts/ifcfg-eth1
-          line: GATEWAY=192.168.255.1
-        when: (ansible_hostname == "centralRouter") or
-              (ansible_hostname == "inetRouter2")
-
-
-      - name: add default gateway for centralServer
-        lineinfile:
-          dest: /etc/sysconfig/network-scripts/ifcfg-eth1
-          line: GATEWAY=192.168.0.1
-        when: (ansible_hostname == "centralServer")
-
-        
-      - name: install nginx
-        yum:
-          name: nginx
-          state: present
-          update_cache: true
-        when: 'ansible_hostname == "centralServer"'
-
-      
-      - name: restart nginx
-        service:
-          name: nginx
-          enabled: yes
-        when: 'ansible_hostname == "centralServer"'
-      
+ 
       - name: restart fw
         service:
           name: firewalld
           enabled: yes
-          state: restarted
-        when: (ansible_hostname == "centralRouter") or
-              (ansible_hostname == "inetRouter2")
-
-      - name: enable icmp to test inet
-        firewalld:
-          proto: icmp
-          state: enabled
-          permanent: yes
-          immediate: yes
+          state: started
         when: "'routers' in group_names"
+      - name: Copy knock sh config to centralRouter
+        template:
+          src: conf/knock.sh
+          dest: /opt/knock.sh
+        when: (ansible_hostname == "centralRouter")
 
+# dst-nat
+
+
+- name: inetRouter
+  gather_facts: true
+  hosts: inetRouter
+  become: true
+  tasks:
+    
       - name: masquerade_conf
         firewalld:
           masquerade: yes
           state: enabled
           permanent: yes
           immediate: yes
-        when: 'ansible_hostname == "inetRouter"'
-
+        
+    
+        
+      - name: install soft for knock
+        yum:
+          name: knock-server
+          state: present
+          update_cache: true
+ 
       - name: add knockd interface conf
         lineinfile:
           path: /etc/sysconfig/knockd
-          line: OPTIONS="-i eth2"
+          line: OPTIONS="-i eth1"
           state: present
-        when: 'ansible_hostname == "inetRouter"'
-
 
       - name: Copy knockd config to inetRouter
         template:
@@ -101,33 +65,89 @@
           owner: root
           group: root
           mode: 060
-        when: (ansible_hostname == "inetRouter")
       
       - name: start knockd
         service:
           name: knockd
           enabled: yes
-          state: restarted
-        when: 'ansible_hostname == "inetRouter"'
+          state: started
 
-      - name: Copy knock sh config to centralRouter
-        template:
-          src: conf/knock.sh
-          dest: /root/knock.sh
-        when: (ansible_hostname == "centralRouter")
 
-# dst-nat
 
+
+
+- name: inetRouter2
+  gather_facts: true
+  hosts: inetRouter2
+  become: true
+  tasks:
+
+      - name: route add
+        nmcli:
+          conn_name: "System eth1"
+          type: ethernet
+          ifname: eth2
+          gw4: '192.168.50.10'
+          ip4: '192.168.50.11/24'
+          autoconnect: yes
+          state: present
+      
+      - name: disable def route
+        shell: ip r del default via 10.0.2.2 || /bin/true
+
+      - name: restart NM conn
+        shell: nmcli c down System\ eth1 && nmcli c up System\ eth1
 
       - name: dst-nat
         firewalld:
-          port-forward: 
-            port: 8080
-            proto: tcp
-            toaddr: 192.168.50.13
-            toport: 80
+          rich_rule: 'rule family=ipv4 forward-port port=8080 protocol=tcp to-port=80 to-addr=192.168.50.13'
+          permanent: yes
+          state: enabled
+          immediate: yes
+
+    
+      - name: masquerade_conf
+        firewalld:
+          masquerade: yes
+          state: enabled
           permanent: yes
           immediate: yes
-        when: 'ansible_hostname == "inetRouter2"'
+
+- name: centralServer
+  gather_facts: true
+  hosts: centralServer
+  become: true
+  tasks:
+
+      - name: route add
+        nmcli:
+          conn_name: "System eth1"
+          type: ethernet
+          ifname: eth1
+          gw4: '192.168.50.10'
+          ip4: '192.168.50.13/24'
+          autoconnect: yes
+          state: present
+
+      
+      - name: disable def route
+        shell: ip r del default via 10.0.2.2 || /bin/true
+
+      - name: restart NM conn
+        shell: nmcli c down System\ eth1 && nmcli c up System\ eth1
+
+      - name: install nginx
+        yum:
+          name: nginx
+          state: present
+  #        update_cache: true
+      
+      - name: restart nginx
+        service:
+          name: nginx
+          enabled: yes
+          state: started
+
+
 
 

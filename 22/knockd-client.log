@@ -1,0 +1,21 @@
+Script started on 2022-05-18 17:01:55+03:00
+]0;user@alma8:/data/33/otus/22[user@alma8 22]$ vagrant ssh centralS[KRouter
+Last login: Wed May 18 13:54:56 2022 from 10.0.2.2
+]0;vagrant@centralRouter:~[?1034h[vagrant@centralRouter ~]$ sudo su
+]0;root@centralRouter:/home/vagrant[?1034h[root@centralRouter vagrant]# bash knockd[K[K[K[K[K[K~/
+anaconda-ks.cfg  .bash_history    .bash_logout     .bash_profile    .bashrc          .cshrc           knock.sh         original-ks.cfg  .tcshrc          
+[root@centralRouter vagrant]# bash ~/
+anaconda-ks.cfg  .bash_history    .bash_logout     .bash_profile    .bashrc          .cshrc           knock.sh         original-ks.cfg  .tcshrc          
+[root@centralRouter vagrant]# bash ~/knock.sh 192.168.50.10
+2222:udp
+3333:udp
+4444:udp
+]0;root@centralRouter:/home/vagrant[root@centralRouter vagrant]# exit
+exit
+]0;vagrant@centralRouter:~[vagrant@centralRouter ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+]0;user@alma8:/data/33/otus/22[user@alma8 22]$ exit
+exit
+
+Script done on 2022-05-18 17:03:11+03:00
