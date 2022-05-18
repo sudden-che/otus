@@ -18,4 +18,16 @@ bash ~/knock.sh 192.168.50.10
 * для проверки переадресации можно использовать
 curl --head 192.168.50.11:8080
 
+```
+[root@inetRouter vagrant]# curl --head 192.168.50.11:8080
+HTTP/1.1 200 OK
+Server: nginx/1.20.1
+Date: Wed, 18 May 2022 13:52:34 GMT
+Content-Type: text/html
+Content-Length: 4833
+Last-Modified: Fri, 16 May 2014 15:12:48 GMT
+Connection: keep-alive
+ETag: "53762af0-12e1"
+Accept-Ranges: bytes
 
+```
