@@ -36,5 +36,5 @@ menu label ^ Auto-install CentOS 8.4
 menu default
 kernel /vmlinuz
 initrd /initrd.img
-append ip=enp0s3:dhcp inst.ks=http://10.0.0.20/centos8/ks.cfg
-inst.repo=http://10.0.0.20/centos8/
+append ip=enp0s3:dhcp inst.ks=http://19292.168.50..0/centos8/ks.cfg
+inst.repo=http://192.168.59.10/centos8/

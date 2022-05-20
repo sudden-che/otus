@@ -1,23 +1,25 @@
 
 #!/bin/bash
 
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
+
 echo Install PXE server
 yum -y install epel-release
-
+yum -y install nano
 yum -y install dhcp-server
 yum -y install tftp-server
 yum -y install nfs-utils
-firewall-cmd --add-service=tftp --permanent
-firewall-cmd --reload
-
+firewall-cmd --add-service=tftp
 # disable selinux or permissive
 setenforce 0
 # 
 
-centos_version=7
+centos_version=8.4.2105
 
 cat >/etc/dhcp/dhcpd.conf <<EOF
-option space pxelinux;
+option space pxelinux
 option pxelinux.magic code 208 = string;
 option pxelinux.configfile code 209 = text;
 option pxelinux.pathprefix code 210 = text;
@@ -45,9 +47,7 @@ systemctl enable dhcpd
 
 systemctl start tftp.service
 systemctl enable tftp.service
-
 yum -y install syslinux-tftpboot.noarch
-
 mkdir /var/lib/tftpboot/pxelinux
 cp /tftpboot/pxelinux.0 /var/lib/tftpboot/pxelinux
 cp /tftpboot/libutil.c32 /var/lib/tftpboot/pxelinux
@@ -68,31 +68,31 @@ MENU TITLE Demo PXE setup
 LABEL linux
   menu label ^Install system
   menu default
-  kernel images/CentOs-7/vmlinuz
-  initrd images/CentOs-7/initrd.img 
+  kernel images/CentOS-8/vmlinuz
+  initrd images/CentOS-8/initrd.img 
   append ip=enp0s3:dhcp inst.repo=nfs:10.0.0.20:/mnt/centos8-install
 LABEL linux-auto
   menu label ^Auto install system
-  kernel images/CentOs-7/vmlinuz
-  initrd images/CentOs-7/initrd.img
+  kernel images/CentOS-8/vmlinuz
+  initrd images/CentOS-8/initrd.img
   append ip=enp0s3:dhcp inst.ks=nfs:10.0.0.20:/home/vagrant/cfg/ks.cfg inst.repo=nfs:10.0.0.20:/mnt/centos8-install
 LABEL vesa
   menu label Install system with ^basic video driver
-  kernel images/CentOs-7/vmlinuz
-  append initrd=images/CentOs-7/initrd.img ip=dhcp inst.xdriver=vesa nomodeset
+  kernel images/CentOS-8/vmlinuz
+  append initrd=images/CentOS-8/initrd.img ip=dhcp inst.xdriver=vesa nomodeset
 LABEL rescue
   menu label ^Rescue installed system
-  kernel images/CentOs-7/vmlinuz
-  append initrd=images/CentOs-7/initrd.img rescue
+  kernel images/CentOS-8/vmlinuz
+  append initrd=images/CentOS-8/initrd.img rescue
 LABEL local
   menu label Boot from ^local drive
   localboot 0xffff
 EOF
 
-mkdir -p /var/lib/tftpboot/pxelinux/images/CentOs-7/
-curl -O http://ftp.mgts.by/pub/CentOS/$centos_version/BaseOS/x86_64/os/images/pxeboot/initrd.img
-curl -O http://ftp.mgts.by/pub/CentOS/$centos_version/BaseOS/x86_64/os/images/pxeboot/vmlinuz
-cp {vmlinuz,initrd.img} /var/lib/tftpboot/pxelinux/images/CentOs-7/
+mkdir -p /var/lib/tftpboot/pxelinux/images/CentOS-8/
+curl -O http://mirror.nsc.liu.se/centos-store/8.4.2105/BaseOS/x86_64/kickstart/images/pxeboot/initrd.img
+curl -O http://mirror.nsc.liu.se/centos-store/8.4.2105/BaseOS/x86_64/kickstart/images/pxeboot/vmlinuz
+cp {vmlinuz,initrd.img} /var/lib/tftpboot/pxelinux/images/CentOS-8/
 
 
 # Setup NFS auto install
@@ -107,7 +107,7 @@ chown vagrant.vagrant  /mnt/extraspace
 #curl -O http://ftp.mgts.by/pub/CentOS/$centos_version/BaseOS/x86_64/os/images/boot.iso
 #http://ftp.mgts.by/pub/CentOS/${centos_version}/isos/x86_64/CentOS-${centos_version}-x86_64-dvd1.iso
 
-# copy disk from local system scp -o Ciphers=aes128-gcm@openssh.com -F config ../CentOs-7.4.2105-x86_64-dvd1.iso pxeserver:/mnt/extraspace/
+# copy disk from local system scp -o Ciphers=aes128-gcm@openssh.com -F config ../CentOS-8.4.2105-x86_64-dvd1.iso pxeserver:/mnt/extraspace/
 mkdir /mnt/centos8-install
 mount -t iso9660  /mnt/extraspace/CentOS-${centos_version}-x86_64-dvd1.iso /mnt/centos8-install
 echo '/mnt/centos8-install *(ro)' > /etc/exports
