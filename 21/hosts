@@ -1,2 +1,2 @@
 [Servers]
-pxeserver ansible_host=192.168.50.10
+pxeserver ansible_host=192.168.51.10
