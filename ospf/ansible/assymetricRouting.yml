@@ -9,6 +9,7 @@
 #  tasks:
 # Отключаем запрет ассиметричного роутинга
         - name: set up asynchronous routing
+          tags: assym
           sysctl:
             name: net.ipv4.conf.all.rp_filter
             value: '0'
@@ -17,11 +18,14 @@
 # Делаем интерфейс enp0s8 в router1 «дорогим»
         - name: set up OSPF
           template:
-            src: /vagrant/templates/frr_assym.conf.j2
+            src: ../templates/frr_assym.conf.j2
             dest: /etc/frr/frr.conf
             owner: frr
             group: frr
             mode: 0640
+          tags: assym
+          
+          
         
 # Перезапускам FRR 
         - name: restart FRR
@@ -29,3 +33,4 @@
             name: frr
             state: restarted
             enabled: true
+          tags: assym

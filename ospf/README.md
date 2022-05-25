@@ -6,4 +6,8 @@
 и запускаем плейбук:
 ansible/assymetricRouting.yml
 
+для применения изменений раскомменчиваем в Vagrantfile
+#ansible.tags
+
+и запускаем vagrant provision
 
