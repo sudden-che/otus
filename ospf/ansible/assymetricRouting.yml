@@ -1,12 +1,12 @@
----
-- name: AssymetricRouting
-  hosts: all
-  gather_facts: true
-  become: true
-  vars_files:
-    - /vagrant/defaults/main.yml
+#---
+#- name: AssymetricRouting
+#  hosts: all
+#  gather_facts: true
+#  become: true
+#  vars_files:
+#    - ../defaults/main.yml
 
-  tasks:
+#  tasks:
 # Отключаем запрет ассиметричного роутинга
         - name: set up asynchronous routing
           sysctl:

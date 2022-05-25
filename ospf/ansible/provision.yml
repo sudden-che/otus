@@ -55,7 +55,7 @@
 # Копируем файл daemons на хосты, указываем владельца и права
         - name: base set up OSPF
           template:
-            src: /vagrant/templates/daemons  
+            src: ../templates/daemons  
             dest: /etc/frr/daemons
             owner: frr
             group: frr
@@ -64,7 +64,7 @@
 # Копируем файл frr.conf на хосты, указываем владельца и права
         - name: set up OSPF
           template:
-            src: /vagrant/templates/frr.conf.j2
+            src: ../templates/frr.conf.j2
             dest: /etc/frr/frr.conf
             owner: frr
             group: frr
@@ -76,3 +76,10 @@
             name: frr
             state: restarted
             enabled: true
+
+
+        - name: assymetric on
+          include: assymetricRouting.yml
+          when: 
+            - symmetric_routing == false
+
