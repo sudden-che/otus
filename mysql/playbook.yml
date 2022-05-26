@@ -1,0 +1,86 @@
+---
+- hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    perc_repo: "https://repo.percona.com/yum/percona-release-latest.noarch.rpm"
+    mysql_pass: secret
+
+  tasks:
+  - name: install percona remote rpm
+    yum:
+      name: "{{ perc_repo }}"
+      state: present
+
+  - name: install packages
+    yum: 
+      name: 
+        - epel-release
+        - Percona-Server-server-57
+        - dnf
+        #- python3-PyMySQ
+      state: present
+    tags: mysql
+
+  - name: install mysql_module_py
+    dnf:
+      name: python2-PyMySQL
+      state: present
+    tags: mysql 
+
+  - name: copy conf
+    file:
+      scr: "{{ item }}"
+      dst: "/etc/my.cnf.d/"
+    with_fileglob:
+      - "conf/*"
+
+  - name: Ensure MySQL is up-and-running
+    service:
+      name: mysql
+      state: restarted
+      enabled: yes
+      
+  - name: get passwd 
+    shell: "cat /var/log/mysqld.log | grep 'root@localhost:' | awk '{print $11}'"
+    register: mysql_pwd
+    tags: mysql
+
+  - name: debug result
+    debug:
+      msg: "{{ mysql_pwd.stdout }}"
+    tags: mysql
+
+  - name: Set MySQL root Password from var
+    mysql_user:
+      login_host: 'localhost'
+      login_user: 'root'
+      login_password: "{{ mysql_pwd.stdout }}"
+      name: 'root'
+      password: '{{ mysql_pass }}'
+      state: present
+    tags: mysql
+
+
+
+
+
+
+
+
+
+
+
+  - name: start and enable services
+    service:
+      name: "{{ item }}"
+      state: restarted
+      enabled: yes
+    with_items:
+      - chronyd
+      - mysql
+
+
+
+
+
