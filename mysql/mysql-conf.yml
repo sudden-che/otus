@@ -1,83 +1,20 @@
----
-- hosts: all
-  become: true
-  gather_facts: false
-  vars:
-    perc_repo: "https://repo.percona.com/yum/percona-release-latest.noarch.rpm"
-    mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
+#---
+#- hosts: all
+#  become: true
+#  gather_facts: false
+#  vars:
+#    mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
+#    mysql_user: root
+#    mysql_db_name: bet
+#  tasks:
 
-  tasks:
-  - name: install percona remote rpm
-    yum:
-      name: "{{ perc_repo }}"
-      state: present
-
-  - name: install packages
-    yum: 
-      name: 
-        - epel-release
-        - Percona-Server-server-57
-        - dnf
-        #- python3-PyMySQ
-      state: present
-    #tags: mysql
-
-  - name: install mysql_module_py
-    dnf:
-      name: python2-PyMySQL
-      state: present
-    #tags: mysql 
-
-  - name: copy conf
-    file:
-      scr: "{{ item }}"
-      dst: "/etc/my.cnf.d/"
-    with_fileglob:
-      - "conf/*"
-
-  - name: Ensure MySQL is up-and-running
-    service:
-      name: mysql
-      state: restarted
-      enabled: yes
-    tags: mysql
-    # setpwd once
-  - shell: cat /var/log/mysqld.log | grep "temporary password" | grep -oE '[^ ]+$'
-    register: tmp_root_password
-    tags: 
-      - mysql
-      - setpwd
-
-  - name: Set new password from temporary password
-    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}"'
-    tags: 
-      - mysql
-      - setpwd
-# } end
-
-  - name: copy mysql conf
-    copy:
-      src: "{{ item }}"
-      dest: "/etc/my.cnf.d/"
-      owner: "mysql"
-      mode: 0655
-    with_fileglob:
-      - "conf/conf.d/*"
-
-  - name: start and enable services
-    service:
-      name: "{{ item }}"
-      state: restarted
-      enabled: yes
-    with_items:
-      - chronyd
-      - mysql
-
- # - name: include mysql conf provision
- #   include: mysql-conf.yml
-
-
- 
+#  - name: Ensure MySQL is up-and-running
+#    service:
+#      name: mysql
+#      state: restarted
+#      enabled: yes
+#    tags: mysql
+  
   - name: copy base-conf
     template:
       src: templates/01-base.cnf.j2
@@ -217,6 +154,3 @@
     tags: slave
 
   
-
-
-
