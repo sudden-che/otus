@@ -12,4 +12,4 @@
     - через ансибл загружается на слейва, где включается репликация с мастером через gtid
 
 процесс работы можно видеть в приложенном скрине 
-!(https://github.com/sudden-che/otus/tree/main/mysql/mysql_repl.png)
+![mysql_repl.png](https://github.com/sudden-che/otus/tree/main/mysql/mysql_repl.png)
