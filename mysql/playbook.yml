@@ -5,6 +5,8 @@
   vars:
     perc_repo: "https://repo.percona.com/yum/percona-release-latest.noarch.rpm"
     mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
+    mysql_user: root
+    mysql_db_name: bet
 
   tasks:
   - name: install percona remote rpm
@@ -26,14 +28,24 @@
     dnf:
       name: python2-PyMySQL
       state: present
-    #tags: mysql 
+    #tags: mysql
+     
+  - name: copy base-conf
+    template:
+      src: templates/01-base.cnf.j2
+      dest: /etc/my.cnf.d/01-base.cnf
+      owner: "mysql"
+      mode: 0655
+      force: yes
 
-  - name: copy conf
-    file:
-      scr: "{{ item }}"
-      dst: "/etc/my.cnf.d/"
+  - name: copy mysql conf
+    copy:
+      src: "{{ item }}"
+      dest: "/etc/my.cnf.d/"
+      owner: "mysql"
+      mode: 0655
     with_fileglob:
-      - "conf/*"
+      - "conf/conf.d/*"
 
   - name: Ensure MySQL is up-and-running
     service:
@@ -48,43 +60,22 @@
       - mysql
       - setpwd
 
-  - name: Set new password from temporary password
-    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}"'
+  - name: Set new password from temporary password ignoring errors
+    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}" || /bin/true'
     tags: 
       - mysql
       - setpwd
 # } end
 
-  - name: copy mysql conf
-    copy:
-      src: "{{ item }}"
-      dest: "/etc/my.cnf.d/"
-      owner: "mysql"
-      mode: 0655
-    with_fileglob:
-      - "conf/conf.d/*"
+
 
   - name: start and enable services
     service:
-      name: "{{ item }}"
+      name: chronyd
       state: restarted
       enabled: yes
-    with_items:
-      - chronyd
-      - mysql
-
- # - name: include mysql conf provision
- #   include: mysql-conf.yml
 
 
- 
-  - name: copy base-conf
-    template:
-      src: templates/01-base.cnf.j2
-      dest: /etc/my.cnf.d/01-base.cnf
-      owner: "mysql"
-      mode: 0655
-      force: yes
 
   - name: copy login/pwd
     copy:
@@ -93,13 +84,28 @@
       owner: root
     tags: login
 
-  - name: create db
-    mysql_db:
-      name: "{{ mysql_db_name }}"
-      state: present
-      login_user: root
-      login_unix_socket: "/var/lib/mysql/mysql.sock"
-    tags: login
+  - name: first start MySQL is up-and-running
+    service:
+      name: mysql
+      state: started
+      enabled: yes
+    tags: mysql
+
+ # - name: include mysql conf provision
+ #   import: mysql-conf.yml
+
+
+ 
+
+- hosts: mysql1
+  become: true
+  gather_facts: false
+  vars:
+    mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
+    mysql_user: root
+    mysql_db_name: bet
+  tasks:
+
 
   - name: user otus add
     mysql_user:
@@ -111,14 +117,17 @@
       login_unix_socket: "/var/lib/mysql/mysql.sock"
       priv: "*.*:REPLICATION SLAVE"
 
-- hosts: mysql1
-  become: true
-  gather_facts: false
-  vars:
-    mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
-    mysql_user: root
-    mysql_db_name: bet
-  tasks:
+
+
+  - name: create db
+    mysql_db:
+      name: "{{ mysql_db_name }}"
+      state: present
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+    tags: login
+
+
 
   - name: copy dump
     copy:
@@ -147,7 +156,7 @@
       src: /tmp/dump_m.sql
       dest: dump_m.sql
       flat: yes
-
+#slave
 - hosts: mysqlslave
   become: true
   gather_facts: false
@@ -157,6 +166,9 @@
     mysql_db_name: bet
     
   tasks:
+
+
+  
 
   - name: enable ssh pwd login
     replace:
@@ -178,7 +190,7 @@
   - name: Ensure MySQL is up-and-running
     service:
       name: mysql
-      state: restarted
+      state: started
       enabled: yes
     tags: mysql
   
