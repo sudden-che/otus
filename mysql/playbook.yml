@@ -152,20 +152,19 @@
       src: /tmp/dump_m.sql
       dest: dump_m.sql
       flat: yes
+
+
+
+
+
 #slave
 - hosts: mysqlslave
   become: true
   gather_facts: false
   vars:
-    mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
-    mysql_user: root
     mysql_db_name: bet
     
   tasks:
-
-
-  
-
   - name: enable ssh pwd login
     replace:
       dest: "/etc/ssh/sshd_config"
@@ -195,13 +194,13 @@
       src: dump_m.sql
       dest: /tmp/dump_m.sql
 
-  - name: Restore db from master dump 
-    mysql_db:
-      name:  "{{ mysql_db_name }}"
-      state: import
-      target: /tmp/dump_m.sql
-      login_user: root
-      login_unix_socket: "/var/lib/mysql/mysql.sock"
+#  - name: Restore db from master dump 
+#    mysql_db:
+#      name:  "{{ mysql_db_name }}"
+#      state: import
+#      target: /tmp/dump_m.sql
+#      login_user: root
+#      login_unix_socket: "/var/lib/mysql/mysql.sock"
   
       
       
