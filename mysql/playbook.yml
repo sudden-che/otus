@@ -91,11 +91,7 @@
       enabled: yes
     tags: mysql
 
- # - name: include mysql conf provision
- #   import: mysql-conf.yml
-
-
- 
+# mysql master
 
 - hosts: mysql1
   become: true
