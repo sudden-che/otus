@@ -74,10 +74,10 @@
         autoconnect: yes
 
     - name: modify team runner
-      shell: "nmcli connection modify {{ conn_name }} team.runner activebackup"
+      shell: "nmcli connection modify {{ conn_name }} team.runner activebackup team.runner-hwaddr-policy by_active "
     
     - name: modify team runner link watcher
-      shell: "nmcli connection modify {{ conn_name }} team.link-watchers 'name=ethtool delay-up=2500'"
+      shell: "nmcli connection modify {{ conn_name }} team.link-watchers 'name=ethtool'"
 
 
     - name: Try nmcli add teams-slave

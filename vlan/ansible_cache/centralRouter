@@ -2,17 +2,15 @@ _ansible_facts_gathered: true
 ansible_all_ipv4_addresses:
 - 10.0.30.200
 - 10.0.30.100
-- 10.10.10.20
-- 192.168.50.20
-- 10.10.11.254
 - 10.0.2.15
+- 10.10.11.254
+- 192.168.50.20
 ansible_all_ipv6_addresses:
-- fe80::5481:3a1c:6e8d:8d20
-- fe80::85dd:65e4:a4ba:5275
-- fe80::2084:a8b4:c396:782
-- fe80::a00:27ff:fef1:a4b6
-- fe80::a00:27ff:fefb:9c2
+- fe80::464:d114:43bd:131e
+- fe80::8586:6434:46e0:9166
 - fe80::5054:ff:fe4d:77d3
+- fe80::a00:27ff:fefb:9c2
+- fe80::a00:27ff:fef1:a4b6
 ansible_apparmor:
   status: disabled
 ansible_architecture: x86_64
@@ -32,16 +30,16 @@ ansible_cmdline:
 ansible_date_time:
   date: '2022-05-30'
   day: '30'
-  epoch: '1653931302'
-  hour: '17'
-  iso8601: '2022-05-30T17:21:42Z'
-  iso8601_basic: 20220530T172142055528
-  iso8601_basic_short: 20220530T172142
-  iso8601_micro: '2022-05-30T17:21:42.055528Z'
-  minute: '21'
+  epoch: '1653934774'
+  hour: '18'
+  iso8601: '2022-05-30T18:19:34Z'
+  iso8601_basic: 20220530T181934386857
+  iso8601_basic_short: 20220530T181934
+  iso8601_micro: '2022-05-30T18:19:34.386857Z'
+  minute: '19'
   month: '05'
-  second: '42'
-  time: '17:21:42'
+  second: '34'
+  time: '18:19:34'
   tz: UTC
   tz_offset: '+0000'
   weekday: Monday
@@ -134,8 +132,8 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-uzxfcdaklhpancquykpbjkycdsidmgai ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1653931311.6596153-1596196-164155104460009/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-zwsftdaicprrbalzuvsrpivobjnbtrvr ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1653934784.2484016-1647570-72491961406839/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
@@ -288,7 +286,7 @@ ansible_eth1:
   - software
   type: ether
 ansible_eth2:
-  active: true
+  active: false
   device: eth2
   features:
     busy_poll: off [fixed]
@@ -343,12 +341,11 @@ ansible_eth2:
     udp_fragmentation_offload: off [fixed]
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
-  macaddress: 08:00:27:9b:65:c6
+  macaddress: 08:00:27:9b:65:c7
   module: e1000
   mtu: 1500
   pciid: '0000:00:09.0'
   promisc: false
-  speed: 1000
   timestamping:
   - tx_software
   - rx_software
@@ -507,13 +504,13 @@ ansible_eth4:
   - software
   type: ether
 ansible_external:
-  active: true
+  active: false
   device: external
   features:
     busy_poll: off [fixed]
     fcoe_mtu: off [fixed]
     generic_receive_offload: 'on'
-    generic_segmentation_offload: 'on'
+    generic_segmentation_offload: off [requested on]
     highdma: off [requested on]
     hw_tc_offload: off [fixed]
     l2_fwd_offload: off [fixed]
@@ -531,8 +528,8 @@ ansible_external:
     rx_vlan_offload: 'on'
     rx_vlan_stag_filter: off [fixed]
     rx_vlan_stag_hw_parse: off [fixed]
-    scatter_gather: 'on'
-    tcp_segmentation_offload: 'on'
+    scatter_gather: 'off'
+    tcp_segmentation_offload: 'off'
     tx_checksum_fcoe_crc: off [fixed]
     tx_checksum_ip_generic: 'on'
     tx_checksum_ipv4: off [fixed]
@@ -547,14 +544,14 @@ ansible_external:
     tx_ipip_segmentation: 'on'
     tx_lockless: on [fixed]
     tx_nocache_copy: 'off'
-    tx_scatter_gather: 'on'
+    tx_scatter_gather: off [requested on]
     tx_scatter_gather_fraglist: off [requested on]
     tx_sctp_segmentation: off [fixed]
     tx_sit_segmentation: 'on'
-    tx_tcp6_segmentation: 'on'
-    tx_tcp_ecn_segmentation: 'on'
-    tx_tcp_mangleid_segmentation: 'on'
-    tx_tcp_segmentation: 'on'
+    tx_tcp6_segmentation: off [requested on]
+    tx_tcp_ecn_segmentation: off [requested on]
+    tx_tcp_mangleid_segmentation: off [requested on]
+    tx_tcp_segmentation: off [requested on]
     tx_udp_tnl_csum_segmentation: 'on'
     tx_udp_tnl_segmentation: 'on'
     tx_vlan_offload: 'on'
@@ -562,15 +559,6 @@ ansible_external:
     udp_fragmentation_offload: off [fixed]
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
-  ipv4:
-    address: 10.10.10.20
-    broadcast: 10.10.10.255
-    netmask: 255.255.255.0
-    network: 10.10.10.0
-  ipv6:
-  - address: fe80::2084:a8b4:c396:782
-    prefix: '64'
-    scope: link
   macaddress: 08:00:27:9b:65:c6
   mtu: 1500
   promisc: false
@@ -673,15 +661,15 @@ ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
 ansible_machine_id: 31a1d5614a08e240aadf44b1e3a47653
-ansible_memfree_mb: 517
+ansible_memfree_mb: 528
 ansible_memory_mb:
   nocache:
-    free: 612
-    used: 126
+    free: 623
+    used: 115
   real:
-    free: 517
+    free: 528
     total: 738
-    used: 221
+    used: 210
   swap:
     cached: 0
     free: 2047
@@ -689,18 +677,18 @@ ansible_memory_mb:
     used: 0
 ansible_memtotal_mb: 738
 ansible_mounts:
-- block_available: 9609311
+- block_available: 9585457
   block_size: 4096
   block_total: 10480385
-  block_used: 871074
+  block_used: 894928
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20931103
+  inode_available: 20931060
   inode_total: 20971008
-  inode_used: 39905
+  inode_used: 39948
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 39359737856
+  size_available: 39262031872
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: centralRouter
@@ -804,7 +792,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 63
+ansible_uptime_seconds: 454
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0
@@ -877,7 +865,7 @@ ansible_vlan100:
     netmask: 255.255.255.0
     network: 10.0.30.0
   ipv6:
-  - address: fe80::85dd:65e4:a4ba:5275
+  - address: fe80::8586:6434:46e0:9166
     prefix: '64'
     scope: link
   macaddress: 08:00:27:fb:09:c2
@@ -951,7 +939,7 @@ ansible_vlan200:
     netmask: 255.255.255.0
     network: 10.0.30.0
   ipv6:
-  - address: fe80::5481:3a1c:6e8d:8d20
+  - address: fe80::464:d114:43bd:131e
     prefix: '64'
     scope: link
   macaddress: 08:00:27:fb:09:c2
