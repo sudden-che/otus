@@ -37,8 +37,6 @@
   become: true
   gather_facts: true
   vars_files: vars/vars.yml
-    
-
   tasks:
   
     - name: install nm team packages
@@ -63,7 +61,7 @@
         - "System eth1"
         - "System eth2"
         - "external"
-
+# team
     - name: team create master
       nmcli:
         type: team
@@ -92,8 +90,31 @@
       with_items:
         - '{{ nmcli_team_slave }}'
 
-# conf vlans
+# bond
 
+#    - name: team create master
+#      nmcli:
+#        type: bond
+#        mode: balance-xor
+#        conn_name: '{{ conn_name }}'
+#        ip4: '{{ router_ip }}'
+#        state: present
+#        autoconnect: yes
+
+#    - name: Try nmcli add bond-slave
+#      nmcli:
+#        type: bond-slave
+#        conn_name: '{{ item.conn_name }}'
+#        ifname: '{{ item.ifname }}'
+#        master: '{{ item.master }}'
+#        state: present
+#      with_items:
+#        - '{{ nmcli_team_slave }}'
+
+ #   - name: restart nm conn
+ #     shell: "nmcli networking off && nmcli networking on "
+
+# conf vlans
 
     - name: flush old conf
       nmcli:
@@ -125,8 +146,8 @@
         - 200
       when: (ansible_hostname == 'centralRouter')
 
-    #- name: restart connections nmcli
-     # shell: "nmcli networking off && nmcli networking on;"
+    - name: restart connections nmcli
+      shell: "nmcli networking off && nmcli networking on;"
 
 - hosts: net
   name: net vlans config
