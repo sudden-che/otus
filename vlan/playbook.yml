@@ -54,11 +54,7 @@
       with_items:
         - "System eth1"
         - "System eth2"
-        - "System eth3"
         
-
-
-
     - name: team create master
       nmcli:
         type: team
@@ -86,6 +82,12 @@
         - vlan100
         - vlan200
         
+
+    - name: disable team slave connections and old master conn
+      nmcli:
+        conn_name: "System eth3"
+        state: absent
+      when: (ansible_hostname == 'centralRouter') 
 
     - name: create vlans
       nmcli:
