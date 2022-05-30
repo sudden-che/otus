@@ -59,6 +59,7 @@
     - name: team create master
       nmcli:
         type: team
+
         conn_name: '{{ conn_name }}'
         ip4: '{{ router_ip }}'
         state: present

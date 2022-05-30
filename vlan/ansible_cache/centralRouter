@@ -2,16 +2,17 @@ _ansible_facts_gathered: true
 ansible_all_ipv4_addresses:
 - 10.0.30.200
 - 10.0.30.100
+- 10.10.10.20
+- 10.10.11.254
 - 192.168.50.20
 - 10.0.2.15
 ansible_all_ipv6_addresses:
-- fe80::71a3:8a79:c6b9:5a2b
-- fe80::760f:68f4:eb39:8004
-- fe80::99ab:a8e0:2ef4:cd89
+- fe80::c4b5:6528:761c:6d5e
+- fe80::917b:d1c5:18b4:75e1
+- fe80::3961:9c63:6b8d:422a
+- fe80::a00:27ff:fee4:a028
 - fe80::a00:27ff:fe96:24a8
-- fe80::c:ff63:c86d:3ffa
 - fe80::5054:ff:fe4d:77d3
-- fe80::28a5:e26a:cb00:8594
 ansible_apparmor:
   status: disabled
 ansible_architecture: x86_64
@@ -31,16 +32,16 @@ ansible_cmdline:
 ansible_date_time:
   date: '2022-05-30'
   day: '30'
-  epoch: '1653921197'
+  epoch: '1653921826'
   hour: '14'
-  iso8601: '2022-05-30T14:33:17Z'
-  iso8601_basic: 20220530T143317491557
-  iso8601_basic_short: 20220530T143317
-  iso8601_micro: '2022-05-30T14:33:17.491557Z'
-  minute: '33'
+  iso8601: '2022-05-30T14:43:46Z'
+  iso8601_basic: 20220530T144346634501
+  iso8601_basic_short: 20220530T144346
+  iso8601_micro: '2022-05-30T14:43:46.634501Z'
+  minute: '43'
   month: '05'
-  second: '17'
-  time: '14:33:17'
+  second: '46'
+  time: '14:43:46'
   tz: UTC
   tz_offset: '+0000'
   weekday: Monday
@@ -133,15 +134,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-nyqicahlnrhqydyhttzkyocprpzjacxm ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1653921207.1178148-1456909-66210508990286/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-cwqvgatiklagaaorizzbaxuczayrhcui ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1653921836.2372184-1469287-130064168537080/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
   TERM: xterm
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '16'
+  XDG_SESSION_ID: '17'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -275,10 +276,6 @@ ansible_eth1:
     udp_fragmentation_offload: off [fixed]
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
-  ipv6:
-  - address: fe80::28a5:e26a:cb00:8594
-    prefix: '64'
-    scope: link
   macaddress: 08:00:27:9b:65:c4
   module: e1000
   mtu: 1500
@@ -346,11 +343,7 @@ ansible_eth2:
     udp_fragmentation_offload: off [fixed]
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
-  ipv6:
-  - address: fe80::c:ff63:c86d:3ffa
-    prefix: '64'
-    scope: link
-  macaddress: 08:00:27:cb:5a:79
+  macaddress: 08:00:27:9b:65:c4
   module: e1000
   mtu: 1500
   pciid: '0000:00:09.0'
@@ -417,8 +410,13 @@ ansible_eth3:
     udp_fragmentation_offload: off [fixed]
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
+  ipv4:
+    address: 10.10.11.254
+    broadcast: 10.10.11.255
+    netmask: 255.255.255.0
+    network: 10.10.11.0
   ipv6:
-  - address: fe80::99ab:a8e0:2ef4:cd89
+  - address: fe80::a00:27ff:fee4:a028
     prefix: '64'
     scope: link
   macaddress: 08:00:27:e4:a0:28
@@ -570,10 +568,10 @@ ansible_external:
     netmask: 255.255.255.0
     network: 10.10.10.0
   ipv6:
-  - address: fe80::3388:6155:4e0f:8488
+  - address: fe80::3961:9c63:6b8d:422a
     prefix: '64'
     scope: link
-  macaddress: 08:00:27:cb:5a:79
+  macaddress: 08:00:27:9b:65:c4
   mtu: 1500
   promisc: false
   timestamping:
@@ -590,6 +588,7 @@ ansible_interfaces:
 - vlan100
 - lo
 - vlan200
+- external
 - eth4
 - eth3
 - eth2
@@ -674,15 +673,15 @@ ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
 ansible_machine_id: 67b8906c5d770e48a2ebeb832bd588b2
-ansible_memfree_mb: 201
+ansible_memfree_mb: 208
 ansible_memory_mb:
   nocache:
-    free: 545
-    used: 193
+    free: 552
+    used: 186
   real:
-    free: 201
+    free: 208
     total: 738
-    used: 537
+    used: 530
   swap:
     cached: 0
     free: 2047
@@ -690,18 +689,18 @@ ansible_memory_mb:
     used: 0
 ansible_memtotal_mb: 738
 ansible_mounts:
-- block_available: 9612160
+- block_available: 9611929
   block_size: 4096
   block_total: 10480385
-  block_used: 868225
+  block_used: 868456
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20931078
+  inode_available: 20931079
   inode_total: 20971008
-  inode_used: 39930
+  inode_used: 39929
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 39371407360
+  size_available: 39370461184
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: centralRouter
@@ -805,7 +804,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 4744
+ansible_uptime_seconds: 5373
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0
@@ -878,7 +877,7 @@ ansible_vlan100:
     netmask: 255.255.255.0
     network: 10.0.30.0
   ipv6:
-  - address: fe80::760f:68f4:eb39:8004
+  - address: fe80::917b:d1c5:18b4:75e1
     prefix: '64'
     scope: link
   macaddress: 08:00:27:e4:a0:28
@@ -952,7 +951,7 @@ ansible_vlan200:
     netmask: 255.255.255.0
     network: 10.0.30.0
   ipv6:
-  - address: fe80::71a3:8a79:c6b9:5a2b
+  - address: fe80::c4b5:6528:761c:6d5e
     prefix: '64'
     scope: link
   macaddress: 08:00:27:e4:a0:28
