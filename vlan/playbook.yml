@@ -67,8 +67,8 @@
       nmcli:
         type: team
         
-        runner: loadbalance
-        runner_hwaddr_policy: by_active
+        #runner: loadbalance
+        #runner_hwaddr_policy: by_active
         conn_name: '{{ conn_name }}'
         ip4: '{{ router_ip }}'
         state: present
