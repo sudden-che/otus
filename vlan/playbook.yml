@@ -54,7 +54,8 @@
       with_items:
         - "System eth1"
         - "System eth2"
-        
+ #       - "external"
+
     - name: team create master
       nmcli:
         type: team
@@ -72,6 +73,9 @@
         state: present
       with_items:
         - '{{ nmcli_team_slave }}'
+
+# conf vlans
+
 
     - name: inter lan vlans config
       nmcli:
@@ -103,11 +107,8 @@
         - 200
       when: (ansible_hostname == 'centralRouter')
 
-
-
-
-
-
+    - name: restart connections nmcli
+      shell: "nmcli networking off && nmcli networking on;"
 
 - hosts: net
   name: net vlans config
