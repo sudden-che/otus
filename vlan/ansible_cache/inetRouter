@@ -4,7 +4,7 @@ ansible_all_ipv4_addresses:
 - 10.0.2.15
 - 192.168.50.10
 ansible_all_ipv6_addresses:
-- fe80::fc1a:6cd8:cd6c:4e87
+- fe80::133:baf:d4cf:4b6a
 - fe80::5054:ff:fe4d:77d3
 - fe80::a00:27ff:fe8e:fcf3
 ansible_apparmor:
@@ -26,16 +26,16 @@ ansible_cmdline:
 ansible_date_time:
   date: '2022-05-30'
   day: '30'
-  epoch: '1653924740'
+  epoch: '1653925059'
   hour: '15'
-  iso8601: '2022-05-30T15:32:20Z'
-  iso8601_basic: 20220530T153220784674
-  iso8601_basic_short: 20220530T153220
-  iso8601_micro: '2022-05-30T15:32:20.784674Z'
-  minute: '32'
+  iso8601: '2022-05-30T15:37:39Z'
+  iso8601_basic: 20220530T153739883756
+  iso8601_basic_short: 20220530T153739
+  iso8601_micro: '2022-05-30T15:37:39.883756Z'
+  minute: '37'
   month: '05'
-  second: '20'
-  time: '15:32:20'
+  second: '39'
+  time: '15:37:39'
   tz: UTC
   tz_offset: '+0000'
   weekday: Monday
@@ -128,15 +128,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-fajcmligfymdbmxqaozwkievprjgduyp ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1653924750.6893747-1521201-182290769317401/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-cmyhlqllfjobzcvdesdomajnpyjoufkz ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1653925069.8215048-1527994-165066658479489/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
   TERM: xterm
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '9'
+  XDG_SESSION_ID: '11'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -270,7 +270,7 @@ ansible_eth1:
     udp_fragmentation_offload: off [fixed]
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
-  macaddress: 08:00:27:a1:f2:2c
+  macaddress: 08:00:27:2b:00:33
   module: e1000
   mtu: 1500
   pciid: '0000:00:08.0'
@@ -337,7 +337,7 @@ ansible_eth2:
     udp_fragmentation_offload: off [fixed]
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
-  macaddress: 08:00:27:a1:f2:2c
+  macaddress: 08:00:27:2b:00:33
   module: e1000
   mtu: 1500
   pciid: '0000:00:09.0'
@@ -486,10 +486,10 @@ ansible_external:
     netmask: 255.255.255.0
     network: 10.10.10.0
   ipv6:
-  - address: fe80::fc1a:6cd8:cd6c:4e87
+  - address: fe80::133:baf:d4cf:4b6a
     prefix: '64'
     scope: link
-  macaddress: 08:00:27:a1:f2:2c
+  macaddress: 08:00:27:2b:00:33
   mtu: 1500
   promisc: false
   timestamping:
@@ -604,10 +604,10 @@ ansible_memory_mb:
     used: 0
 ansible_memtotal_mb: 738
 ansible_mounts:
-- block_available: 9584084
+- block_available: 9583758
   block_size: 4096
   block_total: 10480385
-  block_used: 896301
+  block_used: 896627
   device: /dev/sda1
   fstype: xfs
   inode_available: 20931029
@@ -615,7 +615,7 @@ ansible_mounts:
   inode_used: 39979
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 39256408064
+  size_available: 39255072768
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: inetRouter
@@ -719,7 +719,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 2282
+ansible_uptime_seconds: 2601
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0

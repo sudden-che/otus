@@ -79,7 +79,7 @@
       shell: "nmcli connection modify {{ conn_name }} team.runner activebackup"
     
     - name: modify team runner link watcher
-      shell: "nmcli connection modify {{ conn_name }} team.link-watchers 'name=ethtool'"
+      shell: "nmcli connection modify {{ conn_name }} team.link-watchers 'name=ethtool delay-up=2500'"
 
 
     - name: Try nmcli add teams-slave
