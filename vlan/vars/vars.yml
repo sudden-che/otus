@@ -1,0 +1,23 @@
+
+conn_name: external
+#nmcli_team:
+#   - conn_name: tenant
+#     ip4: '{{ tenant_ip }}'
+#     gw4: '{{ tenant_gw }}'
+  #conn_name: external
+  #ip4: '{{ router_ip }}'
+#     gw4: '{{ external_gw }}'
+
+nmcli_team_slave:
+  - conn_name: "System eth1"
+    ifname: eth1
+    master: external
+  - conn_name: "System eth2"
+    ifname: eth2
+    master: external
+#   - conn_name: p2p1
+#     ifname: p2p1
+#     master: storage
+#   - conn_name: p2p2
+#     ifname: p2p2
+#     master: external

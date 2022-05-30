@@ -1,0 +1,21 @@
+[routers]
+inetRouter ansible_host=192.168.50.10 ansible_ssh_private_key_file=.vagrant/machinees/inetRouter/virtualbox/private_key router_ip="10.10.10.10/24"
+centralRouter ansible_host=192.168.50.20 ansible_ssh_private_key_file=.vagrant/machinees/centralRouter/virtualbox/private_key router_ip="10.10.10.20/24"
+
+[net1]
+testClient1 ansible_host=192.168.50.30 ansible_ssh_private_key_file=.vagrant/machinees/testClient1/virtualbox/private_key host_ip=10.0.30.10/24
+testServer1 ansible_host=192.168.50.50 ansible_ssh_private_key_file=.vagrant/machinees/testServer1/virtualbox/private_key host_ip=10.0.30.20/24
+
+[net1:vars]
+vlanid=100
+
+[net2]
+testServer2 ansible_host=192.168.50.60 ansible_ssh_private_key_file=.vagrant/machinees/testServer2/virtualbox/private_key host_ip=10.0.30.10/24
+testClient2 ansible_host=192.168.50.40 ansible_ssh_private_key_file=.vagrant/machinees/testClient2/virtualbox/private_key host_ip=10.0.30.20/24
+
+[net2:vars]
+vlanid=200
+
+[net:children]
+net1
+net2

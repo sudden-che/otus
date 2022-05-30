@@ -1,0 +1,134 @@
+---
+- hosts: all
+  become: true
+  gather_facts: false
+  vars:
+
+   
+  tasks:
+  
+
+  - name: install epel
+    yum: 
+      name: 
+        - epel-release
+      state: present  
+  
+  - name: install packages
+    yum: 
+      name: 
+        - vconfig
+        - dnf
+        - NetworkManager-libnm
+        - nm-connection-editor
+        - libsemanage-python
+        - policycoreutils-python
+      state: present
+  
+  - name: start NM
+    service: 
+      name: "NetworkManager"
+      state: started
+      enabled: yes
+    
+
+- hosts: routers
+  name: routers config
+  become: true
+  gather_facts: true
+  vars_files: vars/vars.yml
+    
+
+  tasks:
+  
+    - name: enable forward
+      sysctl:
+        name: net.ipv4.conf.all.forwarding
+        value: '1'
+        state: present
+
+    - name: disable team slave connections and old master conn
+      nmcli:
+        conn_name: "{{ item }}"
+        state: absent
+      with_items:
+        - "System eth1"
+        - "System eth2"
+        - "System eth3"
+        
+
+
+
+    - name: team create master
+      nmcli:
+        type: team
+        conn_name: '{{ conn_name }}'
+        ip4: '{{ router_ip }}'
+        state: present
+        autoconnect: yes
+
+    - name: Try nmcli add teams-slave
+      nmcli:
+        type: team-slave
+        conn_name: '{{ item.conn_name }}'
+        ifname: '{{ item.ifname }}'
+        master: '{{ item.master }}'
+        state: present
+      with_items:
+        - '{{ nmcli_team_slave }}'
+
+    - name: inter lan vlans config
+      nmcli:
+        conn_name: "{{ item }}"
+        state: absent
+      with_items:
+        - "System eth1"
+        - vlan100
+        - vlan200
+        
+
+    - name: create vlans
+      nmcli:
+        type: vlan
+        conn_name: vlan{{ item }}
+        vlandev: eth3
+        vlanid: "{{ item }}"
+        ip4: "10.0.30.{{ item }}/24"
+        state: present
+        autoconnect: yes
+      with_items:
+        - 100
+        - 200
+      when: (ansible_hostname == 'centralRouter')
+
+
+
+
+
+
+
+- hosts: net
+  name: net vlans config
+  become: true
+  gather_facts: false
+  vars_files: vars/vars.yml
+  tasks:
+
+
+    - name: disable team slave connections and old master conn
+      nmcli:
+        conn_name: "{{ item }}"
+        state: absent
+      with_items:
+        - "System eth1"
+        - vlan{{ vlanid }}
+
+    - name: create vlans
+      nmcli:
+        type: vlan
+        conn_name: vlan{{ vlanid }}
+        vlandev: eth1
+        vlanid: "{{ vlanid }}"
+        ip4: '{{ host_ip }}'
+        state: present
+        autoconnect: yes
