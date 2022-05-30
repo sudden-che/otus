@@ -115,14 +115,6 @@
   tasks:
 
 
-    - name: disable team slave connections and old master conn
-      nmcli:
-        conn_name: "{{ item }}"
-        state: absent
-      with_items:
-        - "System eth1"
-        - vlan{{ vlanid }}
-
     - name: create vlans
       nmcli:
         type: vlan
