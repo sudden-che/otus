@@ -45,6 +45,7 @@
       yum: 
         name: 
           - teamd
+          - ethtool
           - NetworkManager-team
         state: latest
 
@@ -74,6 +75,9 @@
         state: present
         autoconnect: yes
 
+    - name: modify team runner
+      shell: "nmcli connection modify external team.runner activebackup && nmcli connection modify team0 team.link-watchers 'name=ethtool'"
+      
     - name: Try nmcli add teams-slave
       nmcli:
         type: team-slave
