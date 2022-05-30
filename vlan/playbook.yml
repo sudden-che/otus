@@ -47,14 +47,14 @@
         value: '1'
         state: present
 
-    - name: disable team slave connections and old master conn
+    - name: flush old master conf
       nmcli:
         conn_name: "{{ item }}"
         state: absent
       with_items:
         - "System eth1"
         - "System eth2"
- #       - "external"
+        - "external"
 
     - name: team create master
       nmcli:
@@ -77,17 +77,17 @@
 # conf vlans
 
 
-    - name: inter lan vlans config
+    - name: flush old conf
       nmcli:
         conn_name: "{{ item }}"
         state: absent
       with_items:
-        - "System eth1"
+      
         - vlan100
         - vlan200
         
 
-    - name: disable team slave connections and old master conn
+    - name: flush eth3 conf
       nmcli:
         conn_name: "System eth3"
         state: absent
@@ -107,8 +107,8 @@
         - 200
       when: (ansible_hostname == 'centralRouter')
 
-    - name: restart connections nmcli
-      shell: "nmcli networking off && nmcli networking on;"
+    #- name: restart connections nmcli
+     # shell: "nmcli networking off && nmcli networking on;"
 
 - hosts: net
   name: net vlans config
