@@ -13,7 +13,7 @@
         - python
         - python-psycopg2
         - wget
-      state: latest
+      state: present
       update_cache: true
     tags: first_run
 
@@ -22,12 +22,18 @@
 #      name: - pip
 #            - setuptools
 #      extra_args: --upgrade
-      
+  - name: install pg repo
+    dnf:
+      name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+      state: present
+      validate_certs: no
+      disable_gpg_check: yes
+
   - name: install postgres
     dnf:
       name: 
-        - postgresql
-        - postgresql-server
+        - postgresql13
+        - postgresql13-server
       state: present
     notify: start postgres
 
@@ -35,15 +41,17 @@
     stat:
       path: "/var/lib/pgsql/data/pg_hba.conf"
     register: postgres_data
+    
 
   - name: "Initialize PostgreSQL"
-    shell: "postgresql-setup initdb"
+    shell: "postgresql-13-setup initdb || /bin/true" 
     when: not postgres_data.stat.exists
+          
 
   - name: "Start and enable services"
     service: "name={{ item }} state=started enabled=yes"
     with_items:
-      - postgresql
+      - postgresql-13
 
 
   - name: "Create app database"
@@ -71,6 +79,48 @@
     become: yes
     become_user: postgres
 
+  - name: create table 1
+    postgresql_table:
+      db: "{{ db_name }}"
+      name: table1_{{ ansible_hostname }}
+      columns: 
+        - id serial
+        - name text
+        - price decimal
+    become_user: postgres
+    tags: db
+
+  - name: create table 2
+    postgresql_table: 
+      db: "{{ db_name }}"
+      name: table2_{{ ansible_hostname }}
+      columns: 
+        - id serial
+        - name text
+        - price decimal
+    become_user: postgres
+    tags: db
+  
+  - name: Create publication on host1 for table 1
+    postgresql_publication:
+      db: "{{ db_name }}"
+      name: "{{ ansible_hostname }}_pub"
+      tables:
+        - "table1_{{ ansible_hostname }}"
+    become_user: postgres
+    when: ( ansible_hostname == 'psql1' )
+    tags: db
+
+  - name: Create publication on host2 for table 2
+    postgresql_publication:
+      db: "{{ db_name }}"
+      name: "{{ ansible_hostname }}_pub"
+      tables:
+        - "table2_{{ ansible_hostname }}"
+    become_user: postgres
+    when: ( ansible_hostname == 'psql2' )
+    tags: db
+
 #  - name: "Allow md5 connection for the db user"
 #    postgresql_pg_hba:
 #      dest: "~/data/pg_hba.conf"
@@ -82,3 +132,4 @@
 #    become: yes
 #    become_user: postgres
 #    notify: restart postgres
+

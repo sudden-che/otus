@@ -16,10 +16,10 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "ansible" do |ansible|
       ansible.playbook = "provision.yml"
-      #ansible.inventory_path = "inventory/hosts"
+      #ansible.inventory_path = "inventory"
       ansible.host_key_checking = "false"
       #ansible.limit = "all"
-      #ansible.tags = "slave"
+      #ansible.tags = "db"
       #ansible.verbose = "-vvv"
     end 
   

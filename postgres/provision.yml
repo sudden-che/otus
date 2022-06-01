@@ -1,7 +1,7 @@
 ---
 - name: postgresql
   hosts: all
-  gather_facts: false
+  gather_facts: true
   become: true
   roles: 
     - postgresql

@@ -3,11 +3,11 @@
 
 - name: start postgres
   service:
-    name: postgresql-server
+    name: postgresql-13
     state: started
 
 
 - name: restart postgres
   service:
-    name: postgresql-server
+    name: postgresql-13
     state: restarted
