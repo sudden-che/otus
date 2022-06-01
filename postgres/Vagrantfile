@@ -1,0 +1,28 @@
+
+Vagrant.configure("2") do |config|
+    config.vm.box = "centos/7"
+    
+    config.vm.provider "virtualbox" do |v|
+        v.memory = 1024
+        v.cpus = 1
+    end
+
+    (1..4).each do |i|
+      config.vm.define "psql#{i}" do |psql|
+        psql.vm.network "private_network", ip: "192.168.50.#{i}0"        
+        psql.vm.hostname = "psql#{i}"
+      end
+    end
+
+    config.vm.provision "ansible" do |ansible|
+      ansible.playbook = "provision.yml"
+      #ansible.inventory_path = "inventory/hosts"
+      ansible.host_key_checking = "false"
+      #ansible.limit = "all"
+      #ansible.tags = "slave"
+      #ansible.verbose = "-vvv"
+    end 
+  
+end
+
+
