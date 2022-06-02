@@ -1,0 +1,12 @@
+Log created: 2022-04-27T12:20:54.938379000Z
+Process ID:  594330 (0x9119a)
+Parent PID:  1 (0x1)
+Executable:  /usr/lib/virtualbox/VBoxHeadless
+Arg[0]: /usr/lib/virtualbox/VBoxHeadless
+Arg[1]: --comment
+Arg[2]: 21_pxeserver_1650554013091_98172
+Arg[3]: --startvm
+Arg[4]: 00e94b1d-50e4-416e-87c3-5b2b8cfe8ab0
+Arg[5]: --vrde
+Arg[6]: config
+AddRef: illegal refcnt=3221225469 state=2

@@ -22,10 +22,12 @@ chown borg:borg /var/backup/
 
 
 
-su - borg
 touch /home/borg/.ssh/authorized_keys
 chmod 700 /home/borg/.ssh
 chmod 600 /home/borg/.ssh/authorized_keys
 
+
+chown borg:borg -R /home/borg/.ssh
+
 # remove lost+found
-rm -f /var/backup/*
+rm -Rf /var/backup/*

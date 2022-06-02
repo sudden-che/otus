@@ -3,7 +3,7 @@ ansible_all_ipv4_addresses:
 - 192.168.50.10
 - 10.0.2.15
 ansible_all_ipv6_addresses:
-- fe80::a00:27ff:feac:569b
+- fe80::a00:27ff:fe82:71ef
 - fe80::5054:ff:fe4d:77d3
 ansible_apparmor:
   status: disabled
@@ -24,16 +24,16 @@ ansible_cmdline:
 ansible_date_time:
   date: '2022-06-01'
   day: '01'
-  epoch: '1654094926'
-  hour: '14'
-  iso8601: '2022-06-01T14:48:46Z'
-  iso8601_basic: 20220601T144846309530
-  iso8601_basic_short: 20220601T144846
-  iso8601_micro: '2022-06-01T14:48:46.309530Z'
-  minute: '48'
+  epoch: '1654114582'
+  hour: '20'
+  iso8601: '2022-06-01T20:16:22Z'
+  iso8601_basic: 20220601T201622665253
+  iso8601_basic_short: 20220601T201622
+  iso8601_micro: '2022-06-01T20:16:22.665253Z'
+  minute: '16'
   month: '06'
-  second: '46'
-  time: '14:48:46'
+  second: '22'
+  time: '20:16:22'
   tz: UTC
   tz_offset: '+0000'
   weekday: Wednesday
@@ -55,9 +55,9 @@ ansible_default_ipv6: {}
 ansible_device_links:
   ids:
     sda:
-    - ata-VBOX_HARDDISK_VBcdc4cc5d-f0d62f31
+    - ata-VBOX_HARDDISK_VB115d63b6-e6fb1918
     sda1:
-    - ata-VBOX_HARDDISK_VBcdc4cc5d-f0d62f31-part1
+    - ata-VBOX_HARDDISK_VB115d63b6-e6fb1918-part1
   labels: {}
   masters: {}
   uuids:
@@ -69,7 +69,7 @@ ansible_devices:
     host: 'IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)'
     links:
       ids:
-      - ata-VBOX_HARDDISK_VBcdc4cc5d-f0d62f31
+      - ata-VBOX_HARDDISK_VB115d63b6-e6fb1918
       labels: []
       masters: []
       uuids: []
@@ -79,7 +79,7 @@ ansible_devices:
         holders: []
         links:
           ids:
-          - ata-VBOX_HARDDISK_VBcdc4cc5d-f0d62f31-part1
+          - ata-VBOX_HARDDISK_VB115d63b6-e6fb1918-part1
           labels: []
           masters: []
           uuids:
@@ -96,6 +96,7 @@ ansible_devices:
     scheduler_mode: noop
     sectors: '83886080'
     sectorsize: '512'
+    serial: VB115d63b6
     size: 40.00 GB
     support_discard: '0'
     vendor: ATA
@@ -113,29 +114,27 @@ ansible_dns:
   search:
   - local
 ansible_domain: ''
-ansible_effective_group_id: 1000
-ansible_effective_user_id: 1000
+ansible_effective_group_id: 0
+ansible_effective_user_id: 0
 ansible_env:
-  HOME: /home/vagrant
+  HOME: /root
   LANG: en_US.UTF-8
-  LESSOPEN: '||/usr/bin/lesspipe.sh %s'
-  LOGNAME: vagrant
+  LOGNAME: root
   LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:'
   MAIL: /var/mail/vagrant
-  PATH: /usr/local/bin:/usr/bin
+  PATH: /sbin:/bin:/usr/sbin:/usr/bin
   PWD: /home/vagrant
-  SELINUX_LEVEL_REQUESTED: ''
-  SELINUX_ROLE_REQUESTED: ''
-  SELINUX_USE_CURRENT_RANGE: ''
   SHELL: /bin/bash
-  SHLVL: '2'
-  SSH_CLIENT: 10.0.2.2 44906 22
-  SSH_CONNECTION: 10.0.2.2 44906 10.0.2.15 22
-  SSH_TTY: /dev/pts/1
-  TERM: xterm
-  USER: vagrant
-  XDG_RUNTIME_DIR: /run/user/1000
-  XDG_SESSION_ID: '36'
+  SHLVL: '1'
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-lzxtkwocmjmjtntlwantaczggdjjwxsl ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1654114596.098968-2021595-143168093751229/AnsiballZ_setup.py
+  SUDO_GID: '1000'
+  SUDO_UID: '1000'
+  SUDO_USER: vagrant
+  TERM: screen
+  USER: root
+  USERNAME: root
+  XDG_SESSION_ID: '4'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -275,10 +274,10 @@ ansible_eth1:
     netmask: 255.255.255.0
     network: 192.168.50.0
   ipv6:
-  - address: fe80::a00:27ff:feac:569b
+  - address: fe80::a00:27ff:fe82:71ef
     prefix: '64'
     scope: link
-  macaddress: 08:00:27:ac:56:9b
+  macaddress: 08:00:27:82:71:ef
   module: e1000
   mtu: 1500
   pciid: '0000:00:08.0'
@@ -299,7 +298,7 @@ ansible_interfaces:
 - lo
 - eth1
 - eth0
-ansible_is_chroot: true
+ansible_is_chroot: false
 ansible_iscsi_iqn: ''
 ansible_kernel: 3.10.0-1127.el7.x86_64
 ansible_kernel_version: '#1 SMP Tue Mar 31 23:36:51 UTC 2020'
@@ -377,16 +376,16 @@ ansible_lo:
 ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
-ansible_machine_id: e0be18aca9ef3c4ab3c392ab0bc7b5a8
-ansible_memfree_mb: 234
+ansible_machine_id: 7a4821b0426be34f80f717f347bd2c43
+ansible_memfree_mb: 763
 ansible_memory_mb:
   nocache:
-    free: 822
-    used: 168
+    free: 864
+    used: 126
   real:
-    free: 234
+    free: 763
     total: 990
-    used: 756
+    used: 227
   swap:
     cached: 0
     free: 2047
@@ -394,18 +393,18 @@ ansible_memory_mb:
     used: 0
 ansible_memtotal_mb: 990
 ansible_mounts:
-- block_available: 9573935
+- block_available: 9701911
   block_size: 4096
   block_total: 10480385
-  block_used: 906450
+  block_used: 778474
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20941529
+  inode_available: 20943274
   inode_total: 20971008
-  inode_used: 29479
+  inode_used: 27734
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 39214837760
+  size_available: 39739027456
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: psql1
@@ -433,8 +432,8 @@ ansible_processor_count: 1
 ansible_processor_threads_per_core: 1
 ansible_processor_vcpus: 1
 ansible_product_name: VirtualBox
-ansible_product_serial: NA
-ansible_product_uuid: NA
+ansible_product_serial: '0'
+ansible_product_uuid: 7A4821B0-426B-E34F-80F7-17F347BD2C43
 ansible_product_version: '1.2'
 ansible_python:
   executable: /usr/bin/python
@@ -453,8 +452,8 @@ ansible_python:
   - final
   - 0
 ansible_python_version: 2.7.5
-ansible_real_group_id: 1000
-ansible_real_user_id: 1000
+ansible_real_group_id: 0
+ansible_real_user_id: 0
 ansible_selinux:
   config_mode: enforcing
   mode: enforcing
@@ -463,23 +462,59 @@ ansible_selinux:
   type: targeted
 ansible_selinux_python_present: true
 ansible_service_mgr: systemd
-ansible_ssh_host_key_ecdsa_public: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCcIUgsSh9S/36k/3l4KXNW5PJPgJOLH0WxxIK1dQrNzV//QI3QAWtix+e2rCA8ZlxrKle0g5S08A/14Yfw/QJc=
-ansible_ssh_host_key_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAIM6lZ3nTYZM7qSfrLdwcnzWVYzN/GbD892tKZYbo/p95
-ansible_ssh_host_key_rsa_public: AAAAB3NzaC1yc2EAAAADAQABAAABAQC9cw6ii2IZw/QhbvhVfvr6SNEWJk+mhRYus2nK9Ts/hUkDHcpRsEw+Gs8VXhkixQ0cagXP9Y80+cy6AYV4iHGDRZPyWi6ZgjoJ6HM0UmbWJKYHKBGMESRoTJr0Lc30AMuXqEkxzdaelBC+g/Pm2J67GfRbDc0E7WmBpDKkXl2LTy2BKVVuwhOHJBnRj4y76Bc2MJy8X1IjC8nQJgmRDfR1l/ok0Jouw2t2+7N6OA18pKBk76BLg/370yO/qUYgHA4PraPAj1DMWdGLEsHOlLjqKyTJJ62VwUR/B6eHHcaysy52WdSaqJAsQ7YWTEubGx7bQEio5UHDq2CPV5fr4HTB
+ansible_ssh_host_key_ecdsa_public: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKI0kMEck+pqEOkkMERCcJWnyjOHwsCsY3Zehmh+HsZZn9HYb/+b1Hmc++Ll3PJfwuViHIk0jJfCD5Rq3g1Of8k=
+ansible_ssh_host_key_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAIOqqzLLZ+1oGURmOjf5FZWDWgawUWSCxvD2SlUHbda0G
+ansible_ssh_host_key_rsa_public: AAAAB3NzaC1yc2EAAAADAQABAAABAQC97jc3RmjO6799wMPja8BR24lPnUCyAH0dS7CaC63N1q2i+GY/w/TC9ONu0prz1yyMhumxg3JSvKCrwnl6g1HrAT/vwZjRDvWpS9GZsMCKX9BjvBcR7aHdOooVuw8DK4hbdNjHVCj6AcjvQ6hRh4kTNmrsBlDOkg85bJ8bAQUdkhxL7szAVmOq6gUzI+wsZi2g7vF/QOi806S5Dis/KUEkPaqm8mcqxBgg2B3cO7fQFlzTCwIKTFQeSat/N+eHGhOKGnjr5qO1GyFcMOI9rp9F/2imbgGExV203nMsvnjbLbbLwXbAgHvCfVNzdqQwRsCkRb5VX6ERG8ebP8HEAokJ
 ansible_swapfree_mb: 2047
 ansible_swaptotal_mb: 2047
 ansible_system: Linux
 ansible_system_capabilities:
-- ''
+- cap_chown
+- cap_dac_override
+- cap_dac_read_search
+- cap_fowner
+- cap_fsetid
+- cap_kill
+- cap_setgid
+- cap_setuid
+- cap_setpcap
+- cap_linux_immutable
+- cap_net_bind_service
+- cap_net_broadcast
+- cap_net_admin
+- cap_net_raw
+- cap_ipc_lock
+- cap_ipc_owner
+- cap_sys_module
+- cap_sys_rawio
+- cap_sys_chroot
+- cap_sys_ptrace
+- cap_sys_pacct
+- cap_sys_admin
+- cap_sys_boot
+- cap_sys_nice
+- cap_sys_resource
+- cap_sys_time
+- cap_sys_tty_config
+- cap_mknod
+- cap_lease
+- cap_audit_write
+- cap_audit_control
+- cap_setfcap
+- cap_mac_override
+- cap_mac_admin
+- cap_syslog
+- '35'
+- 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 65929
-ansible_user_dir: /home/vagrant
-ansible_user_gecos: vagrant
-ansible_user_gid: 1000
-ansible_user_id: vagrant
+ansible_uptime_seconds: 56
+ansible_user_dir: /root
+ansible_user_gecos: root
+ansible_user_gid: 0
+ansible_user_id: root
 ansible_user_shell: /bin/bash
-ansible_user_uid: 1000
+ansible_user_uid: 0
 ansible_userspace_architecture: x86_64
 ansible_userspace_bits: '64'
 ansible_virtualization_role: guest

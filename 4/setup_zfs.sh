@@ -1,7 +1,7 @@
 #!/bin/bash
 
 yum install -y yum-utils
-
+yum install dnf -y
 sudo yum -y install https://zfsonlinux.org/epel/zfs-release.el8_4.noarch.rpm 
 source /etc/os-release
 dnf install https://zfsonlinux.org/epel/zfs-release.el${VERSION_ID/./_}.noarch.rpm
