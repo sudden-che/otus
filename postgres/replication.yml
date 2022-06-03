@@ -6,7 +6,7 @@
       include_vars: 
         file: postgresql/vars/main.yml
     - name: create subscribtions 
-      include: postgresql/subscribe.yml
+      include: postgresql/tasks/subscribe.yml
       tags: db, sub, sub3
 
 
