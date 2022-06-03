@@ -1,0 +1,32 @@
+  - name: install epel
+    yum: 
+      name: 
+        - epel-release
+      state: present
+
+  - name: install scripts    
+    yum: 
+      name: 
+        - dnf
+        - python
+        - python-psycopg2
+        - python-ipaddress
+        - wget
+      state: present
+      update_cache: true
+    tags: first_run
+
+  - name: install pg repo
+    dnf:
+      name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+      state: present
+      validate_certs: no
+      disable_gpg_check: yes
+
+  - name: install postgres
+    dnf:
+      name: 
+        - postgresql13
+        - postgresql13-server
+      state: present
+    notify: start postgres

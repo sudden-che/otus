@@ -1,7 +1,8 @@
 ---
 - name: postgresql
-  hosts: all
+  hosts: all, !psql4
   gather_facts: true
   become: true
   roles: 
     - postgresql
+

@@ -24,16 +24,16 @@ ansible_cmdline:
 ansible_date_time:
   date: '2022-06-03'
   day: '03'
-  epoch: '1654259541'
-  hour: '12'
-  iso8601: '2022-06-03T12:32:21Z'
-  iso8601_basic: 20220603T123221064596
-  iso8601_basic_short: 20220603T123221
-  iso8601_micro: '2022-06-03T12:32:21.064596Z'
-  minute: '32'
+  epoch: '1654269391'
+  hour: '15'
+  iso8601: '2022-06-03T15:16:31Z'
+  iso8601_basic: 20220603T151631143609
+  iso8601_basic_short: 20220603T151631
+  iso8601_micro: '2022-06-03T15:16:31.143609Z'
+  minute: '16'
   month: '06'
-  second: '21'
-  time: '12:32:21'
+  second: '31'
+  time: '15:16:31'
   tz: UTC
   tz_offset: '+0000'
   weekday: Friday
@@ -126,15 +126,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-ohwixfqpjqxyrxswdpmdgmctegidltst ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1654259558.2393064-2315675-253151358674728/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-zikhtbcqjnygsepwzdvyvexnenuslvuz ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1654269408.481709-2400512-19835273781249/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
   TERM: xterm
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '14'
+  XDG_SESSION_ID: '26'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -377,15 +377,15 @@ ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
 ansible_machine_id: 7a4821b0426be34f80f717f347bd2c43
-ansible_memfree_mb: 624
+ansible_memfree_mb: 555
 ansible_memory_mb:
   nocache:
-    free: 852
-    used: 138
+    free: 845
+    used: 145
   real:
-    free: 624
+    free: 555
     total: 990
-    used: 366
+    used: 435
   swap:
     cached: 0
     free: 2047
@@ -393,18 +393,18 @@ ansible_memory_mb:
     used: 0
 ansible_memtotal_mb: 990
 ansible_mounts:
-- block_available: 9515977
+- block_available: 9515193
   block_size: 4096
   block_total: 10480385
-  block_used: 964408
+  block_used: 965192
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20939994
+  inode_available: 20939992
   inode_total: 20971008
-  inode_used: 31014
+  inode_used: 31016
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 38977441792
+  size_available: 38974230528
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: psql1
@@ -508,7 +508,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 3115
+ansible_uptime_seconds: 12965
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0

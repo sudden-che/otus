@@ -1,0 +1,36 @@
+- name: create subscribtions must be run then all host are provisioned
+  hosts: all
+  become: true
+  tasks: 
+    - name: include vars
+      include_vars: 
+        file: postgresql/vars/main.yml
+    - name: create subscribtions 
+      include: postgresql/subscribe.yml
+      tags: db, sub, sub3
+
+
+- name: psql4
+  hosts: psql4
+  become: true
+  tasks:
+    - name: include vars
+      include_vars: 
+        file: postgresql/vars/main.yml
+
+    - name: psql4 tasks
+      include: postgresql/tasks/psql4.yml
+
+  handlers:
+    - name: start postgres
+      service:
+        name: postgresql-13
+        state: started
+
+    - name: restart postgres
+      service:
+        name: postgresql-13
+        state: restarted
+
+
+    

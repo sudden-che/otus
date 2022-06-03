@@ -1,36 +1,6 @@
 ---
-  - name: install epel
-    yum: 
-      name: 
-        - epel-release
-      state: present
-
-  - name: install scripts    
-    yum: 
-      name: 
-        - dnf
-        - python
-        - python-psycopg2
-        - python-ipaddress
-        - wget
-      state: present
-      update_cache: true
-    tags: first_run
-
-  - name: install pg repo
-    dnf:
-      name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-      state: present
-      validate_certs: no
-      disable_gpg_check: yes
-
-  - name: install postgres
-    dnf:
-      name: 
-        - postgresql13
-        - postgresql13-server
-      state: present
-    notify: start postgres
+  - name: install packages
+    include: install_packages.yml
 
   - name: "Find out if PostgreSQL is initialized"
     stat:
@@ -40,7 +10,6 @@
 
   - name: "Initialize PostgreSQL"
     shell: "postgresql-13-setup initdb"
-    # || /bin/true" 
     when: not postgres_data.stat.exists
           
 
@@ -84,8 +53,6 @@
     include: create_publications.yml
     tags: db
 
-
-
   - name: add conn enable via string
     blockinfile:
       path: "{{ pg_conf }}"
@@ -95,8 +62,6 @@
 
       state: present
     tags: db, sub, repl
-    #   - db
-    #   - sub
 
   - name: add conn enable via string
     lineinfile:
@@ -111,7 +76,7 @@
       path: "{{ postgres_conf }}"
       line: "listen_addresses = 'localhost, {{ ansible_eth1.ipv4.address }}'"
       state: present
-      tags: db, sub, repl
+    tags: db, sub, repl
         
   - name: change postgres pwd
     postgresql_user: 
@@ -125,10 +90,10 @@
       name: postgresql-13
       state: restarted
     tags: db, sub, repl
-     
-  - name: create subscribtions 
-    include: subscribe.yml
-    tags: db, sub, sub3
+  # subscibtions    
+  # - name: create subscribtions 
+  #   include: subscribe.yml
+  #   tags: db, sub, sub3
 
   - name: creage pgpass
     lineinfile:
@@ -141,9 +106,27 @@
     tags: db, sub, repl
     when: (ansible_hostname == 'psql4')
 
-  - name: create replication
-    shell: "PGPASSWORD={{ db_password }} pg_basebackup -h 192.168.50.30 -p 5432  -P -w -v -R -X stream -C -S pgstandby -D /var/lib/pgsql/13/main"
+  - name: configure mod replica host3 
+    replace:
+      path: "{{ postgres_conf }}"
+      regexp: "wal_level = logical"
+      replace: "wal_level = replica"
+    tags: repl
+    when: ansible_hostname == 'psql3'
+    notify: restart postgres
+
+  - name: stop pgsql psql4
+    service:
+      name: postgresql-13
+      state: stopped
+    become: yes
+    when: (ansible_hostname == 'psql4')
+    
+    
+  - name: create replication on psql4
+    shell: "PGPASSWORD={{ db_password }} pg_basebackup -h 192.168.50.30 -p 5432  -P -w -v -R -X stream -C -S pgstandby -D /var/lib/pgsql/13/data"
     tags: db, sub, repl
     become_user: postgres
     become: yes
     when: (ansible_hostname == 'psql4')
+    notify: start postgres

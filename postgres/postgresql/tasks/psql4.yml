@@ -1,0 +1,24 @@
+---
+  - name: install packages
+    include: install_packages.yml
+
+  - name: creage pgpass
+    lineinfile:
+      line: "192.168.50.30:5432:{{ db_name }}:{{ db_user }}:{{ db_password }}"
+      path: ~/.pgpass
+      state: present
+      mode: 0600
+      create: yes
+    become_user: postgres
+    tags: db, sub, repl
+    when: (ansible_hostname == 'psql4')
+    
+  - name: create replication on psql4
+    shell: "PGPASSWORD={{ db_password }} pg_basebackup -h 192.168.50.30 -p 5432  -P -w -v -R -X stream -C -S pg_standby -D /var/lib/pgsql/13/data " # || /bin/true
+    tags: db, sub, repl
+    become_user: postgres
+    become: yes
+    when: (ansible_hostname == 'psql4')
+    notify: start postgres
+
+

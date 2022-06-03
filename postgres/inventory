@@ -10,7 +10,7 @@ pgsql_id=[1:4]
 192.168.50.10 ansible_ssh_private_key_file=.vagrant/machines/psql1/virtualbox/private_key pgsql_id=1
 192.168.50.20 ansible_ssh_private_key_file=.vagrant/machines/psql2/virtualbox/private_key pgsql_id=2
 192.168.50.30 ansible_ssh_private_key_file=.vagrant/machines/psql3/virtualbox/private_key pgsql_id=3
-192.168.50.40 ansible_ssh_private_key_file=.vagrant/machines/psql4/virtualbox/private_key pgsql_id=4
+psql4 ansible_host=192.168.50.40 ansible_ssh_private_key_file=.vagrant/machines/psql4/virtualbox/private_key pgsql_id=4
 
 [psqlr:vars]
 ansible_ssh_common_args="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
