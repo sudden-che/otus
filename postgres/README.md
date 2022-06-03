@@ -17,7 +17,7 @@ psql4: <- репликация  <- psql3
 
 результаты работы:
 
-![psql1-psql2.png](https://github.com/sudden-che/otus/tree/main/postgres/img/psql1-psql2.png)
-![psql2-psql1.png](https://github.com/sudden-che/otus/tree/main/postgres/img/psql2-psql1.png)
-![psql4.png](https://github.com/sudden-che/otus/tree/main/postgres/img/psql4.png)
+![psql1-psql2.png](https://github.com/sudden-che/otus/blob/main/postgres/img/psql1-psql2%20.png)
+![psql2-psql1.png](https://github.com/sudden-che/otus/blob/main/postgres/img/psql2-psql1%20.png)
+![psql4.png](https://github.com/sudden-che/otus/blob/main/postgres/img/psql4.png)
 
