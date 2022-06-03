@@ -13,9 +13,11 @@ psql3: подписки на psql1(таблица1) , psql2 (таблица2)
 psql4: <- репликация  <- psql3
 
 
-для корректного порядка развертывания и настройки подписок, после vagrant up нужно дополнтилеьно запустить плейбук subscribe.yml
+для корректного порядка развертывания и настройки подписок, после vagrant up нужно дополнтилеьно запустить плейбук replication.yml
 
 результаты работы:
 
-![mysql_repl.png](https://github.com/sudden-che/otus/tree/main/mysql/mysql_repl.png)
+![psql1-psql2.png](https://github.com/sudden-che/otus/tree/main/postgres/img/psql1-psql2.png)
+![psql2-psql1.png](https://github.com/sudden-che/otus/tree/main/postgres/img/psql2-psql1.png)
+![psql4.png](https://github.com/sudden-che/otus/tree/main/postgres/img/psql4.png)
 
