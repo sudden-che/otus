@@ -1,4 +1,7 @@
 ---
-db_user: puser
+db_user: postgres
 db_password: p@sww0rt
 db_name: pdb_otus
+pg_conf: "/var/lib/pgsql/13/data/pg_hba.conf"
+postgres_conf: "/var/lib/pgsql/13/data/postgresql.conf"
+loc_net: "192.168.50.0/24"

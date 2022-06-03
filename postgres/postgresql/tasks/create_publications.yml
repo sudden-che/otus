@@ -1,0 +1,20 @@
+
+  - name: Create publication on host1 for table 1
+    postgresql_publication:
+      db: "{{ db_name }}"
+      name: "{{ ansible_hostname }}_pub"
+      tables:
+        - "table1_psql1"
+    become_user: postgres
+    when: ( ansible_hostname == 'psql1' )
+    tags: db
+
+  - name: Create publication on host2 for table 2
+    postgresql_publication:
+      db: "{{ db_name }}"
+      name: "{{ ansible_hostname }}_pub"
+      tables:
+        - "table2_psql2"
+    become_user: postgres
+    when: ( ansible_hostname == 'psql2' )
+    tags: db

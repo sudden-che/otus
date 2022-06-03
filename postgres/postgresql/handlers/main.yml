@@ -6,8 +6,8 @@
     name: postgresql-13
     state: started
 
-
 - name: restart postgres
   service:
     name: postgresql-13
     state: restarted
+

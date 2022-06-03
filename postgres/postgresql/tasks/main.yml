@@ -8,20 +8,15 @@
   - name: install scripts    
     yum: 
       name: 
-#        - python-pip
         - dnf
         - python
         - python-psycopg2
+        - python-ipaddress
         - wget
       state: present
       update_cache: true
     tags: first_run
 
-#  - name: install pg_pyth_libarys
-#    pip:
-#      name: - pip
-#            - setuptools
-#      extra_args: --upgrade
   - name: install pg repo
     dnf:
       name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
@@ -39,12 +34,13 @@
 
   - name: "Find out if PostgreSQL is initialized"
     stat:
-      path: "/var/lib/pgsql/data/pg_hba.conf"
+      path: "{{ pg_conf }}"
     register: postgres_data
     
 
   - name: "Initialize PostgreSQL"
-    shell: "postgresql-13-setup initdb || /bin/true" 
+    shell: "postgresql-13-setup initdb"
+    # || /bin/true" 
     when: not postgres_data.stat.exists
           
 
@@ -61,28 +57,10 @@
     become: yes
     become_user: postgres
 
-  - name: "Create db user"
-    postgresql_user:
-      state: present
-      name: "{{ db_user }}"
-      password: "{{ db_password }}"
-    become: yes
-    become_user: postgres
-
-  - name: "Grant db user access to app db"
-    postgresql_privs:
-      type: database
-      database: "{{ db_name }}"
-      roles: "{{ db_user }}"
-      grant_option: no
-      privs: all
-    become: yes
-    become_user: postgres
-
   - name: create table 1
     postgresql_table:
       db: "{{ db_name }}"
-      name: table1_{{ ansible_hostname }}
+      name: table1_psql1
       columns: 
         - id serial
         - name text
@@ -93,43 +71,79 @@
   - name: create table 2
     postgresql_table: 
       db: "{{ db_name }}"
-      name: table2_{{ ansible_hostname }}
+      name: table2_psql2
       columns: 
         - id serial
         - name text
         - price decimal
     become_user: postgres
     tags: db
-  
-  - name: Create publication on host1 for table 1
-    postgresql_publication:
-      db: "{{ db_name }}"
-      name: "{{ ansible_hostname }}_pub"
-      tables:
-        - "table1_{{ ansible_hostname }}"
-    become_user: postgres
-    when: ( ansible_hostname == 'psql1' )
+
+# publications
+  - name: create publications
+    include: create_publications.yml
     tags: db
 
-  - name: Create publication on host2 for table 2
-    postgresql_publication:
-      db: "{{ db_name }}"
-      name: "{{ ansible_hostname }}_pub"
-      tables:
-        - "table2_{{ ansible_hostname }}"
+
+
+  - name: add conn enable via string
+    blockinfile:
+      path: "{{ pg_conf }}"
+      block: |
+       host    {{ db_name }}            {{ db_user }}      {{ loc_net }}       md5
+       host    replication            {{ db_user }}      {{ loc_net }}       md5
+
+      state: present
+    tags: db, sub, repl
+    #   - db
+    #   - sub
+
+  - name: add conn enable via string
+    lineinfile:
+      path: "{{ postgres_conf }}"
+      line: "wal_level = logical"
+      state: present
+    tags: 
+       - db
+        
+  - name: add conn enable via string
+    lineinfile:
+      path: "{{ postgres_conf }}"
+      line: "listen_addresses = 'localhost, {{ ansible_eth1.ipv4.address }}'"
+      state: present
+      tags: db, sub, repl
+        
+  - name: change postgres pwd
+    postgresql_user: 
+      name: postgres
+      password: "{{ db_password }}"
     become_user: postgres
-    when: ( ansible_hostname == 'psql2' )
     tags: db
 
-#  - name: "Allow md5 connection for the db user"
-#    postgresql_pg_hba:
-#      dest: "~/data/pg_hba.conf"
-#      contype: host
-#      databases: all
-#      method: md5
-#      users: "{{ db_user }}"
-#      create: true
-#    become: yes
-#    become_user: postgres
-#    notify: restart postgres
+  - name: restart postgres
+    service:
+      name: postgresql-13
+      state: restarted
+    tags: db, sub, repl
+     
+  - name: create subscribtions 
+    include: subscribe.yml
+    tags: db, sub, sub3
 
+  - name: creage pgpass
+    lineinfile:
+      line: "192.168.50.30:5432:{{ db_name }}:{{ db_user }}:{{ db_password }}"
+      path: ~/.pgpass
+      state: present
+      mode: 0600
+      create: yes
+    become_user: postgres
+    tags: db, sub, repl
+    when: (ansible_hostname == 'psql4')
+
+  - name: create replication
+    shell: "PGPASSWORD={{ db_password }} pg_basebackup -h 192.168.50.30 -p 5432  -P -w -v -R -X stream -C -S pgstandby -D /var/lib/pgsql/13/main"
+    tags: db, sub, repl
+    become_user: postgres
+    become: yes
+    when: (ansible_hostname == 'psql4')

@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
       #ansible.inventory_path = "inventory"
       ansible.host_key_checking = "false"
       #ansible.limit = "all"
-      #ansible.tags = "db"
+      ansible.tags = "sub"
       #ansible.verbose = "-vvv"
     end 
   

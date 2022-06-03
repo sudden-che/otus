@@ -1,0 +1,72 @@
+
+  - name: create subscription to table 2 from psql1
+    community.postgresql.postgresql_subscription:
+        db: "{{ db_name }}"
+        name: psql2_pub_subs
+        state: present
+        publications: psql2_pub
+        owner: "{{ db_user }}"
+        connparams:
+          host: 192.168.50.20
+          port: 5432
+          user: "{{ db_user }}"
+          password: "{{ db_password }}"
+          dbname: "{{ db_name }}"
+          
+    become_user: postgres
+    when: ( ansible_hostname == 'psql1' )
+    tags: db, sub
+
+  - name: create subscription to table 1 from psql2
+    community.postgresql.postgresql_subscription:
+        db: "{{ db_name }}"
+        name: psql1_pub_subs
+        state: present
+        publications: psql1_pub
+        owner: "{{ db_user }}"
+        connparams:
+          host: 192.168.50.10
+          port: 5432
+          user: "{{ db_user }}"
+          password: "{{ db_password }}"
+          dbname: "{{ db_name }}"
+          
+    become_user: postgres
+    when: ( ansible_hostname == 'psql2' )
+    tags: db, sub
+
+  - name: create subscription to table 1 from psql3
+    community.postgresql.postgresql_subscription:
+        db: "{{ db_name }}"
+        name: psql3_pub_subs
+        state: present
+        publications: psql1_pub
+        owner: "{{ db_user }}"
+        connparams:
+          host: 192.168.50.10
+          port: 5432
+          user: "{{ db_user }}"
+          password: "{{ db_password }}"
+          dbname: "{{ db_name }}"
+          
+    become_user: postgres
+    when: ( ansible_hostname == 'psql3' )
+    tags: db, sub, sub3
+
+  - name: create subscription to table 2 from psql3
+    community.postgresql.postgresql_subscription:
+        db: "{{ db_name }}"
+        name: psql_pub2_subs
+        state: present
+        publications: psql2_pub
+        owner: "{{ db_user }}"
+        connparams:
+          host: 192.168.50.20
+          port: 5432
+          user: "{{ db_user }}"
+          password: "{{ db_password }}"
+          dbname: "{{ db_name }}"
+          
+    become_user: postgres
+    when: ( ansible_hostname == 'psql3' )
+    tags: db, sub, sub3
