@@ -1,2 +1,107 @@
 ---
 # tasks file for mysql
+
+  - name: install epel repo
+    yum:
+      name:
+        - epel-release
+      state: present
+      update_cache: true
+
+  - name: install percona remote rpm
+    yum:
+      name: "{{ perc_repo }}"
+      state: present
+
+  - name: install packages
+    yum: 
+      name: 
+        - epel-release
+        - Percona-Server-server-57
+        - dnf
+      state: present
+
+  - name: install mysql_module_py
+    dnf:
+      name: python2-PyMySQL
+      state: present
+
+   
+  - name: copy base-conf
+    template:
+      src: templates/01-base.cnf.j2
+      dest: /etc/my.cnf.d/01-base.cnf
+      owner: "mysql"
+      mode: 0655
+      force: yes
+
+  - name: copy mysql conf
+    copy:
+      src: "{{ item }}"
+      dest: "/etc/my.cnf.d/"
+      owner: "mysql"
+      mode: 0655
+    with_fileglob:
+      - "conf/conf.d/*"
+
+  - name: Ensure MySQL is up-and-running
+    service:
+      name: mysql
+      state: restarted
+      enabled: yes
+    tags: mysql
+    # setpwd once
+  - shell: cat /var/log/mysqld.log | grep "temporary password" | grep -oE '[^ ]+$'
+    register: tmp_root_password
+    tags: 
+      - mysql
+      - setpwd
+
+  - name: Set new password from temporary password ignoring errors
+    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}" || /bin/true'
+    tags: 
+      - mysql
+      - setpwd
+
+  - name: start and enable services
+    service:
+      name: chronyd
+      state: restarted
+      enabled: yes
+
+  - name: copy login/pwd
+    copy:
+      src: "templates/.my.cnf"
+      dest: "/root/.my.cnf"
+      owner: root
+    tags: login
+
+  - name: first start MySQL is up-and-running
+    service:
+      name: mysql
+      state: started
+      enabled: yes
+    tags: mysql
+
+  - name: Create new databases wordpress
+    mysql_db:
+      name:
+        - wordpress
+        #- 
+      state: present
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+
+  - name: user wordpress add
+    mysql_user:
+      name: "wordpress"
+      password: "!OtusLinux2018"
+      state: present
+      host: '10.10.20.10'
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+      priv: "*.*:ALL"
+
+  # - name: include slave conf
+  #   include: slave.yml
+  #   tags: slave
