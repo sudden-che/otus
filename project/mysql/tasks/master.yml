@@ -7,7 +7,7 @@
       state: present
       login_user: root
       login_unix_socket: "/var/lib/mysql/mysql.sock"
-
+# base user
   - name: MASTER CONF user wordpress add
     mysql_user:
       name: "wordpress"
@@ -18,7 +18,7 @@
       login_unix_socket: "/var/lib/mysql/mysql.sock"
       priv: "*.*:ALL"
 
-
+# if repl user
   - name: MASTER user repl add
     mysql_user:
       name: "repl"
@@ -28,16 +28,16 @@
       login_user: root
       login_unix_socket: "/var/lib/mysql/mysql.sock"
       priv: "*.*:REPLICATION SLAVE"
-    when: (replication_enabled == 'true')
+    when: (replication_enabled == true)
 
 
   - name: MASTER CONF restore db
     include: restore_dump.yml
     when: "restore_db == true"
     
-  - name: MASTER CONF dump  db
+  - name: MASTER CONF dump db
     mysql_db:
-      name: all
+      name: "{{ wp_db_name }}"
       state: dump
       target: /tmp/dump_m.sql
       login_user: root

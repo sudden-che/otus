@@ -57,8 +57,14 @@
       dest: /home/vagrant/
     with_items:
       - docker/docker-compose.yml
-      - .env
+      #- .env
       - nginx-conf
+    tags: docker
+
+  - name: copy env template
+    template:
+      src: .env.j2
+      dest: /home/vagrant/.env
     tags: docker
 
   - name: reset ssh connection 

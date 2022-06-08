@@ -1,10 +1,13 @@
-# replication / restore db settings:  true / false /dump
+# replication / restore db settings: true / false 
 replication_enabled: true
 # true / false /dump
-restore_db: true
+restore_db: dump
 slave_ip: 10.10.20.30
 # repl user pwd
 repl_user_pwd: "!OtusLinux2018repl"
+
+# if master fale change wp_db to slave ansible-playbook wordpress.yml --extra-vars=wp_db_host=10.10.20.30 --tags=docker
+
 
 # wp login logopas
 # wpuser
