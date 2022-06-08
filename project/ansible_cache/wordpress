@@ -1,22 +1,176 @@
 _ansible_facts_gathered: true
 ansible_all_ipv4_addresses:
-- 172.18.0.1
 - 192.168.50.20
 - 10.10.20.10
 - 10.0.2.15
 - 172.17.0.1
+- 172.18.0.1
 ansible_all_ipv6_addresses:
-- fe80::c065:92ff:fe39:b351
-- fe80::42:2ff:fe52:78b7
-- fe80::74e3:cbff:fed3:aa4e
-- fe80::a00:27ff:fed6:29dd
-- fe80::a00:27ff:fe3e:e78e
+- fe80::48bb:7fff:fea3:4863
+- fe80::a00:27ff:febb:3587
+- fe80::a00:27ff:fe87:f574
 - fe80::5054:ff:fe4d:77d3
+- fe80::6c9e:8eff:fecb:fb16
+- fe80::42:6aff:feaa:3d42
 ansible_apparmor:
   status: disabled
 ansible_architecture: x86_64
 ansible_bios_date: 12/01/2006
 ansible_bios_version: VirtualBox
+ansible_br_02e1d823c82f:
+  active: true
+  device: br-02e1d823c82f
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: on [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: off [fixed]
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: off [fixed]
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: off [fixed]
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: off [fixed]
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [requested on]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: 'on'
+    tx_gso_robust: off [requested on]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  id: 8000.0242fe81a421
+  interfaces:
+  - vethe8c1d98
+  - veth72136a0
+  ipv4:
+    address: 172.18.0.1
+    broadcast: ''
+    netmask: 255.255.0.0
+    network: 172.18.0.0
+  ipv6:
+  - address: fe80::42:feff:fe81:a421
+    prefix: '64'
+    scope: link
+  macaddress: 02:42:fe:81:a4:21
+  mtu: 1500
+  promisc: false
+  stp: false
+  timestamping:
+  - rx_software
+  - software
+  type: bridge
+ansible_br_05e0c00bf77a:
+  active: true
+  device: br-05e0c00bf77a
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: on [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: off [fixed]
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: off [fixed]
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: off [fixed]
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: off [fixed]
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [requested on]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: 'on'
+    tx_gso_robust: off [requested on]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  id: 8000.02426aaa3d42
+  interfaces:
+  - vethc8b7e69
+  - vethe8defbe
+  ipv4:
+    address: 172.18.0.1
+    broadcast: ''
+    netmask: 255.255.0.0
+    network: 172.18.0.0
+  ipv6:
+  - address: fe80::42:6aff:feaa:3d42
+    prefix: '64'
+    scope: link
+  macaddress: 02:42:6a:aa:3d:42
+  mtu: 1500
+  promisc: false
+  stp: false
+  timestamping:
+  - rx_software
+  - software
+  type: bridge
 ansible_br_08a0bb3143f4:
   active: true
   device: br-08a0bb3143f4
@@ -87,6 +241,160 @@ ansible_br_08a0bb3143f4:
     prefix: '64'
     scope: link
   macaddress: 02:42:37:95:d4:50
+  mtu: 1500
+  promisc: false
+  stp: false
+  timestamping:
+  - rx_software
+  - software
+  type: bridge
+ansible_br_36fad3ef7bf0:
+  active: true
+  device: br-36fad3ef7bf0
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: on [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: off [fixed]
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: off [fixed]
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: off [fixed]
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: off [fixed]
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [requested on]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: 'on'
+    tx_gso_robust: off [requested on]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  id: 8000.0242dee775a5
+  interfaces:
+  - veth719568d
+  - veth874b170
+  ipv4:
+    address: 172.18.0.1
+    broadcast: ''
+    netmask: 255.255.0.0
+    network: 172.18.0.0
+  ipv6:
+  - address: fe80::42:deff:fee7:75a5
+    prefix: '64'
+    scope: link
+  macaddress: 02:42:de:e7:75:a5
+  mtu: 1500
+  promisc: false
+  stp: false
+  timestamping:
+  - rx_software
+  - software
+  type: bridge
+ansible_br_3f54ab964bc3:
+  active: true
+  device: br-3f54ab964bc3
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: on [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: off [fixed]
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: off [fixed]
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: off [fixed]
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: off [fixed]
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [requested on]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: 'on'
+    tx_gso_robust: off [requested on]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  id: 8000.0242dd4587d3
+  interfaces:
+  - vethbaaa543
+  - vethde65942
+  ipv4:
+    address: 172.18.0.1
+    broadcast: ''
+    netmask: 255.255.0.0
+    network: 172.18.0.0
+  ipv6:
+  - address: fe80::42:ddff:fe45:87d3
+    prefix: '64'
+    scope: link
+  macaddress: 02:42:dd:45:87:d3
   mtu: 1500
   promisc: false
   stp: false
@@ -245,6 +553,83 @@ ansible_br_64f0e7c54d3c:
   - rx_software
   - software
   type: bridge
+ansible_br_75844469d9e7:
+  active: true
+  device: br-75844469d9e7
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: on [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: off [fixed]
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: off [fixed]
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: off [fixed]
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: off [fixed]
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [requested on]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: 'on'
+    tx_gso_robust: off [requested on]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  id: 8000.02425fd801ba
+  interfaces:
+  - veth5426b65
+  - veth637680c
+  ipv4:
+    address: 172.18.0.1
+    broadcast: ''
+    netmask: 255.255.0.0
+    network: 172.18.0.0
+  ipv6:
+  - address: fe80::42:5fff:fed8:1ba
+    prefix: '64'
+    scope: link
+  macaddress: 02:42:5f:d8:01:ba
+  mtu: 1500
+  promisc: false
+  stp: false
+  timestamping:
+  - rx_software
+  - software
+  type: bridge
 ansible_br_7d755c3426b6:
   active: true
   device: br-7d755c3426b6
@@ -392,6 +777,83 @@ ansible_br_a97a5da83c33:
     prefix: '64'
     scope: link
   macaddress: 02:42:ba:8f:55:fc
+  mtu: 1500
+  promisc: false
+  stp: false
+  timestamping:
+  - rx_software
+  - software
+  type: bridge
+ansible_br_b2dd4bedddd9:
+  active: true
+  device: br-b2dd4bedddd9
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: on [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: off [fixed]
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: off [fixed]
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: off [fixed]
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: off [fixed]
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [requested on]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: 'on'
+    tx_gso_robust: off [requested on]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  id: 8000.0242c55ae0f8
+  interfaces:
+  - veth59bdf82
+  - vethded2553
+  ipv4:
+    address: 172.18.0.1
+    broadcast: ''
+    netmask: 255.255.0.0
+    network: 172.18.0.0
+  ipv6:
+  - address: fe80::42:c5ff:fe5a:e0f8
+    prefix: '64'
+    scope: link
+  macaddress: 02:42:c5:5a:e0:f8
   mtu: 1500
   promisc: false
   stp: false
@@ -563,22 +1025,22 @@ ansible_cmdline:
   ro: true
   root: UUID=1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_date_time:
-  date: '2022-06-07'
-  day: '07'
-  epoch: '1654619734'
-  hour: '16'
-  iso8601: '2022-06-07T16:35:34Z'
-  iso8601_basic: 20220607T163534462743
-  iso8601_basic_short: 20220607T163534
-  iso8601_micro: '2022-06-07T16:35:34.462743Z'
-  minute: '35'
+  date: '2022-06-08'
+  day: 08
+  epoch: '1654688188'
+  hour: '11'
+  iso8601: '2022-06-08T11:36:28Z'
+  iso8601_basic: 20220608T113628809992
+  iso8601_basic_short: 20220608T113628
+  iso8601_micro: '2022-06-08T11:36:28.809992Z'
+  minute: '36'
   month: '06'
-  second: '34'
-  time: '16:35:34'
+  second: '28'
+  time: '11:36:28'
   tz: UTC
   tz_offset: '+0000'
-  weekday: Tuesday
-  weekday_number: '2'
+  weekday: Wednesday
+  weekday_number: '3'
   weeknumber: '23'
   year: '2022'
 ansible_default_ipv4:
@@ -596,9 +1058,9 @@ ansible_default_ipv6: {}
 ansible_device_links:
   ids:
     sda:
-    - ata-VBOX_HARDDISK_VBbb0e117f-409dda45
+    - ata-VBOX_HARDDISK_VB712795cd-b04e518b
     sda1:
-    - ata-VBOX_HARDDISK_VBbb0e117f-409dda45-part1
+    - ata-VBOX_HARDDISK_VB712795cd-b04e518b-part1
   labels: {}
   masters: {}
   uuids:
@@ -610,7 +1072,7 @@ ansible_devices:
     host: 'IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)'
     links:
       ids:
-      - ata-VBOX_HARDDISK_VBbb0e117f-409dda45
+      - ata-VBOX_HARDDISK_VB712795cd-b04e518b
       labels: []
       masters: []
       uuids: []
@@ -620,7 +1082,7 @@ ansible_devices:
         holders: []
         links:
           ids:
-          - ata-VBOX_HARDDISK_VBbb0e117f-409dda45-part1
+          - ata-VBOX_HARDDISK_VB712795cd-b04e518b-part1
           labels: []
           masters: []
           uuids:
@@ -637,7 +1099,7 @@ ansible_devices:
     scheduler_mode: noop
     sectors: '83886080'
     sectorsize: '512'
-    serial: VBbb0e117f
+    serial: VB712795cd
     size: 40.00 GB
     support_discard: '0'
     vendor: ATA
@@ -710,14 +1172,14 @@ ansible_docker0:
     udp_fragmentation_offload: 'on'
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
-  id: 8000.0242a29a3728
+  id: 8000.0242eae4f482
   interfaces: []
   ipv4:
     address: 172.17.0.1
     broadcast: ''
     netmask: 255.255.0.0
     network: 172.17.0.0
-  macaddress: 02:42:a2:9a:37:28
+  macaddress: 02:42:ea:e4:f4:82
   mtu: 1500
   promisc: false
   stp: false
@@ -730,7 +1192,9 @@ ansible_effective_group_id: 0
 ansible_effective_user_id: 0
 ansible_env:
   HOME: /root
-  LANG: en_US.UTF-8
+  LANG: C
+  LC_ALL: C
+  LC_NUMERIC: C
   LOGNAME: root
   LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:'
   MAIL: /var/mail/vagrant
@@ -738,15 +1202,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-xrsdqkjyhvfbkruoxexmtfxasmpifkrz ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1654619731.3875291-56777-102872740149426/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-lzcahofhsongxfekosxklxbqpmtwecez ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1654688187.0950034-66331-239201485216128/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
   TERM: xterm
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '23'
+  XDG_SESSION_ID: '20'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -886,10 +1350,10 @@ ansible_eth1:
     netmask: 255.255.255.0
     network: 10.10.20.0
   ipv6:
-  - address: fe80::a00:27ff:fe3e:e78e
+  - address: fe80::a00:27ff:fe87:f574
     prefix: '64'
     scope: link
-  macaddress: 08:00:27:3e:e7:8e
+  macaddress: 08:00:27:87:f5:74
   module: e1000
   mtu: 1500
   pciid: '0000:00:08.0'
@@ -962,10 +1426,10 @@ ansible_eth2:
     netmask: 255.255.255.0
     network: 192.168.50.0
   ipv6:
-  - address: fe80::a00:27ff:fed6:29dd
+  - address: fe80::a00:27ff:febb:3587
     prefix: '64'
     scope: link
-  macaddress: 08:00:27:d6:29:dd
+  macaddress: 08:00:27:bb:35:87
   module: e1000
   mtu: 1500
   pciid: '0000:00:10.0'
@@ -983,11 +1447,11 @@ ansible_fqdn: wordpress
 ansible_hostname: wordpress
 ansible_hostnqn: ''
 ansible_interfaces:
+- br-05e0c00bf77a
 - docker0
-- veth924eb93
+- vethc8b7e69
 - lo
-- veth9d2206f
-- br-f34a68de2c04
+- vethe8defbe
 - eth2
 - eth1
 - eth0
@@ -1073,63 +1537,63 @@ ansible_lvm:
   pvs: {}
   vgs: {}
 ansible_machine: x86_64
-ansible_machine_id: 55c3e63fe3ea8744b2709f922b354099
-ansible_memfree_mb: 316
+ansible_machine_id: fb376af207889e438a633862a8b038ca
+ansible_memfree_mb: 81
 ansible_memory_mb:
   nocache:
-    free: 721
-    used: 269
+    free: 667
+    used: 323
   real:
-    free: 316
+    free: 81
     total: 990
-    used: 674
+    used: 909
   swap:
-    cached: 0
-    free: 2047
+    cached: 1
+    free: 2045
     total: 2047
-    used: 0
+    used: 2
 ansible_memtotal_mb: 990
 ansible_mounts:
-- block_available: 9444823
+- block_available: 9445062
   block_size: 4096
   block_total: 10480385
-  block_used: 1035562
+  block_used: 1035323
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20916627
+  inode_available: 20916651
   inode_total: 20971008
-  inode_used: 54381
+  inode_used: 54357
   mount: /var/lib/docker/overlay2
   options: rw,seclabel,relatime,attr2,inode64,noquota,bind
-  size_available: 38685995008
+  size_available: 38686973952
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
-- block_available: 9444823
+- block_available: 9445062
   block_size: 4096
   block_total: 10480385
-  block_used: 1035562
+  block_used: 1035323
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20916627
+  inode_available: 20916651
   inode_total: 20971008
-  inode_used: 54381
+  inode_used: 54357
   mount: /var/lib/docker/containers
   options: rw,seclabel,relatime,attr2,inode64,noquota,bind
-  size_available: 38685995008
+  size_available: 38686973952
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
-- block_available: 9444823
+- block_available: 9445062
   block_size: 4096
   block_total: 10480385
-  block_used: 1035562
+  block_used: 1035323
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20916627
+  inode_available: 20916651
   inode_total: 20971008
-  inode_used: 54381
+  inode_used: 54357
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 38685995008
+  size_available: 38686973952
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: wordpress
@@ -1161,7 +1625,7 @@ ansible_processor_threads_per_core: 1
 ansible_processor_vcpus: 2
 ansible_product_name: VirtualBox
 ansible_product_serial: '0'
-ansible_product_uuid: 55C3E63F-E3EA-8744-B270-9F922B354099
+ansible_product_uuid: FB376AF2-0788-9E43-8A63-3862A8B038CA
 ansible_product_version: '1.2'
 ansible_python:
   executable: /usr/bin/python
@@ -1190,10 +1654,10 @@ ansible_selinux:
   type: targeted
 ansible_selinux_python_present: true
 ansible_service_mgr: systemd
-ansible_ssh_host_key_ecdsa_public: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHoVjk9qkK3Ns3c1RQpn98ABbRIvYMGWWkTT6FATXue0zRtg3yLsrXDtcchILwoM8ikxpvae+ebcHILu5NsAsV8=
-ansible_ssh_host_key_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAIK4+qqJuKk0JEqDkaKml9G+rfvJBqgqEwgQ5Uf/pnmdD
-ansible_ssh_host_key_rsa_public: AAAAB3NzaC1yc2EAAAADAQABAAABAQCkXQV0OuJJghhPZH/I0OtxFLXRPwyJOCxwWeoDZ5CSPc3Zwow5XSOORuCA4kQvXlWdmPxCJvQuchAxfGhT9bvUfsXcIeWDdUS7t+6gKakThJ/DsNr4UE33G8vAd2xUOMjfbzoyD58PtsPWTZZWgvNWOJTs4G7Xg2vEL0EkTUPVmRMbzGbN7XVc2yboZWefnqI0Nv/eNgDH0dibEOcX/JkBChowhYCelVbXshw2fsQvBBrmD97bGCOWO7A55fcYcJHP/JahkFXaTlb1DVThD7kYXK0EBmAfx9JiQAlSFq99gj+lvAHor0Y05TcQjOJ5C82GjBD6yDGJvdNNSpqVnWgJ
-ansible_swapfree_mb: 2047
+ansible_ssh_host_key_ecdsa_public: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCMfB8cclqVKIWL6z/Dfaw+o+sIaUiS2gBxk40E2qE6tsHJ+rNM0BdPzMLKMWd1287HBLxzN2khVmebkIBMbn4Y=
+ansible_ssh_host_key_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAIOOWFc7Mf51+jYplyFPF23S7ZmSP+WCrr1nChTbv8RTJ
+ansible_ssh_host_key_rsa_public: AAAAB3NzaC1yc2EAAAADAQABAAABAQDMcAPnhwQTlQbKXsN3/7/edps3zcN5IWzLd2hdWn0u/N1tgpSzUXKBedBGAQuQ/FeJS5FH4oJM8z/KQPzyk6s5SNQ7kVjCMiIV/C2uN6d7EtUcxoQxbQQ/6tqDvatxSzPjlUuvjdMXiqUdsf1R2bXJNyZJYDJak3z6NBcRFA29akgFPE81qV8Axqr5IUMehcsAiUAEUoCEBnaBtwGnNsh2GpY3BrqdoKcIWHmR7ek9kRee9vFuj5bRdd7eqpC6IzLbMeqs+efB/lSd32lGB2dDhW/9xH9xA3mW3U8Xo562fKVR5rYusvn6AiKRJR5wUOdRy6HIKam1CnWP1g1co41z
+ansible_swapfree_mb: 2045
 ansible_swaptotal_mb: 2047
 ansible_system: Linux
 ansible_system_capabilities:
@@ -1236,7 +1700,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 5612
+ansible_uptime_seconds: 6301
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0
@@ -1517,6 +1981,142 @@ ansible_veth4b402bc:
   - rx_software
   - software
   type: ether
+ansible_veth5426b65:
+  active: true
+  device: veth5426b65
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::c8ef:b1ff:feeb:eb53
+    prefix: '64'
+    scope: link
+  macaddress: ca:ef:b1:eb:eb:53
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
+ansible_veth59bdf82:
+  active: true
+  device: veth59bdf82
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::449a:d7ff:fefd:fe25
+    prefix: '64'
+    scope: link
+  macaddress: 46:9a:d7:fd:fe:25
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
 ansible_veth5db2342:
   active: true
   device: veth5db2342
@@ -1585,6 +2185,74 @@ ansible_veth5db2342:
   - rx_software
   - software
   type: ether
+ansible_veth637680c:
+  active: true
+  device: veth637680c
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::b0bc:5bff:fec4:4428
+    prefix: '64'
+    scope: link
+  macaddress: b2:bc:5b:c4:44:28
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
 ansible_veth6b7f2c3:
   active: true
   device: veth6b7f2c3
@@ -1646,6 +2314,142 @@ ansible_veth6b7f2c3:
     prefix: '64'
     scope: link
   macaddress: 06:87:88:b9:5e:09
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
+ansible_veth719568d:
+  active: true
+  device: veth719568d
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::2c48:3aff:feb0:3d4a
+    prefix: '64'
+    scope: link
+  macaddress: 2e:48:3a:b0:3d:4a
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
+ansible_veth72136a0:
+  active: true
+  device: veth72136a0
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::2405:fff:fecc:cf89
+    prefix: '64'
+    scope: link
+  macaddress: 26:05:0f:cc:cf:89
   mtu: 1500
   promisc: true
   speed: 10000
@@ -1850,6 +2654,74 @@ ansible_veth79ab9b5:
     prefix: '64'
     scope: link
   macaddress: 5e:3a:4b:c3:7c:9f
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
+ansible_veth874b170:
+  active: true
+  device: veth874b170
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::b41f:c8ff:fe25:ef3c
+    prefix: '64'
+    scope: link
+  macaddress: b6:1f:c8:25:ef:3c
   mtu: 1500
   promisc: true
   speed: 10000
@@ -2197,6 +3069,74 @@ ansible_veth9f92258:
   - rx_software
   - software
   type: ether
+ansible_vethbaaa543:
+  active: true
+  device: vethbaaa543
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::5ca7:68ff:fef8:269c
+    prefix: '64'
+    scope: link
+  macaddress: 5e:a7:68:f8:26:9c
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
 ansible_vethbbda684:
   active: true
   device: vethbbda684
@@ -2333,6 +3273,210 @@ ansible_vethc7d2a7e:
   - rx_software
   - software
   type: ether
+ansible_vethc8b7e69:
+  active: true
+  device: vethc8b7e69
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::6c9e:8eff:fecb:fb16
+    prefix: '64'
+    scope: link
+  macaddress: 6e:9e:8e:cb:fb:16
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
+ansible_vethde65942:
+  active: true
+  device: vethde65942
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::f00e:5aff:fe8b:9bf4
+    prefix: '64'
+    scope: link
+  macaddress: f2:0e:5a:8b:9b:f4
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
+ansible_vethded2553:
+  active: true
+  device: vethded2553
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::18ce:faff:fe06:21ca
+    prefix: '64'
+    scope: link
+  macaddress: 1a:ce:fa:06:21:ca
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
 ansible_vethe00fb9f:
   active: true
   device: vethe00fb9f
@@ -2394,6 +3538,142 @@ ansible_vethe00fb9f:
     prefix: '64'
     scope: link
   macaddress: c2:12:e5:43:11:aa
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
+ansible_vethe8c1d98:
+  active: true
+  device: vethe8c1d98
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::f484:1dff:fefa:9a69
+    prefix: '64'
+    scope: link
+  macaddress: f6:84:1d:fa:9a:69
+  mtu: 1500
+  promisc: true
+  speed: 10000
+  timestamping:
+  - rx_software
+  - software
+  type: ether
+ansible_vethe8defbe:
+  active: true
+  device: vethe8defbe
+  features:
+    busy_poll: off [fixed]
+    fcoe_mtu: off [fixed]
+    generic_receive_offload: 'on'
+    generic_segmentation_offload: 'on'
+    highdma: 'on'
+    hw_tc_offload: off [fixed]
+    l2_fwd_offload: off [fixed]
+    large_receive_offload: off [fixed]
+    loopback: off [fixed]
+    netns_local: off [fixed]
+    ntuple_filters: off [fixed]
+    receive_hashing: off [fixed]
+    rx_all: off [fixed]
+    rx_checksumming: 'on'
+    rx_fcs: off [fixed]
+    rx_gro_hw: off [fixed]
+    rx_udp_tunnel_port_offload: off [fixed]
+    rx_vlan_filter: off [fixed]
+    rx_vlan_offload: 'on'
+    rx_vlan_stag_filter: off [fixed]
+    rx_vlan_stag_hw_parse: 'on'
+    scatter_gather: 'on'
+    tcp_segmentation_offload: 'on'
+    tx_checksum_fcoe_crc: off [fixed]
+    tx_checksum_ip_generic: 'on'
+    tx_checksum_ipv4: off [fixed]
+    tx_checksum_ipv6: off [fixed]
+    tx_checksum_sctp: 'on'
+    tx_checksumming: 'on'
+    tx_fcoe_segmentation: off [fixed]
+    tx_gre_csum_segmentation: 'on'
+    tx_gre_segmentation: 'on'
+    tx_gso_partial: off [fixed]
+    tx_gso_robust: off [fixed]
+    tx_ipip_segmentation: 'on'
+    tx_lockless: on [fixed]
+    tx_nocache_copy: 'off'
+    tx_scatter_gather: 'on'
+    tx_scatter_gather_fraglist: 'on'
+    tx_sctp_segmentation: 'on'
+    tx_sit_segmentation: 'on'
+    tx_tcp6_segmentation: 'on'
+    tx_tcp_ecn_segmentation: 'on'
+    tx_tcp_mangleid_segmentation: 'on'
+    tx_tcp_segmentation: 'on'
+    tx_udp_tnl_csum_segmentation: 'on'
+    tx_udp_tnl_segmentation: 'on'
+    tx_vlan_offload: 'on'
+    tx_vlan_stag_hw_insert: 'on'
+    udp_fragmentation_offload: 'on'
+    vlan_challenged: off [fixed]
+  hw_timestamp_filters: []
+  ipv6:
+  - address: fe80::48bb:7fff:fea3:4863
+    prefix: '64'
+    scope: link
+  macaddress: 4a:bb:7f:a3:48:63
   mtu: 1500
   promisc: true
   speed: 10000

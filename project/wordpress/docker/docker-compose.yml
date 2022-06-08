@@ -3,7 +3,6 @@ services:
   wordpress:
     image: wordpress:6.0.0-fpm-alpine
     container_name: wordpress
-    #hostname: wordpress
     restart: unless-stopped
     environment:
       WORDPRESS_DB_NAME: "${DB_NAME}"
@@ -18,7 +17,6 @@ services:
 
   nginx:
     image: nginx
-    hostname: wordpress
     container_name: nginx
     restart: unless-stopped
     ports:

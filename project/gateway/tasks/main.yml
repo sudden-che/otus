@@ -15,6 +15,7 @@
         - tcpdump
         - net-tools
         - nginx
+        - python-cryptography
       state: present
       update_cache: true
 
@@ -24,12 +25,46 @@
       value: '1'
       state: present
 
+  - name: create tmp nginx dir
+    file:
+      state: directory
+      dest: "{{ item }}"
+      owner: nginx
+      group: nginx
+    with_items:
+     - "/tmp/cache"
+     - "{{ ssl_path }}"
+
+
   - name: copy nginx conf
     template:
       src: templates/nginx.conf.j2
       dest: /etc/nginx/nginx.conf
-      
-  - name: enabling services 
+    tags: nginx
+
+# open ssl
+  - name: Create simple self-signed certificate
+    openssl_privatekey:
+      path:  "{{ ssl_path }}{{ ssl_name }}.pem"
+    tags: ssl
+
+  - name: Generate an OpenSSL Certificate Signing Request
+    openssl_csr:
+      path: "{{ ssl_path }}{{ ssl_name }}.csr"
+      privatekey_path:  "{{ ssl_path }}{{ ssl_name }}.pem"
+      common_name: "{{ ssl_name }}"
+    tags: ssl
+    
+  - name: Generate a Self Signed OpenSSL certificate
+    openssl_certificate:
+      path: "{{ ssl_path }}{{ ssl_name }}.crt"
+      privatekey_path: "{{ ssl_path }}{{ ssl_name }}.pem"
+      csr_path: "{{ ssl_path }}{{ ssl_name }}.csr"
+      provider: selfsigned
+    tags: ssl
+
+
+  - name: restarting services 
     service:
       name: "{{ item }}"
       enabled: yes
@@ -37,6 +72,7 @@
     with_items: 
       - firewalld
       - nginx
+    tags: nginx
 
   - name: enabling masquerade
     firewalld:
@@ -64,7 +100,7 @@
 
 
 
-  # - name: dst-nat ssl to wordpress
+  # - name: dst-nat ssl to {{ssl_name}}
   #   firewalld:
   #     rich_rule: 'rule family=ipv4 forward-port port=443 protocol=tcp to-port=443 to-addr=192.168.50.20'
   #     permanent: yes
