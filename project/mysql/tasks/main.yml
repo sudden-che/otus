@@ -51,7 +51,8 @@
       enabled: yes
     tags: mysql
     # setpwd once
-  - shell: cat /var/log/mysqld.log | grep "temporary password" | grep -oE '[^ ]+$'
+  - name: set pwd from temp
+    shell: cat /var/log/mysqld.log | grep "temporary password" | grep -oE '[^ ]+$'
     register: tmp_root_password
     tags: 
       - mysql
@@ -83,25 +84,12 @@
       enabled: yes
     tags: mysql
 
-  - name: Create new databases wordpress
-    mysql_db:
-      name:
-        - wordpress
-        #- 
-      state: present
-      login_user: root
-      login_unix_socket: "/var/lib/mysql/mysql.sock"
-
-  - name: user wordpress add
-    mysql_user:
-      name: "wordpress"
-      password: "!OtusLinux2018"
-      state: present
-      host: '10.10.20.10'
-      login_user: root
-      login_unix_socket: "/var/lib/mysql/mysql.sock"
-      priv: "*.*:ALL"
-
-  # - name: include slave conf
-  #   include: slave.yml
-  #   tags: slave
+  - name: include master conf
+    include: master.yml
+    tags: master
+    when: "ansible_hostname == 'mysql'"
+ 
+  - name: include slave conf
+    include: slave.yml
+    tags: slave
+    when: (replication_enabled == true) and ( ansible_hostname == 'mysqlslave' )

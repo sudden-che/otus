@@ -1,0 +1,20 @@
+  - name: RESTORE create db
+    mysql_db:
+      name: "{{ wp_db_name }}"
+      state: present
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+    tags: login
+
+  - name: RESTORE copy dump
+    copy:
+      src: dump_m.sql
+      dest: /tmp/dump.sql
+
+  - name: RESTORE Restore database
+    mysql_db:
+      name:  "{{ wp_db_name }}"
+      state: import
+      target: "/tmp/dump.sql"
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"

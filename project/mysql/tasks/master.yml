@@ -1,0 +1,53 @@
+
+  - name: MASTER CONF Create new databases wordpress
+    mysql_db:
+      name:
+        - wordpress
+        #- 
+      state: present
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+
+  - name: MASTER CONF user wordpress add
+    mysql_user:
+      name: "wordpress"
+      password: "!OtusLinux2018"
+      state: present
+      host: '10.10.20.10'
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+      priv: "*.*:ALL"
+
+
+  - name: MASTER user repl add
+    mysql_user:
+      name: "repl"
+      password: "{{ repl_user_pwd }}"
+      state: present
+      host: "{{ slave_ip }}"
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+      priv: "*.*:REPLICATION SLAVE"
+    when: (replication_enabled == 'true')
+
+
+  - name: MASTER CONF restore db
+    include: restore_dump.yml
+    when: "restore_db == true"
+    
+  - name: MASTER CONF dump  db
+    mysql_db:
+      name: all
+      state: dump
+      target: /tmp/dump_m.sql
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+    when: "restore_db == 'dump'"
+
+  - name: MASTER CONF copy dump to asnible machine
+    fetch:
+      src: /tmp/dump_m.sql
+      dest: dump_m.sql
+      flat: yes
+    when: "restore_db == 'dump'"
+

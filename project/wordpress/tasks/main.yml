@@ -18,7 +18,6 @@
   - name: install soft
     yum:
       name:
-        - nginx
         - snapd
         - policycoreutils-python
         - docker
@@ -66,10 +65,12 @@
     meta: reset_connection
     tags: docker
 
-  - name: create ssl dir
+  - name: create  nginx dir
     file:
       state: directory
-      dest: "{{ ssl_path }}"
+      dest: "{{ item }}"
+    with_items:
+     - "{{ ssl_path }}"
       
 
 # open ssl

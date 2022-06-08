@@ -1,0 +1,53 @@
+  - name: SLAVE enable ssh pwd login
+    replace:
+      dest: "/etc/ssh/sshd_config"
+      regexp: 'PasswordAuthentication no'
+      replace: 'PasswordAuthentication yes'
+   
+  - name: SLAVE restart sshd
+    service:
+      name:  sshd
+      state: restarted
+     
+  - name: SLAVE Ensure MySQL is up-and-running
+    service:
+      name:  mysql
+      state: started
+      enabled: yes
+    tags: mysql
+  
+  - name: SLAVE copy dump
+    copy:
+      src: dump_m.sql
+      dest: /tmp/dump_m.sql
+    tags: slave
+
+  - name: SLAVE stop slave if started
+    mysql_replication: 
+      mode: stopslave
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+    tags: slave
+
+  - name: SLAVE config
+    mysql_replication:
+      mode: changemaster
+      master_host: "{{ wp_db_host }}"
+      master_port: "{{ mysql_port }}"
+      master_user: repl
+      master_password: "{{ repl_user_pwd }}"
+      master_auto_position: 1
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+    tags: slave
+
+  - name: SLAVE CONF restore db
+    include: restore_dump.yml
+    tags: slave
+
+  - name: SLAVE start S L A V E
+    mysql_replication: 
+      mode: startslave
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+    tags: slave

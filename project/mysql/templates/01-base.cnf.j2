@@ -4,7 +4,8 @@ log-error=/var/log/mysqld.log
 datadir=/var/lib/mysql
 socket=/var/lib/mysql/mysql.sock
 symbolic-links=0
-bind-address = 10.10.20.20
+bind-address = {{ ansible_eth1.ipv4.address }}
 server-id = {{ server_id }}
 innodb_file_per_table = 1
 skip-name-resolve
+# 

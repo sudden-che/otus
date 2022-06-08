@@ -1,4 +1,16 @@
+# replication / restore db settings:  true / false /dump
+replication_enabled: true
+# true / false /dump
+restore_db: true
+slave_ip: 10.10.20.30
+# repl user pwd
+repl_user_pwd: "!OtusLinux2018repl"
+
+# wp login logopas
+# wpuser
+# wordpress$ecretpass
 # WordPress database settings
+
 wp_db_name: wordpress
 wp_db_user: wordpress
 wp_db_host: 10.10.20.20
@@ -12,10 +24,5 @@ perc_repo: "https://repo.percona.com/yum/percona-release-latest.noarch.rpm"
 mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
 mysql_user: root
 mysql_db_name: wordpress
-
-#auto_up_disable: true
-#webroot: /usr/share/nginx/
 server_hostname: wordpress
-
-
 core_update_level: true
