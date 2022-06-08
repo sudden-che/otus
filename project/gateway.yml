@@ -1,0 +1,9 @@
+# ---
+
+- name: gateway
+  hosts: gateway
+  gather_facts: true
+  become: true
+  roles: 
+    - gateway
+

@@ -10,15 +10,18 @@ Vagrant.configure("2") do |config|
     config.vm.define "inetRouter" do |vm|
       vm.vm.network "private_network", adapter: 2, virtualbox__intnet: "router-net",  ip: "10.10.20.254"
       vm.vm.network "private_network", ip: "192.168.50.10", adapter: 5   
+      vm.vm.network "forwarded_port", guest: 80, host: 80
+      vm.vm.network "forwarded_port", guest: 443, host: 443
       vm.vm.hostname = "inetRouter"
     end
 
 
     config.vm.define "wordpress" do |vm|
       vm.vm.network "private_network", adapter: 2, virtualbox__intnet: "router-net",  ip: "10.10.20.10"
-      vm.vm.network "forwarded_port", guest: 80, host: 8001
-      vm.vm.network "forwarded_port", guest: 443, host: 8002
+
       vm.vm.network "private_network", ip: "192.168.50.20", adapter: 5
+      vm.vm.network "forwarded_port", guest: 80, host: 8020
+      vm.vm.network "forwarded_port", guest: 443, host: 8021
       vm.vm.hostname = "wordpress"
     end
 

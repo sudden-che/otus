@@ -1,0 +1,12 @@
+Log created: 2022-06-07T15:00:00.418852000Z
+Process ID:  5631 (0x15ff)
+Parent PID:  1 (0x1)
+Executable:  /usr/lib/virtualbox/VBoxHeadless
+Arg[0]: /usr/lib/virtualbox/VBoxHeadless
+Arg[1]: --comment
+Arg[2]: project_inetRouter_1654510974668_16586
+Arg[3]: --startvm
+Arg[4]: 3d31021c-e63c-4dee-804b-337f6c44d620
+Arg[5]: --vrde
+Arg[6]: config
+AddRef: illegal refcnt=3221225469 state=2

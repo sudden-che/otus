@@ -3,6 +3,7 @@ services:
   wordpress:
     image: wordpress:6.0.0-fpm-alpine
     container_name: wordpress
+    #hostname: wordpress
     restart: unless-stopped
     environment:
       WORDPRESS_DB_NAME: "${DB_NAME}"
@@ -10,21 +11,23 @@ services:
       WORDPRESS_DB_PASSWORD: "${DB_ROOT_PASSWORD}"
       WORDPRESS_DB_HOST: "${DB_HOST}"
     volumes:
-      - ./wordpress:/var/www/html:z
+      - /home/vagrant/wordpress:/var/www/html:z
     networks:
       - app-network
 
 
   nginx:
     image: nginx
+    hostname: wordpress
     container_name: nginx
     restart: unless-stopped
     ports:
       - 80:80
       - 443:443
     volumes:
-      - ./wordpress:/var/www/html:z
-      - ./nginx.conf:/etc/nginx/nginx.conf:z
+      - /home/vagrant/wordpress:/var/www/html:z
+      - /home/vagrant/nginx-conf/nginx.conf:/etc/nginx/nginx.conf:z
+      - /home/vagrant/nginx-conf/ssl:/etc/nginx/ssl:z
     networks:
       - app-network
     depends_on:

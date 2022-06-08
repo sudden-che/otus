@@ -14,6 +14,7 @@
         - mtr
         - tcpdump
         - net-tools
+        - nginx
       state: present
       update_cache: true
 
@@ -23,11 +24,19 @@
       value: '1'
       state: present
 
-  - name: enabling firewall 
+  - name: copy nginx conf
+    template:
+      src: templates/nginx.conf.j2
+      dest: /etc/nginx/nginx.conf
+      
+  - name: enabling services 
     service:
-      name: firewalld
+      name: "{{ item }}"
       enabled: yes
-      state: started
+      state: restarted
+    with_items: 
+      - firewalld
+      - nginx
 
   - name: enabling masquerade
     firewalld:
@@ -35,10 +44,29 @@
       state: enabled
       permanent: yes
       immediate: yes
-    
-  - name: dst-nat ssl to wordpress
+
+  - name: enabling http
     firewalld:
-      rich_rule: 'rule family=ipv4 forward-port port=443 protocol=tcp to-port=443 to-addr=192.168.50.20'
-      permanent: yes
+      service: http
       state: enabled
-      immediate: yes
+      permanent: yes
+      immediate: yes  
+    tags: fw
+    
+  - name: enabling https
+    firewalld:
+      service: https
+      state: enabled
+      permanent: yes
+      immediate: yes 
+    tags: fw 
+
+
+
+
+  # - name: dst-nat ssl to wordpress
+  #   firewalld:
+  #     rich_rule: 'rule family=ipv4 forward-port port=443 protocol=tcp to-port=443 to-addr=192.168.50.20'
+  #     permanent: yes
+  #     state: enabled
+  #     immediate: yes

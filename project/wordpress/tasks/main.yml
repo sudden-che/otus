@@ -17,22 +17,32 @@
         - docker-compose
         - ca-certificates
         - curl
+        - python-cryptography
+        # - openssl
         - httpd
+        - mlocate
       state: present
       update_cache: true
 
-  # - name: Add remote vagrant user to docker
-  #   user:
-  #     name: vagrant
-  #     group: docker
-  #     append: yes
-  #   tags:
-  #     - docker
-  - name: start docker
+  - name: start services
     service:
-      name: docker
+      name: "{{ item }}"
       enabled: yes
       state: started
+    with_items:
+      - docker
+    #  - snapd
+  - name: update locate db
+    shell: updatedb
+
+
+  - name: stop if exist container WORDPRESS, NGINX
+    shell:
+      cmd: "docker-compose -f docker-compose.yml down || /bin/true"
+      chdir: /home/vagrant/
+    become: yes
+    tags: docker, ssl
+
 
   - name: Copy files
     copy: 
@@ -41,17 +51,70 @@
     with_items:
       - docker/docker-compose.yml
       - .env
-      - nginx-conf/
+      - nginx-conf
     tags: docker
-    #force: yes
 
   - name: reset ssh connection 
     meta: reset_connection
     tags: docker
 
-  - name: Run container
+  - name: create ssl dir
+    file:
+      state: directory
+      dest: /home/vagrant/nginx-conf/ssl
+
+# open ssl
+  - name: Create simple self-signed certificate
+    openssl_privatekey:
+      path:  /home/vagrant/nginx-conf/ssl/wordpress.pem
+    tags: ssl
+  - name: Generate an OpenSSL Certificate Signing Request
+    openssl_csr:
+      path: /home/vagrant/nginx-conf/ssl/wordpress.csr
+      privatekey_path:  /home/vagrant/nginx-conf/ssl/wordpress.pem
+      common_name: wordpress
+    tags: ssl
+  - name: Generate a Self Signed OpenSSL certificate
+    openssl_certificate:
+      path: /home/vagrant/nginx-conf/ssl/wordpress.crt
+      privatekey_path: /home/vagrant/nginx-conf/ssl/wordpress.pem
+      csr_path: /home/vagrant/nginx-conf/ssl/wordpress.csr
+      provider: selfsigned
+    tags: ssl
+
+  # certbot
+
+  # - name: install and refresh snap core
+  #   shell: snap install core; snap refresh core
+  #   tags: ssl
+
+  # - name: prepare certbot
+  #   file:
+  #     src: /var/lib/snapd/snap
+  #     dest: /snap
+  #     state: link
+  #   tags: ssl
+
+  # - name: install certbot
+  #   snap:
+  #     name: certbot
+  #     classic: yes
+  #     state: present
+  #   tags: ssl
+    
+
+  # - name: prepare certbot
+  #   file:
+  #     src: /snap/bin/certbot 
+  #     dest: /usr/bin/certbot
+  #     state: link
+  #   tags: ssl
+
+
+
+  - name: Run container WORDPRESS, NGINX
     shell:
       cmd: "docker-compose -f docker-compose.yml up -d"
       chdir: /home/vagrant/
     become: yes
-    tags: docker
+    tags: docker, ssl

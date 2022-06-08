@@ -91,7 +91,7 @@
   vars:
     mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
     mysql_user: root
-    mysql_db_name: bet
+    mysql_db_name: "{{ mysql_db_name }}"
     
   tasks:
 
