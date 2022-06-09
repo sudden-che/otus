@@ -30,3 +30,10 @@ mysql_user: root
 mysql_db_name: wordpress
 server_hostname: wordpress
 core_update_level: true
+
+# backup
+backup_server: 10.10.20.40
+borg_pass: 777turboBACKUP888
+borg_repo: borg@10.10.20.40:/var/backup/
+borg_repo_passthrase: cheese
+

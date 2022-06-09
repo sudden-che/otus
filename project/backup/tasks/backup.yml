@@ -3,7 +3,48 @@
     yum:
       name: epel-release
       state: present
-  - name: ins borg
-    yum:
-      name: borgbackup
-      state: present
+
+  - name: create repo dir
+    file:
+      state: directory
+      owner: borg
+      group: borg
+      path: /var/backup/
+    
+  - name: enable ssh pwd login
+    replace:
+      dest: "/etc/ssh/sshd_config"
+      regexp: 'PasswordAuthentication no'
+      replace: 'PasswordAuthentication yes'
+   
+  - name:  restart sshd
+    service:
+      name:  sshd
+      state: restarted
+
+  # - name: setup repo dir 
+  #   copy:
+  #     src: templates/backup
+  #     dest: /var/
+  #     owner: borg
+  #     group: borg
+  #   tags: init
+
+  # - name: setup repo
+  #   expect:
+  #     command: "borg init --encryption repokey {{ borg_repo }}"
+  #     responses:
+  #       Question:
+  #         - cheese
+  #         - cheese
+  #         - no
+  #   become_user: borg
+  #   tags: expect
+
+
+
+  # add dir exist 
+
+
+
+    

@@ -1,16 +1,67 @@
 ---
 # tasks file for backup for all servers where backup
+  - name: ins borg
+    yum:
+      name: 
+        - borgbackup
+        - sshpass
+        - tree
+      state: present
+
+  - name: creating ssh-keys for root
+    user: 
+      name: root
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      
+
   - name: creating backup user
     user: 
       name: borg
+      password: "{{ borg_pass | password_hash('sha512')}}"
       generate_ssh_key: yes
       ssh_key_bits: 2048
+      #shell: /bin/bash
+      group: wheel
+        
 
-  - name: install epel
-    yum:
-      name: epel-release
-      state: present
-  - name: ins borg
-    yum:
-      name: borgbackup
-      state: present
+  - name: disable host key checking
+    replace:
+      dest: "/etc/ssh/ssh_config"
+      regexp: '#   StrictHostKeyChecking ask'
+      replace: 'StrictHostKeyChecking no'
+    notify: restart sshd
+
+  # - name: Set authorized keys taken from file
+  #   authorized_key:
+  #     user: borg
+  #     state: present
+  #     #key: "{{ lookup('file', '/home/borg/.ssh/id_rsa.pub') }}"
+  #     key: /home/borg/.ssh/id_rsa.pub
+  #   tags: copyid
+  #   become: yes
+  - name: ssh-copy-id to backup server {{ backup_server }}
+    shell: "sshpass -p {{ borg_pass }} ssh-copy-id borg@{{ backup_server }}"
+    become: yes
+    tags: copyid
+
+  - name: copy env file of borg
+    template:
+      src: .env.j2
+      dest: /home/borg/.env
+      owner: borg
+      group: borg
+      mode: 0644
+
+  - name: config backup server
+    include: backup.yml
+    when: (ansible_hostname == 'backup')
+
+  - name: init repo
+    shell: source /home/borg/.env; borg init --encryption repokey $BORG_REPO/$(hostname) || /bin/true;
+    become: yes
+    tags: init, backup
+
+  - name: run manual backup
+    shell: "source /home/borg/.env; borg create --stats --list $BORG_REPO/$(hostname)::$(hostname)-bak_dir-{now:%Y-%m-%d_%H:%M:%S} {{ bak_dir }}"
+    tags: backup

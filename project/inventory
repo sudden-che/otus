@@ -4,13 +4,16 @@ ansible_user=vagrant
 
 
 [gateway]
-inetRouter ansible_host=192.168.50.10 ansible_ssh_private_key_file=.vagrant/machines/inetRouter/virtualbox/private_key ssl_name=gw ssl_path=/etc/nginx/ssl/
+inetRouter ansible_host=192.168.50.10 ansible_ssh_private_key_file=.vagrant/machines/inetRouter/virtualbox/private_key ssl_name=gw ssl_path=/etc/nginx/ssl/ bak_dir=/etc
 
 
 [services]
-wordpress ansible_host=192.168.50.20 ansible_ssh_private_key_file=.vagrant/machines/wordpress/virtualbox/private_key ssl_name=wordpress ssl_path=/home/vagrant/nginx-conf/ssl/
-backup ansible_host=192.168.50.50 ansible_ssh_private_key_file=.vagrant/machines/backup/virtualbox/private_key
+wordpress ansible_host=192.168.50.20 ansible_ssh_private_key_file=.vagrant/machines/wordpress/virtualbox/private_key ssl_name=wordpress ssl_path=/home/vagrant/nginx-conf/ssl/ bak_dir=/home/vagrant/wordpress
+backup ansible_host=192.168.50.50 ansible_ssh_private_key_file=.vagrant/machines/backup/virtualbox/private_key bak_dir=/etc
 
 [mysqls]
-mysql ansible_host=192.168.50.30 ansible_ssh_private_key_file=.vagrant/machines/mysql/virtualbox/private_key server_id=1
+mysql ansible_host=192.168.50.30 ansible_ssh_private_key_file=.vagrant/machines/mysql/virtualbox/private_key server_id=1 
 mysqlslave ansible_host=192.168.50.40 ansible_ssh_private_key_file=.vagrant/machines/mysqlslave/virtualbox/private_key server_id=2
+
+[mysqls:vars]
+bak_dir=/etc
