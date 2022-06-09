@@ -2,7 +2,8 @@
 replication_enabled: true
 # true / false /dump
 restore_db: dump
-slave_ip: 10.10.20.30
+slave_ip: '%'
+#10.10.20.30
 # repl user pwd
 repl_user_pwd: "!OtusLinux2018repl"
 

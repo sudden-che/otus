@@ -35,6 +35,12 @@ Vagrant.configure("2") do |config|
       vm.vm.hostname = "mysqlslave"
     end
 
+    config.vm.define "backup" do |vm|
+      vm.vm.network "private_network", adapter: 2, virtualbox__intnet: "router-net",  ip: "10.10.20.40"
+      vm.vm.network "private_network", ip: "192.168.50.50", adapter: 5
+      vm.vm.hostname = "backup"
+    end
+
     
     # config.vm.define "testClient2" do |vm|
     #   vm.vm.network "private_network", adapter: 4, virtualbox__intnet: "test-net"           ,  auto_config: "false", ip: "10.10.11.252"

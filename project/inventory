@@ -9,6 +9,7 @@ inetRouter ansible_host=192.168.50.10 ansible_ssh_private_key_file=.vagrant/mach
 
 [services]
 wordpress ansible_host=192.168.50.20 ansible_ssh_private_key_file=.vagrant/machines/wordpress/virtualbox/private_key ssl_name=wordpress ssl_path=/home/vagrant/nginx-conf/ssl/
+backup ansible_host=192.168.50.50 ansible_ssh_private_key_file=.vagrant/machines/backup/virtualbox/private_key
 
 [mysqls]
 mysql ansible_host=192.168.50.30 ansible_ssh_private_key_file=.vagrant/machines/mysql/virtualbox/private_key server_id=1

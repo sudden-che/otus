@@ -1,0 +1,9 @@
+
+  - name: install epel
+    yum:
+      name: epel-release
+      state: present
+  - name: ins borg
+    yum:
+      name: borgbackup
+      state: present

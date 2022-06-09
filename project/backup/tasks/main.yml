@@ -1,2 +1,16 @@
 ---
-# tasks file for backup
+# tasks file for backup for all servers where backup
+  - name: creating backup user
+    user: 
+      name: borg
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+
+  - name: install epel
+    yum:
+      name: epel-release
+      state: present
+  - name: ins borg
+    yum:
+      name: borgbackup
+      state: present
