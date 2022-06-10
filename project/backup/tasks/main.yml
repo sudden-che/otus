@@ -4,8 +4,6 @@
     yum:
       name: 
         - borgbackup
-        - sshpass
-        - tree
       state: present
 
   - name: creating ssh-keys for root
@@ -57,9 +55,19 @@
     include: backup.yml
     when: (ansible_hostname == 'backup')
 
-  - name: init repo
+  # - name: "Find out if repository is initialized"
+  #   stat:
+  #     path: "/var/backup/"
+  #   register: repodir
+  #   become: yes
+  #   tags: backup, init
+    
+  - name: init repo if exists skip
     shell: source /home/borg/.env; borg init --encryption repokey $BORG_REPO/$(hostname) || /bin/true;
     become: yes
+    register: result
+    # workaround to already exists
+    changed_when: result.rc == 0 or "exists" in result.stdout
     tags: init, backup
 
   - name: run manual backup

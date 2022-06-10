@@ -1,0 +1,21 @@
+  - name: install packaches all-nodes
+    yum:
+      name:
+        - epel-release
+        - sshpass
+        - tree
+        - dnf
+        - tuned
+      state: present
+      update_cache: true
+  
+  - name: enabling services
+    service: 
+      name: "{{ item }}"
+      state: started
+      enabled: yes
+    with_items:
+      - tuned
+
+  - name: tuned guest performance
+    shell: "tuned-adm profile virtual-guest"

@@ -1,13 +1,5 @@
 ---
 # tasks file for mysql
-
-  - name: install epel repo
-    yum:
-      name:
-        - epel-release
-      state: present
-      update_cache: true
-
   - name: install percona remote rpm
     yum:
       name: "{{ perc_repo }}"
@@ -59,7 +51,7 @@
       - setpwd
 
   - name: Set new password from temporary password ignoring errors
-    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}" || /bin/true'
+    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}"; || /bin/true'
     tags: 
       - mysql
       - setpwd

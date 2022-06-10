@@ -1,16 +1,7 @@
-# ---
-# - name: project
-#   hosts: all
-#   gather_facts: true
-#   become: true
-#   roles: 
-#     - gateway
-#     - wordpress
-
-- name: wordpress
-  hosts: wordpress
-  gather_facts: true
-  become: true
-  roles: 
-    - wordpress
+ - name: project
+   hosts: all
+   gather_facts: true
+   become: true
+   roles: 
+     - setup
 
