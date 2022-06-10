@@ -9,8 +9,8 @@ repl_user_pwd: "!OtusLinux2018repl"
 
 # if master fale change wp_db to slave ansible-playbook wordpress.yml --extra-vars=wp_db_host=10.10.20.30 --tags=docker
 
-
 # wp login logopas
+
 # wpuser
 # wordpress$ecretpass
 # WordPress database settings
@@ -37,3 +37,13 @@ borg_pass: 777turboBACKUP888
 borg_repo: borg@10.10.20.40:/var/backup/
 borg_repo_passthrase: cheese
 
+# systemd service and timer conf
+# create or not service and timer ture/false
+create_service: true
+daily: 90
+monthly: 12
+yearly: 1
+# backup every
+backup_timer: 1d
+# check last backup every
+check_timer: 7d

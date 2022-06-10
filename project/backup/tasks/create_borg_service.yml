@@ -1,0 +1,32 @@
+  - name: create borg service
+    template:
+      src: borg-backup.service.j2
+      dest: /etc/systemd/system/borg-backup.service
+
+  - name: create borg service timer
+    template:
+      src: borg-backup.timer.j2
+      dest: /etc/systemd/system/borg-backup.timer
+
+  - name: create borg service checker
+    template:
+      src: borg-backup-check.service.j2
+      dest: /etc/systemd/system/borg-backup-check.service
+
+  - name: create borg service checker timer
+    template:
+      src: borg-backup-check.timer.j2
+      dest: /etc/systemd/system/borg-backup-check.timer
+
+  - shell: systemctl daemon-reload
+  - name: enable borg service
+
+    service:
+      name: "{{ item }}"
+      state: restarted
+      enabled: yes
+    with_items:
+      - borg-backup.service
+      - borg-backup.timer
+      - borg-backup-check.timer
+      

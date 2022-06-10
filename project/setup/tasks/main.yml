@@ -8,7 +8,14 @@
         - tuned
       state: present
       update_cache: true
-  
+
+  - name: update packages
+    yum:
+      name:
+        - systemd
+      state: latest
+
+
   - name: enabling services
     service: 
       name: "{{ item }}"

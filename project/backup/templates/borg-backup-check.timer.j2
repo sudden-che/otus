@@ -1,0 +1,8 @@
+[Unit]
+Description=Borg Backup check
+
+[Timer]
+OnUnitActiveSec={{check_timer}}
+
+[Install]
+WantedBy=timers.target
