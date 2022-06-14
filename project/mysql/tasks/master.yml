@@ -10,7 +10,7 @@
 # base user
   - name: MASTER CONF user wordpress add
     mysql_user:
-      name: "wordpress"
+      name: "{{ wp_db_user }}"
       password: "!OtusLinux2018"
       state: present
       host: '10.10.20.10'
@@ -50,7 +50,7 @@
       dest: dump_m.sql
       flat: yes
     when: "restore_db == 'dump'"
-    
+
   - name: mysql_bak
     include: mysql_bak.yml
     tags: bak

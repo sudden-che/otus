@@ -7,6 +7,6 @@
       mode: 0755
 
 
-  - name:  backup via xtrabackup
-    shell: "mkdir -p {{ mysql_local_bak }}/$(date +%w) ;xtrabackup --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}/$(date +%w) "
-    
+  - name:  one full backup via xtrabackup
+    shell: "xtrabackup --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }} || /bin/true" 
+    tags: once, bak

@@ -53,7 +53,7 @@
       - setpwd
 
   - name: Set new password from temporary password ignoring errors
-    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}"; || /bin/true'
+    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}" || /bin/true'
     tags: 
       - mysql
       - setpwd

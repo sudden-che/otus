@@ -1,7 +1,7 @@
 # replication / restore db settings: true / false 
 replication_enabled: true
 # true / false /dump
-restore_db: dump
+restore_db: true
 slave_ip: '%'
 #10.10.20.30
 # repl user pwd

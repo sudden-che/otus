@@ -3,6 +3,15 @@ Description=xtrabackup service
 [Service]
 Type=oneshot
 
-# Репозиторий
-Environment=REPO={{mysql_local_bak}}
+# очистка папки
+ExecStart=/bin/rm -fR {{ mysql_local_bak }}/*
 
+# бекап выбранных баз
+ExecStart=/bin/xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}
+
+
+# /{{ wp_db_name }}
+
+
+
+rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}

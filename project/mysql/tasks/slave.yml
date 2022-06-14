@@ -56,6 +56,25 @@
     include: mysql_bak.yml
     tags: bak
 
-  # - name: create bak service
-  #   include: create-xtrabackup-service.yml
+  - name: Creates a cron bak job  under /etc/cron.d
+    ansible.builtin.cron:
+      name: xtrabackup
+      hour: "23"
+      user: root
+      job: "
+rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}"
+      cron_file: xtrabackup
+    tags: bak, wp
+
+  - name: manual backup 
+    shell: "rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}"
+    tags: wp,bak
+
+  # - name: Creates a cron bak job  under /etc/cron.d
+  #   ansible.builtin.cron:
+  #     name: mysqldump 
+  #     hour: "23"
+  #     user: root
+  #     job: "mysqldump -u root -D {{ wp_db_name }}  -A | bzip2 > {{ wp_db_name }}_bak.sql.bz2"
+  #     cron_file: mysqldump
   #   tags: bak
