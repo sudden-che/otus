@@ -50,18 +50,12 @@
     shell: source /home/borg/.env; borg init --encryption repokey $BORG_REPO/$(hostname) || /bin/true;
     become: yes
     register: result
-    # workaround to already exists
-    changed_when: result.rc == 0 or "already exists" in result.stdout
     tags: init, backup
-
-  # - name: run manual backup
-  #   shell: "source /home/borg/.env; borg create --stats --list $BORG_REPO/$(hostname)::$(hostname)-bak_dir-{now:%Y-%m-%d_%H:%M:%S} {{ bak_dir }}"
-  #   tags: backup
 
   - name: create service if needed
     include: create_borg_service.yml
     when: create_service == true
     tags: bak_service
 
-  - debug: msg={{bak_dir}}
-    tags: debuk
+#  - debug: msg={{bak_dir}}
+#    tags: debuk

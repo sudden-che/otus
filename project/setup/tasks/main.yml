@@ -6,6 +6,7 @@
         - tree
         - dnf
         - tuned
+        - chronyd
       state: present
       update_cache: true
 
@@ -23,6 +24,7 @@
       enabled: yes
     with_items:
       - tuned
+      - chronyd
 
   - name: tuned guest performance
     shell: "tuned-adm profile virtual-guest"

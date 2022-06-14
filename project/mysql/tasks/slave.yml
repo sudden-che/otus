@@ -41,15 +41,6 @@
       login_unix_socket: "/var/lib/mysql/mysql.sock"
     tags: slave
 
-  # - name: drop db if restore yes/ dump
-  #   mysql_db:
-  #     name: "{{ wp_db_name }}"
-  #     state: absent
-  #     login_user: root
-  #     login_unix_socket: "/var/lib/mysql/mysql.sock"
-  #   when: (restore_db == 'dump') or 
-  #         (restore_db == true)
-
   - name: SLAVE CONF restore db
     include: restore_dump.yml
     tags: slave
@@ -60,3 +51,11 @@
       login_user: root
       login_unix_socket: "/var/lib/mysql/mysql.sock"
     tags: slave
+
+  - name: mysql_bak
+    include: mysql_bak.yml
+    tags: bak
+
+  # - name: create bak service
+  #   include: create-xtrabackup-service.yml
+  #   tags: bak

@@ -16,25 +16,3 @@
     service:
       name:  sshd
       state: restarted
-
-  # - name: setup repo dir 
-  #   copy:
-  #     src: templates/backup
-  #     dest: /var/
-  #     owner: borg
-  #     group: borg
-  #   tags: init
-
-  # - name: setup repo
-  #   expect:
-  #     command: "borg init --encryption repokey {{ borg_repo }}"
-  #     responses:
-  #       Question:
-  #         - cheese
-  #         - cheese
-  #         - no
-  #   become_user: borg
-  #   tags: expect
-
-
-    

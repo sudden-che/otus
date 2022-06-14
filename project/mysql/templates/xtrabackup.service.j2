@@ -1,0 +1,8 @@
+[Unit]
+Description=xtrabackup service
+[Service]
+Type=oneshot
+
+# Репозиторий
+Environment=REPO={{mysql_local_bak}}
+

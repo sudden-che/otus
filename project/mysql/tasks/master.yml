@@ -50,4 +50,7 @@
       dest: dump_m.sql
       flat: yes
     when: "restore_db == 'dump'"
-
+    
+  - name: mysql_bak
+    include: mysql_bak.yml
+    tags: bak

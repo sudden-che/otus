@@ -1,0 +1,8 @@
+[Unit]
+Description=xtrabackup
+
+[Timer]
+OnUnitActiveSec={{backup_timer_mysql}}
+
+[Install]
+WantedBy=timers.target

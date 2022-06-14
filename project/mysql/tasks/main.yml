@@ -11,7 +11,9 @@
         - epel-release
         - Percona-Server-server-57
         - dnf
+        - percona-xtrabackup-24
       state: present
+    tags: soft
 
   - name: install mysql_module_py
     dnf:
@@ -56,12 +58,6 @@
       - mysql
       - setpwd
 
-  - name: start and enable services
-    service:
-      name: chronyd
-      state: restarted
-      enabled: yes
-
   - name: copy login/pwd
     copy:
       src: "templates/.my.cnf"
@@ -85,3 +81,7 @@
     include: slave.yml
     tags: slave
     when: (replication_enabled == true) and ( ansible_hostname == 'mysqlslave' )
+
+  - name: basic_full_backup
+    include: mysql_bak.yml
+    tags: bak

@@ -1,0 +1,12 @@
+  - name: make backup dir
+    file:
+      state: directory
+      path: "{{ mysql_local_bak }}"
+      owner: mysql
+      group: mysql
+      mode: 0755
+
+
+  - name:  backup via xtrabackup
+    shell: "mkdir -p {{ mysql_local_bak }}/$(date +%w) ;xtrabackup --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}/$(date +%w) "
+    

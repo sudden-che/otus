@@ -1,0 +1,21 @@
+  - name: create xtrabackupservice
+    template:
+      src: xtrabackupservice.j2
+      dest: /etc/systemd/system/xtrabackupservice.service
+
+  - name: create xtrabackupservice timer
+    template:
+      src: xtrabackupservice.timer.j2
+      dest: /etc/systemd/system/xtrabackupservice.timer
+
+  - shell: systemctl daemon-reload
+  - name: enable xtrabackupservice
+    service:
+      name: "{{ item }}"
+      state: restarted
+      enabled: yes
+    with_items:
+      - xtrabackupservice.service
+      - xtrabackupservice.timer
+      
+      

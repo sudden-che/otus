@@ -6,10 +6,13 @@ slave_ip: '%'
 #10.10.20.30
 # repl user pwd
 repl_user_pwd: "!OtusLinux2018repl"
-
 # if master fale change wp_db to slave ansible-playbook wordpress.yml --extra-vars=wp_db_host=10.10.20.30 --tags=docker
 
+mysql_local_bak: /var/bak
+# sql, bz2, gz, xz
+dump_format: bz2
 # wp login logopas
+backup_timer_mysql: 1d
 
 # wpuser
 # wordpress$ecretpass
