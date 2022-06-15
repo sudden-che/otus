@@ -6,7 +6,9 @@
         - tree
         - dnf
         - tuned
-        - chronyd
+        - chrony
+        - mlocate
+        - sshpass
       state: present
       update_cache: true
 
@@ -28,3 +30,5 @@
 
   - name: tuned guest performance
     shell: "tuned-adm profile virtual-guest"
+
+  - shell: updatedb

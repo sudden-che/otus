@@ -12,6 +12,7 @@
         - Percona-Server-server-57
         - dnf
         - percona-xtrabackup-24
+        - nginx
       state: present
     tags: soft
 

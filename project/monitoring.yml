@@ -1,0 +1,17 @@
+---
+- name: monitoring
+  hosts: monitoring
+  gather_facts: true
+  become: true
+  roles: 
+    - monitoring
+    - community.zabbix/roles/zabbix_server/
+
+
+- name: monitoring
+  hosts: monitoring
+  gather_facts: true
+  become: true
+  roles: 
+    - community.zabbix/roles/zabbix_web/
+  tags: webs

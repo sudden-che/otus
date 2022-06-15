@@ -1,2 +1,34 @@
 ---
 # tasks file for monitoring
+
+  # - name: disable host key checking
+  #   replace:
+  #     dest: "/etc/ssh/ssh_config"
+  #     regexp: '#   StrictHostKeyChecking ask'
+  #     replace: 'StrictHostKeyChecking no'
+  #   tags: ssh, basic
+
+  # - name:  restart sshd
+  #   service:
+  #     name:  sshd
+  #     state: restarted
+  #   tags: ssh, basic
+
+  # - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
+  #   openssh_keypair:
+  #     path: ~/.ssh/id_rsa
+  #   tags:  basic
+    
+
+  # - name: ssh-copy-id to  10.10.20.30
+  #   shell: "sshpass -p vagrant ssh-copy-id vagrant@10.10.20.30"
+  #   #become: yes
+  #   tags: copyid, basic
+
+  - name: copy login/pwd
+    copy:
+      src: "templates/.my.cnf"
+      dest: "/root/.my.cnf"
+      owner: root
+    tags: login
+

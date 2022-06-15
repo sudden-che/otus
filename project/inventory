@@ -1,6 +1,7 @@
 [all:vars]
 ansible_ssh_common_args="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 ansible_user=vagrant
+ansible_password=vagrant
 
 
 [gateway]
@@ -17,4 +18,7 @@ mysql ansible_host=192.168.50.30 ansible_ssh_private_key_file=.vagrant/machines/
 mysqlslave ansible_host=192.168.50.40 ansible_ssh_private_key_file=.vagrant/machines/mysqlslave/virtualbox/private_key server_id=2
 
 [mysqls:vars]
-bak_dir=/etc
+bak_dir=/etc\ /var/bak
+
+[zabbix]
+monitoring ansible_host=192.168.50.60 ansible_ssh_private_key_file=.vagrant/machines/monitoring/virtualbox/private_key 

@@ -10,3 +10,4 @@
   - name:  one full backup via xtrabackup
     shell: "xtrabackup --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }} || /bin/true" 
     tags: once, bak
+

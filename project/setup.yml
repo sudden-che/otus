@@ -1,4 +1,4 @@
- ---
+---
 - name: setup
   hosts: all
   gather_facts: true

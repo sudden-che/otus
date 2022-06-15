@@ -14,4 +14,4 @@ ExecStart=/bin/xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --data
 
 
 
-rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}
+#rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}

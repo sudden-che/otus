@@ -18,6 +18,19 @@
       login_unix_socket: "/var/lib/mysql/mysql.sock"
       priv: "*.*:ALL"
 
+  - name: MASTER CONF user zabbix-serv add
+    mysql_user:
+      name: "{{ mysql_user_zab }}"
+      password: "{{ mysql_password_zab }}"
+      state: present
+      host: '10.10.20.50'
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+      priv: "*.*:ALL"
+    tags: monitoring
+
+
+
 # if repl user
   - name: MASTER user repl add
     mysql_user:

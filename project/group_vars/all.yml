@@ -1,7 +1,7 @@
 # replication / restore db settings: true / false 
 replication_enabled: true
 # true / false /dump
-restore_db: true
+restore_db: dump
 slave_ip: '%'
 #10.10.20.30
 # repl user pwd
@@ -50,3 +50,9 @@ yearly: 1
 backup_timer: 1d
 # check last backup every
 check_timer: 7d
+
+
+# zabbix
+postgres_pwd: 777turboBACKUP888
+mysql_user_zab: zabbix-server
+mysql_password_zab: zabbix-server

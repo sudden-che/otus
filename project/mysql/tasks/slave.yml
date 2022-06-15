@@ -3,11 +3,20 @@
       dest: "/etc/ssh/sshd_config"
       regexp: 'PasswordAuthentication no'
       replace: 'PasswordAuthentication yes'
-   
+    tags: ssh
+
+  - name: disable host key checking
+    replace:
+      dest: "/etc/ssh/ssh_config"
+      regexp: '#   StrictHostKeyChecking ask'
+      replace: 'StrictHostKeyChecking no'
+    tags: ssh
+
   - name: SLAVE restart sshd
     service:
       name:  sshd
       state: restarted
+    tags: ssh
      
   - name: SLAVE Ensure MySQL is up-and-running
     service:
@@ -66,15 +75,17 @@ rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{
       cron_file: xtrabackup
     tags: bak, wp
 
-  - name: manual backup 
+  - name: manual {{ wp_db_name }} on slave
     shell: "rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}"
     tags: wp,bak
 
-  # - name: Creates a cron bak job  under /etc/cron.d
-  #   ansible.builtin.cron:
-  #     name: mysqldump 
-  #     hour: "23"
-  #     user: root
-  #     job: "mysqldump -u root -D {{ wp_db_name }}  -A | bzip2 > {{ wp_db_name }}_bak.sql.bz2"
-  #     cron_file: mysqldump
-  #   tags: bak
+  - name: MASTER CONF user zabbix-serv add
+    mysql_user:
+      name: "{{ mysql_user_zab }}"
+      password: "{{ mysql_password_zab }}"
+      state: present
+      host: '%'
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+      priv: "*.*:ALL"
+    tags: monitoring
