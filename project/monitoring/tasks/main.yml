@@ -82,3 +82,6 @@
     mysql_db: name=test state=absent
     tags: seci, basic
     ignore_errors: true # 
+
+    #ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+    
