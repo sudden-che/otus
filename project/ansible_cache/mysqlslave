@@ -24,22 +24,22 @@ ansible_cmdline:
   ro: true
   root: UUID=1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_date_time:
-  date: '2022-06-15'
-  day: '15'
-  epoch: '1655306725'
-  hour: '15'
-  iso8601: '2022-06-15T15:25:25Z'
-  iso8601_basic: 20220615T152525031764
-  iso8601_basic_short: 20220615T152525
-  iso8601_micro: '2022-06-15T15:25:25.031764Z'
-  minute: '25'
+  date: '2022-06-16'
+  day: '16'
+  epoch: '1655378572'
+  hour: '11'
+  iso8601: '2022-06-16T11:22:52Z'
+  iso8601_basic: 20220616T112252046475
+  iso8601_basic_short: 20220616T112252
+  iso8601_micro: '2022-06-16T11:22:52.046475Z'
+  minute: '22'
   month: '06'
-  second: '25'
-  time: '15:25:25'
+  second: '52'
+  time: '11:22:52'
   tz: UTC
   tz_offset: '+0000'
-  weekday: Wednesday
-  weekday_number: '3'
+  weekday: Thursday
+  weekday_number: '4'
   weeknumber: '24'
   year: '2022'
 ansible_default_ipv4:
@@ -128,15 +128,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-vracbnxiwnokwbtenruselafwsbozexp ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655306735.6129928-882005-51699018816940/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-hsexisailyaevpgvwslytrbrhgxtjmag ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655378583.3305037-1079115-229478786709059/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
-  TERM: xterm
+  TERM: screen
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '437'
+  XDG_SESSION_ID: '601'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -456,34 +456,34 @@ ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
 ansible_machine_id: 19b65d7fc5ae364cb5d0f073052a2084
-ansible_memfree_mb: 100
+ansible_memfree_mb: 151
 ansible_memory_mb:
   nocache:
-    free: 477
-    used: 513
+    free: 333
+    used: 657
   real:
-    free: 100
+    free: 151
     total: 990
-    used: 890
+    used: 839
   swap:
     cached: 1
-    free: 2015
+    free: 1997
     total: 2047
-    used: 32
+    used: 50
 ansible_memtotal_mb: 990
 ansible_mounts:
-- block_available: 9315967
+- block_available: 9241183
   block_size: 4096
   block_total: 10480385
-  block_used: 1164418
+  block_used: 1239202
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20933148
+  inode_available: 20933296
   inode_total: 20971008
-  inode_used: 37860
+  inode_used: 37712
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 38158200832
+  size_available: 37851885568
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: mysqlslave
@@ -547,7 +547,7 @@ ansible_service_mgr: systemd
 ansible_ssh_host_key_ecdsa_public: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDCZO+NwhyVfGq2ZGgHnq8w+ltLTfAbB5cDgWe2EyXDeOD46mNPcvm/AP8Lf6IQrkjjToYpUwXryCy5cunH/NYw=
 ansible_ssh_host_key_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAILlRwT2nkooxTJdulGi5wY4gGSJULE98k+GGpwCWmu3B
 ansible_ssh_host_key_rsa_public: AAAAB3NzaC1yc2EAAAADAQABAAABAQDJsWlJGUAgzM4NJFRqIkXJTlQIVU+VRAE1TTFDDpTlepJzoTEOJVUsxrAPpnJtTbIiy59obJVVIACiU6/DJl4FjfHSoEr/wVbr8c9Po3UbusDAgE3xaJZp2re79MqCH+8lfBQX4OVR09lcCvSsBFrnjVco7boSDwluAx3UlmCwJQ8DpRQC+os4xAmpjHg0OSVXRp+2SHwhhNhtUxmtb++jd1JlpfwWvDTa9q2t/0LRTiS+m9XoG5djiVbLoPVKlG6I5gIgAnkJpJiIky3PaWiFU9PazK/USR5HCh4fdoUv+OiPNauqucFgG8c1AD66kAZVSQbB5Wo/JPn0AF2ahpfb
-ansible_swapfree_mb: 2015
+ansible_swapfree_mb: 1997
 ansible_swaptotal_mb: 2047
 ansible_system: Linux
 ansible_system_capabilities:
@@ -590,7 +590,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 594491
+ansible_uptime_seconds: 666338
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0

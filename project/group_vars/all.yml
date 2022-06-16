@@ -1,7 +1,7 @@
 # replication / restore db settings: true / false 
 replication_enabled: true
 # true / false /dump
-restore_db: dump
+restore_db: false
 slave_ip: '%'
 #10.10.20.30
 # repl user pwd
@@ -23,13 +23,17 @@ wp_db_user: wordpress
 wp_db_host: 10.10.20.20
 wp_ip: 10.10.20.10
 wp_db_password: '!OtusLinux2018'
-  
-mysql_port: 3306
+
+
+# debug and remove
 mysql_root_password: root
 
 perc_repo: "https://repo.percona.com/yum/percona-release-latest.noarch.rpm"
+perc_srv: percona-server-server
+# mysql 
 mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
 mysql_user: root
+mysql_port: 3306
 mysql_db_name: wordpress
 server_hostname: wordpress
 core_update_level: true
@@ -51,8 +55,11 @@ backup_timer: 1d
 # check last backup every
 check_timer: 7d
 
+# debug and remove 
+postgres_pwd: 777turboBACKUP888
+
 
 # zabbix
-postgres_pwd: 777turboBACKUP888
+
 mysql_user_zab: zabbix-server
 mysql_password_zab: zabbix-server

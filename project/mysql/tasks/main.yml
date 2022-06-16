@@ -5,16 +5,20 @@
       name: "{{ perc_repo }}"
       state: present
 
+  - name: enable percona repo ps80
+    shell: "percona-release setup ps80 -y || /bin/true"
+
   - name: install packages
     yum: 
       name: 
         - epel-release
-        - Percona-Server-server-57
+        - "{{ perc_srv }}"
         - dnf
-        - percona-xtrabackup-24
+        - percona-xtrabackup-80
         - nginx
       state: present
     tags: soft
+
 
   - name: install mysql_module_py
     dnf:
@@ -72,6 +76,18 @@
       state: started
       enabled: yes
     tags: mysql
+
+  - name: set global gtid = on
+    community.mysql.mysql_query:
+      query: "{{ item }}"
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+    with_items: 
+      - "SET @@GLOBAL.ENFORCE_GTID_CONSISTENCY = ON;"
+      - "SET @@GLOBAL.GTID_MODE = OFF_PERMISSIVE;"
+      - "SET @@GLOBAL.GTID_MODE = ON_PERMISSIVE;"
+      - "SET @@GLOBAL.GTID_MODE = ON;"  
+    tags: gtid
 
   - name: include master conf
     include: master.yml

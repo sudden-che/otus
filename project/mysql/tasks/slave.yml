@@ -24,7 +24,16 @@
       state: started
       enabled: yes
     tags: mysql
-  
+
+  - name: set global gtid = on
+    community.mysql.mysql_query:
+      query: "{{ item }}"
+      login_user: root
+      login_unix_socket: "/var/lib/mysql/mysql.sock"
+    with_items: 
+      - "SET @@GLOBAL.SERVER_ID=2;"  
+    tags: sid
+
   - name: SLAVE copy dump
     copy:
       src: dump_m.sql
@@ -48,7 +57,7 @@
       master_auto_position: 1
       login_user: root
       login_unix_socket: "/var/lib/mysql/mysql.sock"
-    tags: slave
+    tags: slave, sconf
 
   - name: SLAVE CONF restore db
     include: restore_dump.yml
@@ -79,13 +88,28 @@ rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{
     shell: "rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}"
     tags: wp,bak
 
-  - name: MASTER CONF user zabbix-serv add
-    mysql_user:
-      name: "{{ mysql_user_zab }}"
-      password: "{{ mysql_password_zab }}"
-      state: present
-      host: '%'
-      login_user: root
-      login_unix_socket: "/var/lib/mysql/mysql.sock"
-      priv: "*.*:ALL"
-    tags: monitoring
+  # - name: slave accept root for monitoring 
+  # #maybe set mon host
+  #   mysql_user:
+  #     name: "{{ mysql_user }}"
+  #     password: "{{ mysql_pass }}"
+  #     state: present
+  #     host: '%'
+  #     login_user: root
+  #     login_unix_socket: "/var/lib/mysql/mysql.sock"
+  #     priv: "*.*:ALL"
+  #   tags: monitoring
+
+
+    
+  # - name: slave accept zabbix-user for monitoring 
+  # #maybe set mon host
+  #   mysql_user:
+  #     name: "{{ mysql_user_zab }}"
+  #     password: "{{ mysql_password_zab }}"
+  #     state: present
+  #     host: '%'
+  #     login_user: root
+  #     login_unix_socket: "/var/lib/mysql/mysql.sock"
+  #     priv: "*.*:ALL"
+  #   tags: monitoring

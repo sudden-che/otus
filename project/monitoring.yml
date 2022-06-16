@@ -6,6 +6,7 @@
   roles: 
     - monitoring
     - community.zabbix/roles/zabbix_server/
+  tags: srv
 
 
 - name: monitoring

@@ -17,18 +17,68 @@
   # - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
   #   openssh_keypair:
   #     path: ~/.ssh/id_rsa
-  #   tags:  basic
+  #   tags:  basicss
     
 
   # - name: ssh-copy-id to  10.10.20.30
   #   shell: "sshpass -p vagrant ssh-copy-id vagrant@10.10.20.30"
   #   #become: yes
   #   tags: copyid, basic
+  - name: install mysql local
+    yum:
+      name:
+        - mysql
+        - mysql-server
+      state: present
+    tags: basics
+
+  - name: start services
+    service:
+      name: mysqld
+      state: restarted
+      enabled: yes
+    tags: basic
+
+
+
+  # mysql_secure_installation
+  
+  - name: Update MariaDB root password
+    mysql_user: name=root host={{item}} password={{mysql_password_zab}} 
+    with_items:
+      - 127.0.0.1
+      - ::1
+      - localhost
+    tags: seci, basic
+    ignore_errors: true # 
+
+  # - name: Set ~/.my.cnf file
+  #   template: src=dotmy.cnf.j2 dest=/root/.my.cnf mode=0600
 
   - name: copy login/pwd
     copy:
       src: "templates/.my.cnf"
-      dest: "/root/.my.cnf"
-      owner: root
-    tags: login
+      dest: "~/.my.cnf"
+    tags: seci, basic
+    ignore_errors: true # 
 
+    # mysql_secure_installation
+  - name: Delete anonymous MySQL user
+    mysql_user: name="" host={{item}} state=absent
+    with_items:
+      - localhost
+      - "{{ansible_nodename}}"
+    tags: seci, basic
+    ignore_errors: true # 
+
+    # mysql_secure_installation
+  - name: Delete Hostname based MySQL user
+    mysql_user: name=root host="{{ansible_nodename}}" state=absent
+    tags: seci, basic
+    ignore_errors: true # 
+
+    # mysql_secure_installation
+  - name: Remove MySQL test database
+    mysql_db: name=test state=absent
+    tags: seci, basic
+    ignore_errors: true # 
