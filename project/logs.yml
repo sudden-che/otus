@@ -1,0 +1,8 @@
+---
+- name: configure logserver
+  hosts: logserver
+  gather_facts: true
+  become: true
+  roles: 
+    - collect-logs
+

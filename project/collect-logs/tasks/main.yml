@@ -1,2 +1,6 @@
 ---
 # tasks file for collect-logs
+- name: install soft
+  yum:
+    name: audispd-plugins
+    state: present

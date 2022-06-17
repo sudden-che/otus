@@ -9,7 +9,7 @@
         - mlocate
         - sshpass
         - python3-pip
-        #- python-pyzabbix
+        - audispd-plugins
       state: present
       update_cache: true
   
