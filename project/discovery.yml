@@ -7,7 +7,7 @@
 
   - name: Create discovery rule with ICMP and zabbix agent checks
     community.zabbix.zabbix_discovery_rule:
-      server_url: "http://zabbix.example.com/zabbix/"
+      server_url: "http://zabbix.example.com/"
       login_user: Admin
       login_password: zabbix
       name: local
@@ -20,3 +20,5 @@
             ports: 10050
             uniq: yes
             host_source: "discovery"
+    # vars:
+    #   ansible_python_interpreter: /usr/bin/python2

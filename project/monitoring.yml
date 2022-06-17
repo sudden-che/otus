@@ -18,7 +18,7 @@
   tags: webs
 
 - name: agent installation
-  hosts: backup
+  hosts: all
   gather_facts: true
   become: true
   roles: 

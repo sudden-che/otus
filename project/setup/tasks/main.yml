@@ -1,4 +1,4 @@
-  - name: install packaches all-nodes
+  - name: install packages all-nodes
     yum:
       name:
         - epel-release
@@ -8,14 +8,25 @@
         - chrony
         - mlocate
         - sshpass
+        - python3-pip
+        #- python-pyzabbix
       state: present
       update_cache: true
+  
 
   - name: update packages
     yum:
       name:
         - systemd
       state: latest
+
+  - name: install zabbix-api
+    shell: python3 -m pip install zabbix-api
+    # pip:
+    #   executable: pip3.3
+    #   requirements: community.zabbix/requirements.txt
+    # #state: latest
+    tags: py
 
 
   - name: enabling services
@@ -27,3 +38,13 @@
       - tuned
       - chronyd
  
+
+  - name: set zabbix.example.com in hosts
+    lineinfile:
+      dest: /etc/hosts
+      line: 10.10.20.50 zabbix.example.com
+      state: present
+    tags: hostname
+
+
+  - shell: updatedb

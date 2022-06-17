@@ -97,7 +97,13 @@
       immediate: yes 
     tags: fw 
 
-
+  - name: enabling https
+    firewalld:
+      service: zabbix-agent
+      state: enabled
+      permanent: yes
+      immediate: yes 
+    tags: fw 
 
 
   # - name: dst-nat ssl to {{ssl_name}}
