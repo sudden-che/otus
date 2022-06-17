@@ -1,2 +1,11 @@
----
-# handlers file for monitoring
+# ---
+# # handlers file for monitoring
+
+#   - name: pwd fix
+#     community.mysql.mysql_user: 
+#       name: root
+#       host: localhost
+#       password: "{{ mysql_password_zab }}"
+#       plugin: mysql_native_password
+#     tags: seci, basic
+#     ignore_errors: true # 

@@ -1,36 +1,22 @@
 ---
 # tasks file for monitoring
 
-  # - name: disable host key checking
-  #   replace:
-  #     dest: "/etc/ssh/ssh_config"
-  #     regexp: '#   StrictHostKeyChecking ask'
-  #     replace: 'StrictHostKeyChecking no'
-  #   tags: ssh, basic
-
-  # - name:  restart sshd
-  #   service:
-  #     name:  sshd
-  #     state: restarted
-  #   tags: ssh, basic
-
-  # - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
-  #   openssh_keypair:
-  #     path: ~/.ssh/id_rsa
-  #   tags:  basicss
-    
-
-  # - name: ssh-copy-id to  10.10.20.30
-  #   shell: "sshpass -p vagrant ssh-copy-id vagrant@10.10.20.30"
-  #   #become: yes
-  #   tags: copyid, basic
   - name: install mysql local
     yum:
       name:
         - mysql
         - mysql-server
+       # - python
       state: present
-    tags: basics
+    tags: basic
+
+  - name: install mysql_module_py
+    dnf:
+      name: 
+        - python2-PyMySQL
+        - python3-PyMySQL
+      state: present
+    tags: basic
 
   - name: start services
     service:
@@ -39,21 +25,32 @@
       enabled: yes
     tags: basic
 
-
-
   # mysql_secure_installation
-  
+
+  # - name: pwd fix
+  #   community.mysql.mysql_user:
+  #     login_unix_socket: /var/lib/mysql/mysql.sock
+  #     name: root
+  #     host: localhost
+  #     password: "{{ mysql_password_zab }}"
+  #     plugin: mysql_native_password
+      
+  #   tags: seci, basic, update
+  #   ignore_errors: true # 
+
   - name: Update MariaDB root password
-    mysql_user: name=root host={{item}} password={{mysql_password_zab}} 
+    mysql_user: #community.mysql.mysql_user:
+      name: root
+      host: "{{ item }}"
+      password: "{{ mysql_root_password }}"
     with_items:
       - 127.0.0.1
       - ::1
       - localhost
+    ignore_errors: yes
     tags: seci, basic
-    ignore_errors: true # 
+    #notify: pwd fix
 
-  # - name: Set ~/.my.cnf file
-  #   template: src=dotmy.cnf.j2 dest=/root/.my.cnf mode=0600
 
   - name: copy login/pwd
     copy:
@@ -84,4 +81,3 @@
     ignore_errors: true # 
 
     #ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-    

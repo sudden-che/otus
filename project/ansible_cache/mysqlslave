@@ -24,22 +24,22 @@ ansible_cmdline:
   ro: true
   root: UUID=1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_date_time:
-  date: '2022-06-16'
-  day: '16'
-  epoch: '1655378572'
-  hour: '11'
-  iso8601: '2022-06-16T11:22:52Z'
-  iso8601_basic: 20220616T112252046475
-  iso8601_basic_short: 20220616T112252
-  iso8601_micro: '2022-06-16T11:22:52.046475Z'
-  minute: '22'
+  date: '2022-06-17'
+  day: '17'
+  epoch: '1655480281'
+  hour: '15'
+  iso8601: '2022-06-17T15:38:01Z'
+  iso8601_basic: 20220617T153801281212
+  iso8601_basic_short: 20220617T153801
+  iso8601_micro: '2022-06-17T15:38:01.281212Z'
+  minute: '38'
   month: '06'
-  second: '52'
-  time: '11:22:52'
+  second: '01'
+  time: '15:38:01'
   tz: UTC
   tz_offset: '+0000'
-  weekday: Thursday
-  weekday_number: '4'
+  weekday: Friday
+  weekday_number: '5'
   weeknumber: '24'
   year: '2022'
 ansible_default_ipv4:
@@ -128,15 +128,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-hsexisailyaevpgvwslytrbrhgxtjmag ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655378583.3305037-1079115-229478786709059/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-ckaxqdirtjdztfgopxvsuaiyxuwjcxju ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655480293.0595503-1340237-18490268544033/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
   TERM: screen
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '601'
+  XDG_SESSION_ID: '149'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -456,34 +456,34 @@ ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
 ansible_machine_id: 19b65d7fc5ae364cb5d0f073052a2084
-ansible_memfree_mb: 151
+ansible_memfree_mb: 737
 ansible_memory_mb:
   nocache:
-    free: 333
-    used: 657
+    free: 1231
+    used: 606
   real:
-    free: 151
-    total: 990
-    used: 839
+    free: 737
+    total: 1837
+    used: 1100
   swap:
-    cached: 1
-    free: 1997
+    cached: 0
+    free: 2047
     total: 2047
-    used: 50
-ansible_memtotal_mb: 990
+    used: 0
+ansible_memtotal_mb: 1837
 ansible_mounts:
-- block_available: 9241183
+- block_available: 9239854
   block_size: 4096
   block_total: 10480385
-  block_used: 1239202
+  block_used: 1240531
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20933296
+  inode_available: 20932758
   inode_total: 20971008
-  inode_used: 37712
+  inode_used: 38250
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 37851885568
+  size_available: 37846441984
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: mysqlslave
@@ -509,10 +509,16 @@ ansible_processor:
 - '1'
 - GenuineIntel
 - Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz
-ansible_processor_cores: 2
+- '2'
+- GenuineIntel
+- Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz
+- '3'
+- GenuineIntel
+- Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz
+ansible_processor_cores: 4
 ansible_processor_count: 1
 ansible_processor_threads_per_core: 1
-ansible_processor_vcpus: 2
+ansible_processor_vcpus: 4
 ansible_product_name: VirtualBox
 ansible_product_serial: '0'
 ansible_product_uuid: 19B65D7F-C5AE-364C-B5D0-F073052A2084
@@ -547,7 +553,7 @@ ansible_service_mgr: systemd
 ansible_ssh_host_key_ecdsa_public: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDCZO+NwhyVfGq2ZGgHnq8w+ltLTfAbB5cDgWe2EyXDeOD46mNPcvm/AP8Lf6IQrkjjToYpUwXryCy5cunH/NYw=
 ansible_ssh_host_key_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAILlRwT2nkooxTJdulGi5wY4gGSJULE98k+GGpwCWmu3B
 ansible_ssh_host_key_rsa_public: AAAAB3NzaC1yc2EAAAADAQABAAABAQDJsWlJGUAgzM4NJFRqIkXJTlQIVU+VRAE1TTFDDpTlepJzoTEOJVUsxrAPpnJtTbIiy59obJVVIACiU6/DJl4FjfHSoEr/wVbr8c9Po3UbusDAgE3xaJZp2re79MqCH+8lfBQX4OVR09lcCvSsBFrnjVco7boSDwluAx3UlmCwJQ8DpRQC+os4xAmpjHg0OSVXRp+2SHwhhNhtUxmtb++jd1JlpfwWvDTa9q2t/0LRTiS+m9XoG5djiVbLoPVKlG6I5gIgAnkJpJiIky3PaWiFU9PazK/USR5HCh4fdoUv+OiPNauqucFgG8c1AD66kAZVSQbB5Wo/JPn0AF2ahpfb
-ansible_swapfree_mb: 1997
+ansible_swapfree_mb: 2047
 ansible_swaptotal_mb: 2047
 ansible_system: Linux
 ansible_system_capabilities:
@@ -590,7 +596,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 666338
+ansible_uptime_seconds: 75353
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0

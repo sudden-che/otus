@@ -5,7 +5,6 @@
         - sshpass
         - tree
         - dnf
-        - tuned
         - chrony
         - mlocate
         - sshpass
@@ -27,8 +26,4 @@
     with_items:
       - tuned
       - chronyd
-
-  - name: tuned guest performance
-    shell: "tuned-adm profile virtual-guest"
-
-  - shell: updatedb
+ 
