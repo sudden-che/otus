@@ -16,3 +16,11 @@
   roles: 
     - community.zabbix/roles/zabbix_web/
   tags: webs
+
+- name: agent installation
+  hosts: backup
+  gather_facts: true
+  become: true
+  roles: 
+    - community.zabbix/roles/zabbix_agent/
+  tags: agent
