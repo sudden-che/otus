@@ -2,5 +2,30 @@
 # tasks file for collect-logs
 - name: install soft
   yum:
-    name: audispd-plugins
+    name: 
+      - audispd-plugins
+      - policycoreutils-python
     state: present
+  
+
+- name: setting up selinux
+  seport:
+    ports: 514
+    proto: "{{ item }}"
+    setype: syslogd_port_t
+    state: present
+  with_items:
+    - tcp
+    - udp
+  tags: conf
+
+- name: setting up rsyslog conf
+  template:
+    src: rsyslog.conf.j2
+    dest: /etc/rsyslog.conf
+    
+- name: enable services
+  service:
+    name: rsyslog
+    enabled: yes
+    state: restarted

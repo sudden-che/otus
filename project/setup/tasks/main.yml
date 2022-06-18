@@ -10,6 +10,7 @@
         - sshpass
         - python3-pip
         - audispd-plugins
+        - rsyslog
       state: present
       update_cache: true
   
@@ -35,8 +36,8 @@
       state: started
       enabled: yes
     with_items:
-      - tuned
       - chronyd
+      - rsyslog
  
 
   - name: set zabbix.example.com in hosts

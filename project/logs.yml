@@ -6,3 +6,45 @@
   roles: 
     - collect-logs
 
+- name: configure clients
+  hosts: all, !logserver
+  gather_facts: true
+  become: true
+  tasks:  
+
+
+
+  # - name: setup clients 
+  #   yum:
+  #     name:
+  #       - rsyslog
+  #     state: absent
+  #   tags: clients
+  
+  - name: setup clients 
+    yum:
+      name:
+        - rsyslog
+      state: present
+    tags: clients
+
+  - name: setup client confs all
+    template:
+      src: group_vars/all.conf.j2
+      dest: /etc/rsyslog.d/all.conf
+    tags: clients
+
+
+
+  - name: start rsyslog clients
+    service: 
+      name: rsyslog
+      state: restarted
+      enabled: yes
+    tags: clients
+
+  - name: reboot clients
+    shell: reboot
+    when: reboot_after_all == 'true'
+
+

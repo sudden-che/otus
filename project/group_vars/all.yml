@@ -1,3 +1,7 @@
+reboot_after_all: true
+
+
+
 # replication / restore db settings: true / false 
 replication_enabled: true
 # true / false /dump
@@ -60,6 +64,8 @@ postgres_pwd: 777turboBACKUP888
 
 
 # zabbix
-
-mysql_user_zab: zabbix-server
+mysql_user_zab: zabroot
 mysql_password_zab: zabbix-server
+
+# logs
+rsyslog_server: 10.10.20.45
