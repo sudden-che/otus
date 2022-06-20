@@ -6,7 +6,6 @@
       name:
         - mysql
         - mysql-server
-       # - python
       state: present
     tags: basic
 
@@ -24,19 +23,6 @@
       state: restarted
       enabled: yes
     tags: basic
-
-  # mysql_secure_installation
-
-  # - name: pwd fix
-  #   community.mysql.mysql_user:
-  #     login_unix_socket: /var/lib/mysql/mysql.sock
-  #     name: root
-  #     host: localhost
-  #     password: "{{ mysql_password_zab }}"
-  #     plugin: mysql_native_password
-      
-  #   tags: seci, basic, update
-  #   ignore_errors: true # 
 
   - name: Update MariaDB root password
     mysql_user: #community.mysql.mysql_user:

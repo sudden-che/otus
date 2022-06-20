@@ -86,8 +86,8 @@
       - setpwd
 
 
-  - debug: msg="{{ tmp_root_password.stdout }}"
-    tags: setpwd
+  # - debug: msg="{{ tmp_root_password.stdout }}"
+  #   tags: setpwd
 
   - name: copy login/pwd
     copy:
