@@ -26,16 +26,16 @@ ansible_cmdline:
 ansible_date_time:
   date: '2022-06-20'
   day: '20'
-  epoch: '1655727201'
-  hour: '15'
-  iso8601: '2022-06-20T12:13:21Z'
-  iso8601_basic: 20220620T151321687214
-  iso8601_basic_short: 20220620T151321
-  iso8601_micro: '2022-06-20T12:13:21.687214Z'
-  minute: '13'
+  epoch: '1655736276'
+  hour: '17'
+  iso8601: '2022-06-20T14:44:36Z'
+  iso8601_basic: 20220620T174436882000
+  iso8601_basic_short: 20220620T174436
+  iso8601_micro: '2022-06-20T14:44:36.882000Z'
+  minute: '44'
   month: '06'
-  second: '21'
-  time: '15:13:21'
+  second: '36'
+  time: '17:44:36'
   tz: MSK
   tz_offset: '+0300'
   weekday: Monday
@@ -128,15 +128,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-fsddfrxpuaphctsefohqekhmkzotpmol ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655727221.6358871-1757886-42145741059073/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-dtkpnneecdkjphijiqjsvmovuocxxiyp ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655736296.7299478-1831297-54242047301895/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
   TERM: xterm
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '5'
+  XDG_SESSION_ID: '14'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -456,15 +456,15 @@ ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
 ansible_machine_id: c36fd65a24a5e843bdd3d29fd52b6fc3
-ansible_memfree_mb: 1338
+ansible_memfree_mb: 1144
 ansible_memory_mb:
   nocache:
-    free: 1676
-    used: 161
+    free: 1645
+    used: 192
   real:
-    free: 1338
+    free: 1144
     total: 1837
-    used: 499
+    used: 693
   swap:
     cached: 0
     free: 2047
@@ -472,18 +472,18 @@ ansible_memory_mb:
     used: 0
 ansible_memtotal_mb: 1837
 ansible_mounts:
-- block_available: 9600586
+- block_available: 9568943
   block_size: 4096
   block_total: 10480385
-  block_used: 879799
+  block_used: 911442
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20937381
+  inode_available: 20931639
   inode_total: 20971008
-  inode_used: 33627
+  inode_used: 39369
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 39324000256
+  size_available: 39194390528
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: logserver
@@ -596,7 +596,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 3465
+ansible_uptime_seconds: 12540
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0

@@ -11,7 +11,7 @@ services:
       WORDPRESS_DB_HOST: "${DB_HOST}"
     volumes:
       - /home/vagrant/wordpress:/var/www/html:z
-      - /var/log/nginx:/var/log/nginx:z
+      
     networks:
       - app-network
 

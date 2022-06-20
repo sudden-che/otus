@@ -1,4 +1,4 @@
-config service logs
+# Otus Administrator Linux Professional
 
 
 Цель:
@@ -12,3 +12,9 @@ config service logs
 везде включен selinux;
 организован централизованный сбор логов.
 организован backup базы
+
+\\ Сетевая схема инфраструктуры проекта
+
+\\ список серверов в проекте
+
+

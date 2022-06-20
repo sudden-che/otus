@@ -1,7 +1,36 @@
- - name: project
-   hosts: all
-   gather_facts: true
-   become: true
-   roles: 
-     - setup
+- name: project
+  hosts: all
+  gather_facts: true
+  become: true
+  roles: 
+    - setup
 
+- name: project provision custom roles
+  hosts: all
+  gather_facts: true
+  become: true 
+  
+  tasks:
+  - name: gateway provision
+    include_role: name=gateway
+    when: ansible_hostname == 'gateway'
+    tags: gw
+  
+  - name: mysql provision
+    include_role: name=mysql
+    when: "'mysqls' in group_names"
+    tags: ms
+
+  - name: wordpress provision
+    include_role: name=wordpress
+    when: ansible_hostname == 'wordpress'
+
+  - name: monitoring provision
+    include_role: name=monitoring
+    when: ansible_hostname == 'monitoring'
+    tags: mon
+  
+  - name: logserver provision
+    include_role: name=collect-logs
+    when: ansible_hostname == 'logserver'
+    
