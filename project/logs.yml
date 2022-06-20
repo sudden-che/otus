@@ -6,20 +6,14 @@
   roles: 
     - collect-logs
 
+
+
+
 - name: configure clients
   hosts: all, !logserver
   gather_facts: true
   become: true
   tasks:  
-
-
-
-  # - name: setup clients 
-  #   yum:
-  #     name:
-  #       - rsyslog
-  #     state: absent
-  #   tags: clients
   
   - name: setup clients 
     yum:
@@ -34,6 +28,18 @@
       dest: /etc/rsyslog.d/all.conf
     tags: clients
 
+  - name: setup nginx confs 
+    template:
+      src: group_vars/local.nginx.conf.j2
+      dest: /etc/rsyslog.d/nginx.conf
+    tags: clients
+    when: ansible_hostname == 'inetRouter' or ansible_hostname == 'wordpress'
+
+  - name: insert imfile moudle line to rsyslog conf
+    lineinfile:
+      path: /etc/rsyslog.conf
+      insertbefore: '$IncludeConfig /etc/rsyslog.d/*.conf'
+      line: '$ModLoad imfile'
 
 
   - name: start rsyslog clients

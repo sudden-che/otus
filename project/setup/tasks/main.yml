@@ -29,6 +29,9 @@
     # #state: latest
     tags: py
 
+  - name: Set timezone
+    timezone:
+      name: Europe/Moscow
 
   - name: enabling services
     service: 

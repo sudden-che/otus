@@ -1,14 +1,4 @@
-
-ansible-galaxy collection install community.zabbix
-
-# todo create database
-check realdb vs delegated_dbhost; change pwd to =! !
-
-fatal: [monitoring -> 192.168.50.40]: FAILED! => {"changed": false, "msg": "(1045, u\"Access denied for user '********'@'%' (using password: YES)\")"}
-real server or no
-
-zabbix_server_real_dbhost: 
-#192.168.50.40
+config service logs
 
 
 Цель:
