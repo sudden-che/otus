@@ -33,4 +33,9 @@
   - name: logserver provision
     include_role: name=collect-logs
     when: ansible_hostname == 'logserver'
-    
+
+  - name: backup config provision
+    include_role: name=backup
+    when: config_backup == true
+    tags: backup
+        

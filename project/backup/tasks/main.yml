@@ -5,6 +5,10 @@
       name: 
         - borgbackup
       state: present
+      
+  - name: enable powertools
+    shell: yum config-manager --set-enabled powertools
+    when: ansible_hostname == 'monitoring'
 
   - name: creating ssh-keys for root
     user: 
@@ -38,8 +42,8 @@
     template:
       src: .env.j2
       dest: /home/borg/.env
-      owner: borg
-      group: borg
+      # owner: borg
+      # group: borg
       mode: 0644
 
   - name: config backup server
