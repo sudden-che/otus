@@ -1,0 +1,28 @@
+---
+- name: lab net conf
+  hosts: backup
+  gather_facts: true
+  become: true
+  tasks:
+
+  - name: new def route add
+    nmcli:
+      conn_name: "System eth1"
+      type: ethernet
+      ifname: eth1
+      gw4: '10.10.20.254'
+      dns4: '1.1.1.1'
+      autoconnect: yes
+      state: present
+
+  - name: reset eth1
+    shell: "nmcli c down System\ eth1 && nmcli c up System\ eth1"
+
+
+  - name: clean def route
+    nmcli:
+      conn_name: "System eth0"      
+      state: absent
+
+
+
