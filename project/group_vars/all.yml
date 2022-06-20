@@ -1,56 +1,73 @@
+# если стоит true после выполнения последнего таска, вм будут перезагружены
 reboot_after_all: false
 
+# для дебага, значение true производите предварительное удаление пакетов или файлов, перед их установкой
+clean: false
 
-
-# replication / restore db settings: true / false 
-replication_enabled: true
-# true / false /dump
-restore_db: false
-slave_ip: '%'
-#10.10.20.30
-# repl user pwd
-repl_user_pwd: "!OtusLinux2018repl"
-# if master fale change wp_db to slave ansible-playbook wordpress.yml --extra-vars=wp_db_host=10.10.20.30 --tags=docker
-
-mysql_local_bak: /var/bak
-# sql, bz2, gz, xz
-dump_format: bz2
-# wp login logopas
-backup_timer_mysql: 1d
-
+# пример учетных данных для пользователя сайта
 # wpuser
-# wordpress$ecretpass
-# WordPress database settings
+# $ecretpas$
 
+# настройки для соединения вордпресс с бд
 wp_db_name: wordpress
 wp_db_user: wordpress
-wp_db_host: 10.10.20.20
-wp_ip: 10.10.20.10
+wp_db_host: 10.10.20.20   # адрес бд сервера для вордпресс
+wp_ip: 10.10.20.10        # адрес сервера где будет wordpress
 wp_db_password: '!OtusLinux2018'
 
 
 # debug and remove
-mysql_root_password: root
+#mysql_root_password: root
 
+# репозиторий бд percona для установки
 perc_repo: "https://repo.percona.com/yum/percona-release-latest.noarch.rpm"
 perc_srv: percona-server-server
+
 # mysql 
-mysql_pass: Ctrhtnysqgfhjkm1! #Секретныйпароль1!
+mysql_pass: Ctrhtnysqgfhjkm1$ #Секретныйпароль1$
 mysql_user: root
 mysql_port: 3306
 mysql_db_name: wordpress
 server_hostname: wordpress
 core_update_level: true
 
+# Если стоит true, будет настроена репликация сервера бд  restore db settings: true / false 
+replication_enabled: true
+# true будет восстановлена база данных из файла dump_m.sql / false будет создана новая бд /dump будет создан дамп базы данных, для разворачивании на slave-сервере
+restore_db: dump
+# адрес слейв сервера, для указания при создании пользователя репликации
+slave_ip: '%'
+#10.10.20.30
+
+# пароль пользователя репликации
+repl_user_pwd: "!OtusLinux2018repl"
+# if master fale change wp_db to slave ansible-playbook wordpress.yml --extra-vars=wp_db_host=10.10.20.30 --tags=docker
+
+# папка для локального бекапа бд mysql
+mysql_local_bak: /var/bak
+
+# формат локльного бекапа, при использовании модулей ансибл sql, bz2, gz, xz
+dump_format: bz2
+# таймер для беапапа mysql, периодичность создания бекапов
+backup_timer_mysql: 1d
+
+
+
 # backup
+# сервер с репозиториями borgbackup
 backup_server: 10.10.20.40
+# пароль пользователя 
 borg_pass: 777turboBACKUP888
+# репозиторий
 borg_repo: borg@10.10.20.40:/var/backup/
+# фраза для шифрования резервных копий
 borg_repo_passthrase: cheese
 
-# systemd service and timer conf
-# create or not service and timer ture/false
+# Настройки служб и таймеров systemd
+# создават или нет сервис и таймер true /false
 create_service: true
+
+# настройки ротации резервных копий
 daily: 90
 monthly: 12
 yearly: 1
@@ -59,13 +76,10 @@ backup_timer: 1d
 # check last backup every
 check_timer: 7d
 
-# debug and remove 
-postgres_pwd: 777turboBACKUP888
-
-
 # zabbix
+# пользователь бд для заббикс
 mysql_user_zab: zabroot
 mysql_password_zab: zabbix-server
 
-# logs
+# Адрес сервера логов
 rsyslog_server: 10.10.20.45

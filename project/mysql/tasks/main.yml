@@ -1,4 +1,23 @@
 ---
+  - name: clean packages
+    yum: 
+      name: 
+        - percona-release
+      state: absent
+    when: clean == true
+    tags: clean
+
+  - name: clean pwd file
+    file:
+      dest: "/root/.my.cnf"
+      state: absent
+    tags: clean, setpwd
+    when: clean == true
+
+  - name: install percona gpg
+    rpm_key:
+      state: present
+      key: https://repo.percona.com/yum/RPM-GPG-KEY-Percona
 # tasks file for mysql
   - name: install percona remote rpm
     yum:
@@ -19,12 +38,13 @@
       state: present
     tags: soft
 
-
   - name: install mysql_module_py
     dnf:
-      name: python2-PyMySQL
+      name: 
+        - python2-PyMySQL
+        - python3-PyMySQL
       state: present
-
+    tags: python
    
   - name: copy base-conf
     template:
@@ -49,6 +69,7 @@
       state: restarted
       enabled: yes
     tags: mysql
+
     # setpwd once
   - name: set pwd from temp
     shell: cat /var/log/mysqld.log | grep "temporary password" | grep -oE '[^ ]+$'
@@ -58,14 +79,19 @@
       - setpwd
 
   - name: Set new password from temporary password ignoring errors
-    shell: 'mysql -e "SET PASSWORD = PASSWORD(''{{ mysql_pass }}'');" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}" || /bin/true'
+    #shell: mysql -e "SET PASSWORD = PASSWORD({{ mysql_pass }});" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}"  #|| /bin/true'
+    shell: mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ mysql_pass }}';" --connect-expired-password -uroot -p"{{ tmp_root_password.stdout }}"  || /bin/true
     tags: 
       - mysql
       - setpwd
 
+
+  - debug: msg="{{ tmp_root_password.stdout }}"
+    tags: setpwd
+
   - name: copy login/pwd
     copy:
-      src: "templates/.my.cnf"
+      src: "templates/.my.cnf.j2"
       dest: "/root/.my.cnf"
       owner: root
     tags: login
@@ -81,13 +107,13 @@
     community.mysql.mysql_query:
       query: "{{ item }}"
       login_user: root
-      login_unix_socket: "/var/lib/mysql/mysql.sock"
+      #login_unix_socket: "/var/lib/mysql/mysql.sock"
     with_items: 
       - "SET @@GLOBAL.ENFORCE_GTID_CONSISTENCY = ON;"
       - "SET @@GLOBAL.GTID_MODE = OFF_PERMISSIVE;"
       - "SET @@GLOBAL.GTID_MODE = ON_PERMISSIVE;"
       - "SET @@GLOBAL.GTID_MODE = ON;"  
-    tags: gtid
+    tags: gtid,python
 
   - name: include master conf
     include: master.yml
@@ -102,3 +128,6 @@
   - name: basic_full_backup
     include: mysql_bak.yml
     tags: bak
+
+  
+

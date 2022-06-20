@@ -59,9 +59,9 @@
       login_unix_socket: "/var/lib/mysql/mysql.sock"
     tags: slave, sconf
 
-  - name: SLAVE CONF restore db
-    include: restore_dump.yml
-    tags: slave
+  # - name: SLAVE CONF restore db
+  #   include: restore_dump.yml
+  #   tags: slave
 
   - name: SLAVE start S L A V E
     mysql_replication: 
@@ -87,29 +87,3 @@ rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{
   - name: manual {{ wp_db_name }} on slave
     shell: "rm -fR {{ mysql_local_bak }}/* && xtrabackup --user={{mysql_user}} --password={{mysql_pass}} --databases={{ wp_db_name }} --backup --force-non-empty-directories --target-dir={{ mysql_local_bak }}"
     tags: wp,bak
-
-  # - name: slave accept root for monitoring 
-  # #maybe set mon host
-  #   mysql_user:
-  #     name: "{{ mysql_user }}"
-  #     password: "{{ mysql_pass }}"
-  #     state: present
-  #     host: '%'
-  #     login_user: root
-  #     login_unix_socket: "/var/lib/mysql/mysql.sock"
-  #     priv: "*.*:ALL"
-  #   tags: monitoring
-
-
-    
-  # - name: slave accept zabbix-user for monitoring 
-  # #maybe set mon host
-  #   mysql_user:
-  #     name: "{{ mysql_user_zab }}"
-  #     password: "{{ mysql_password_zab }}"
-  #     state: present
-  #     host: '%'
-  #     login_user: root
-  #     login_unix_socket: "/var/lib/mysql/mysql.sock"
-  #     priv: "*.*:ALL"
-  #   tags: monitoring
