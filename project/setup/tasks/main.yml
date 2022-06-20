@@ -1,3 +1,16 @@
+  - name: enable ssh pwd login
+    replace:
+      dest: "/etc/ssh/sshd_config"
+      regexp: 'PasswordAuthentication no'
+      replace: 'PasswordAuthentication yes'
+    tags: ssh
+   
+  - name:  restart sshd
+    service:
+      name:  sshd
+      state: restarted
+    tags: ssh
+
   - name: install packages all-nodes
     yum:
       name:
@@ -14,14 +27,13 @@
       state: present
       update_cache: true
   
-
   - name: update packages
     yum:
       name:
         - systemd
       state: latest
 
-  - name: install zabbix-api
+  - name: install zabbix-apiexit
     shell: python3 -m pip install zabbix-api
     # pip:
     #   executable: pip3.3

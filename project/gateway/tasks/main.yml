@@ -18,6 +18,7 @@
         - python-cryptography
       state: present
       update_cache: true
+      when: ansible_hostname =! 
 
   - name: set up forward 
     sysctl:

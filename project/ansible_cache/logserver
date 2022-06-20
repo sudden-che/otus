@@ -1,10 +1,10 @@
 _ansible_facts_gathered: true
 ansible_all_ipv4_addresses:
-- 192.168.50.50
-- 10.10.20.40
+- 192.168.50.55
+- 10.10.20.45
 ansible_all_ipv6_addresses:
-- fe80::a00:27ff:fe08:e2da
-- fe80::a00:27ff:fea9:9f1a
+- fe80::a00:27ff:fe4d:7a10
+- fe80::a00:27ff:feef:540
 ansible_apparmor:
   status: disabled
 ansible_architecture: x86_64
@@ -27,9 +27,9 @@ ansible_date_time:
   epoch: '1655745184'
   hour: '20'
   iso8601: '2022-06-20T17:13:04Z'
-  iso8601_basic: 20220620T201304678833
+  iso8601_basic: 20220620T201304837436
   iso8601_basic_short: 20220620T201304
-  iso8601_micro: '2022-06-20T17:13:04.678833Z'
+  iso8601_micro: '2022-06-20T17:13:04.837436Z'
   minute: '13'
   month: '06'
   second: '04'
@@ -41,12 +41,12 @@ ansible_date_time:
   weeknumber: '25'
   year: '2022'
 ansible_default_ipv4:
-  address: 10.10.20.40
+  address: 10.10.20.45
   alias: eth1
   broadcast: 10.10.20.255
   gateway: 10.10.20.254
   interface: eth1
-  macaddress: 08:00:27:a9:9f:1a
+  macaddress: 08:00:27:ef:05:40
   mtu: 1500
   netmask: 255.255.255.0
   network: 10.10.20.0
@@ -55,9 +55,9 @@ ansible_default_ipv6: {}
 ansible_device_links:
   ids:
     sda:
-    - ata-VBOX_HARDDISK_VB216aae9e-0e1c63b2
+    - ata-VBOX_HARDDISK_VBe08338ea-a5658739
     sda1:
-    - ata-VBOX_HARDDISK_VB216aae9e-0e1c63b2-part1
+    - ata-VBOX_HARDDISK_VBe08338ea-a5658739-part1
   labels: {}
   masters: {}
   uuids:
@@ -69,7 +69,7 @@ ansible_devices:
     host: 'IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)'
     links:
       ids:
-      - ata-VBOX_HARDDISK_VB216aae9e-0e1c63b2
+      - ata-VBOX_HARDDISK_VBe08338ea-a5658739
       labels: []
       masters: []
       uuids: []
@@ -79,7 +79,7 @@ ansible_devices:
         holders: []
         links:
           ids:
-          - ata-VBOX_HARDDISK_VB216aae9e-0e1c63b2-part1
+          - ata-VBOX_HARDDISK_VBe08338ea-a5658739-part1
           labels: []
           masters: []
           uuids:
@@ -96,7 +96,7 @@ ansible_devices:
     scheduler_mode: noop
     sectors: '83886080'
     sectorsize: '512'
-    serial: VB216aae9e
+    serial: VBe08338ea
     size: 40.00 GB
     support_discard: '0'
     vendor: ATA
@@ -124,15 +124,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-nibcoytzjuodqmdypmxyrdadhskfuctb ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655745203.5072103-1906195-39212748923851/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-sfmskzuxkegqcxkewybqdmbiflqmykam ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655745203.853042-1906209-92524145688627/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
   TERM: xterm
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '108'
+  XDG_SESSION_ID: '17'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -258,15 +258,15 @@ ansible_eth1:
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
   ipv4:
-    address: 10.10.20.40
+    address: 10.10.20.45
     broadcast: 10.10.20.255
     netmask: 255.255.255.0
     network: 10.10.20.0
   ipv6:
-  - address: fe80::a00:27ff:fea9:9f1a
+  - address: fe80::a00:27ff:feef:540
     prefix: '64'
     scope: link
-  macaddress: 08:00:27:a9:9f:1a
+  macaddress: 08:00:27:ef:05:40
   module: e1000
   mtu: 1500
   pciid: '0000:00:08.0'
@@ -334,15 +334,15 @@ ansible_eth2:
     vlan_challenged: off [fixed]
   hw_timestamp_filters: []
   ipv4:
-    address: 192.168.50.50
+    address: 192.168.50.55
     broadcast: 192.168.50.255
     netmask: 255.255.255.0
     network: 192.168.50.0
   ipv6:
-  - address: fe80::a00:27ff:fe08:e2da
+  - address: fe80::a00:27ff:fe4d:7a10
     prefix: '64'
     scope: link
-  macaddress: 08:00:27:08:e2:da
+  macaddress: 08:00:27:4d:7a:10
   module: e1000
   mtu: 1500
   pciid: '0000:00:10.0'
@@ -356,8 +356,8 @@ ansible_eth2:
 ansible_fibre_channel_wwn: []
 ansible_fips: false
 ansible_form_factor: Other
-ansible_fqdn: backup
-ansible_hostname: backup
+ansible_fqdn: logserver
+ansible_hostname: logserver
 ansible_hostnqn: ''
 ansible_interfaces:
 - lo
@@ -442,16 +442,16 @@ ansible_lo:
 ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
-ansible_machine_id: 160073297c9fca4eb687e3e091d9d35a
-ansible_memfree_mb: 1067
+ansible_machine_id: c36fd65a24a5e843bdd3d29fd52b6fc3
+ansible_memfree_mb: 1580
 ansible_memory_mb:
   nocache:
-    free: 1601
-    used: 236
+    free: 1691
+    used: 146
   real:
-    free: 1067
+    free: 1580
     total: 1837
-    used: 770
+    used: 257
   swap:
     cached: 0
     free: 2047
@@ -459,21 +459,21 @@ ansible_memory_mb:
     used: 0
 ansible_memtotal_mb: 1837
 ansible_mounts:
-- block_available: 9542346
+- block_available: 9569607
   block_size: 4096
   block_total: 10480385
-  block_used: 938039
+  block_used: 910778
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20930848
+  inode_available: 20931491
   inode_total: 20971008
-  inode_used: 40160
+  inode_used: 39517
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 39085449216
+  size_available: 39197110272
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
-ansible_nodename: backup
+ansible_nodename: logserver
 ansible_os_family: RedHat
 ansible_pkg_mgr: yum
 ansible_proc_cmdline:
@@ -508,7 +508,7 @@ ansible_processor_threads_per_core: 1
 ansible_processor_vcpus: 4
 ansible_product_name: VirtualBox
 ansible_product_serial: '0'
-ansible_product_uuid: 16007329-7C9F-CA4E-B687-E3E091D9D35A
+ansible_product_uuid: C36FD65A-24A5-E843-BDD3-D29FD52B6FC3
 ansible_product_version: '1.2'
 ansible_python:
   executable: /usr/bin/python
@@ -537,9 +537,9 @@ ansible_selinux:
   type: targeted
 ansible_selinux_python_present: true
 ansible_service_mgr: systemd
-ansible_ssh_host_key_ecdsa_public: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNspFPg4xRk8OODBvgsaEJ7ZRebXoO7bgTClu9HDMLV3ahaG/bxkQhoDsBZQbgvbHq64tqUk1mke4rxF+aYNe24=
-ansible_ssh_host_key_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAINREmgPiUIBqaTeqXPcGFC7Zu5Z0AQgDy4nM4SYi1+Cm
-ansible_ssh_host_key_rsa_public: AAAAB3NzaC1yc2EAAAADAQABAAABAQDCwL4T4Od8BvOFZiNgVeuXDRYzwvesXSLy/Yrej0JEHEqFCQpUTXNvQo0VKyZeo2QqgiZ5Mx3Nt+jhPdyGU46M3Ng6zqvzkHGHORbvYTEBJt6tEunOLMLKdczIQp05sVB5f7DEdz/bOtQJFYvq9rHGeUeMqv4flut9FAxNDQsCpZDo51FBJ0x+jirwNJH49nnLgh0ZRersnaXWrCBngVRKHBI/iptOYTiARD8Wcd5MQg+FrMw0QhPlbFmwdbnFn4fQMIn5BvEn6PBXQiYUJT/davTS55wPSA1TmGPcUIYv/yjt8cRfTq9mVRvWlcTvKNnJb/SleMokViaPiOVjcrNT
+ansible_ssh_host_key_ecdsa_public: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIYnBRC/VDogbmhGLHWJLECNmcg5eljJEo+R33WDAVCSfYam1npCJEOY+jQZEMBZ4E5RYsTdox23GqX5Sw74Ovo=
+ansible_ssh_host_key_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAIAPxNAyQgKVCDKHWBcvH155pxT8G7jAtn0zF7qHh3VN9
+ansible_ssh_host_key_rsa_public: AAAAB3NzaC1yc2EAAAADAQABAAABAQC/n9hdtcTFf2p45A9Waqe9FQ2MdjzAMUmaF7nsKZmXpdzBWjYjeE7MqChgov4W7ir3AqpXpAn5qxxAi6bMghsTYoL3PCPsuY5y4FjTGJpSMgamfVEAgnBQgKssyzhpd7hb7rRNHNNCruGKDhpO6bdBTYPlEq5vmGUJqy+BJ0zdnV89PhRhtxzk78zv8eWK8Pf66midYJPGAz8+5NePhDzVNcDPtaz276r1UnNi8LcC8Bfb8cHDYLMJWxPmQ6Vv3f6rsIR67uh1YB14X46gOJ9fUSbrqYE1Uuin7qavuqGW+GoQQ5FVN5hE2u7yVqKR6U5D3mRuIqo2nP+z+SNVPqgh
 ansible_swapfree_mb: 2047
 ansible_swaptotal_mb: 2047
 ansible_system: Linux
@@ -583,7 +583,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 243304
+ansible_uptime_seconds: 1780
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0

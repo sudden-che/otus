@@ -1,9 +1,10 @@
 ---
 - name: lab net conf
-  hosts: backup
+  hosts: all, !inetRouter
   gather_facts: true
   become: true
   tasks:
+
 
   - name: new def route add
     nmcli:
@@ -15,14 +16,34 @@
       autoconnect: yes
       state: present
 
-  - name: reset eth1
-    shell: "nmcli c down System\ eth1 && nmcli c up System\ eth1"
+
+  - name: clean def route
+    nmcli:
+      conn_name: System eth0
+      state: present
+      type: ethernet
+      gw4: ''
+      ifname: eth0
+      autoconnect: no
+    when: ansible_hostname != 'inetRouter'
+    
+
 
 
   - name: clean def route
     nmcli:
-      conn_name: "System eth0"      
+      conn_name: "{{ item }}"
       state: absent
+      autoconnect: no
+    with_items:
+      - "eth0"
+      - "Wired connection 1"
 
+  - name: reset eth1
+    shell: nmcli c down 'System eth1' &&  nmcli c up 'System eth1'
+    tags: reset
 
+  - name: down eth0 def route
+    shell: nmcli c down 'System eth0'
+    tags: down
 
