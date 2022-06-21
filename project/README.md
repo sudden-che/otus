@@ -15,7 +15,7 @@
 
 ## Сетевая схема инфраструктуры проекта
 
-![net_map.svg](https://raw.githubusercontent.com/sudden-che/otus/d480fdf206b353d84a3b142c2f44022203b1204d/project/net_map.svg)
+![net_map.svg](https://raw.githubusercontent.com/sudden-che/otus/226e1efb5d78ae61fed525ea59cffba4a001d089/project/net_map.svg)
 ## Cписок серверов в проекте:
 
 * inetRouter (10.10.20.254)    - пограничный шлюз, фаервол, nginx proxy сервер, единая точка входа
