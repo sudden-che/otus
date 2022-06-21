@@ -6,7 +6,8 @@ clean: false
 
 # пример учетных данных для пользователя сайта
 # wpuser
-# $ecretpas$
+#
+#  $secretpas$
 
 # настройки для соединения вордпресс с бд
 wp_db_name: wordpress
