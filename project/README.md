@@ -210,7 +210,6 @@ bak_dir='/etc /var/log'
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
 
-
         location / {
         proxy_pass http://10.10.20.50;
         proxy_set_header Host $host;
@@ -222,6 +221,7 @@ bak_dir='/etc /var/log'
 
 Дополнительно на нем настроен алертинг для отправки сообщений об ошибках администраторам, при условии того что их почта сконфигурирована в веб интерфейсе
 В данном примере использована реальная почта another-che@yandex.ru
+
 ---
 роль для установки: collect-logs
 Так же стоит заметить, что перед развертыванием непосредственно всех служб сервера, веб, или агентов должнен быть предварительно установлен сервер бд mysql/pgsql подходящей версии 
@@ -271,9 +271,55 @@ zabbix_server_mysql_login_port: 3306
 
 ### Сервер логов 
 работает на основе rsyslog, все логи со всех машин падают на него
+конфигурация для хостов
+/etc/rsyslog.d/all.conf
+```
+*.* @@{{rsyslog_server}}:514
+```
+дополнительно для логов nginx: nginx.conf
+```
+# error log
+$InputFileName /var/log/nginx/error.log
+$InputFileTag nginx:
+$InputFileStateFile stat-nginx-error
+$InputFileSeverity error
+$InputFileFacility local6
+$InputFilePollInterval 1
+$InputRunFileMonitor
 
+# access log
+$InputFileName /var/log/nginx/access.log
+$InputFileTag nginx:
+$InputFileStateFile stat-nginx-access
+$InputFileSeverity notice
+$InputFileFacility local6
+$InputFilePollInterval 1
+$InputRunFileMonitor
+```
 
+### сервер бекапов 
+Для сервера бекапов взята система резервного копирования borgbackup
+При инициализации создаются репозитории по типу $BORG_REPO/$(hostname) на сервере backup
+Для клиента бекапа, в папки /home/borg копируются файлы .env содержащие переменные окружения для настройки бекапов в автоматичкском режиме
+```
+# сервер с репозиториями borgbackup
+backup_server: 10.10.20.40
+# пароль пользователя 
+borg_pass: 777turboBACKUP888
+# репозиторий
+borg_repo: borg@10.10.20.40:/var/backup/
+# фраза для шифрования резервных копий
+borg_repo_passthrase: cheese
+```
+Так же предусмотрено создание служб и таймеров systemd для автоматизации, при объявлении переменных в true
+```
+# Настройки служб и таймеров systemd
+# создават или нет сервис и таймер true /false
+create_service: true
+```
 
+--- 
+роль для установки: backup
 
 ### Дополнительный плейбуки для развертывания и конфигурации стенда
 * network.yml - отключает стандартный nat коннекшен созданный вагрантом, перенаправляя доступ в интернет через inetRouter
