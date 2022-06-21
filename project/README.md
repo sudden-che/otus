@@ -16,6 +16,25 @@
 ## Сетевая схема инфраструктуры проекта
 
 ![net_map.svg](https://raw.githubusercontent.com/sudden-che/otus/5ce1916caa921833d49ce98f1340620c6f742fe7/project/net_map.svg)
+
+## Гипервизор, где запускатеся проект
+ansible --version
+```
+ansible 2.9.27
+  config file = /data/33/otus/project/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.6/site-packages/ansible
+  executable location = /bin/ansible
+  python version = 3.6.8 (default, Apr 29 2022, 13:46:02) [GCC 8.5.0 20210514 (Red Hat 8.5.0-10)]
+```
+vagrant --version
+``` Vagrant 2.2.19 ```
+
+VBoxManage --version
+``` 6.1.34r150636 ```
+
+
+
 ## Cписок серверов в проекте:
 
 * inetRouter (10.10.20.254)    - пограничный шлюз, фаервол, nginx proxy сервер, единая точка входа
