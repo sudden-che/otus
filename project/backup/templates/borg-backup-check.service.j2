@@ -10,8 +10,5 @@ Environment=BORG_PASSPHRASE={{borg_repo_passthrase}}
 # Репозиторий
 Environment=REPO={{borg_repo}}{{ansible_hostname}}
 
-# Что бэкапим
-#Environment=BACKUP_TARGET={{bak_dir}}
-
 # проверка бэкапа
 ExecStart=/bin/borg check ${REPO}

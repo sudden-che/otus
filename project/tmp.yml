@@ -1,0 +1,11 @@
+---
+- name: mysql
+  hosts: mysqls
+  gather_facts: false
+  tasks: 
+    - name: debug
+      debug:
+        msg: "{{ item }}"
+      with_items: 
+        - "{{ bak_dir }}"
+

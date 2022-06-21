@@ -11,17 +11,17 @@ inetRouter ansible_host=192.168.50.10 ansible_ssh_private_key_file=.vagrant/mach
 [services]
 wordpress ansible_host=192.168.50.20 ansible_ssh_private_key_file=.vagrant/machines/wordpress/virtualbox/private_key ssl_name=wordpress ssl_path=/home/vagrant/nginx-conf/ssl/ bak_dir=/home/vagrant/wordpress
 
-backup ansible_host=192.168.50.50 ansible_ssh_private_key_file=.vagrant/machines/backup/virtualbox/private_key bak_dir=/etc\ /home/borg
+backup ansible_host=192.168.50.50 ansible_ssh_private_key_file=.vagrant/machines/backup/virtualbox/private_key bak_dir='/etc  /home/borg'
 
 [mysqls]
 mysql ansible_host=192.168.50.30 ansible_ssh_private_key_file=.vagrant/machines/mysql/virtualbox/private_key server_id=1 
 mysqlslave ansible_host=192.168.50.40 ansible_ssh_private_key_file=.vagrant/machines/mysqlslave/virtualbox/private_key server_id=2
 
 [mysqls:vars]
-bak_dir=/etc\ /var/bak
+bak_dir='/etc /var/bak'
 
 [zabbix]
 monitoring ansible_host=192.168.50.60 ansible_ssh_private_key_file=.vagrant/machines/monitoring/virtualbox/private_key bak_dir=/etc
 
 [logs]
-logserver  ansible_host=192.168.50.55 ansible_ssh_private_key_file=.vagrant/machines/logserver/virtualbox/private_key bak_dir=/etc\ /var/log
+logserver  ansible_host=192.168.50.55 ansible_ssh_private_key_file=.vagrant/machines/logserver/virtualbox/private_key bak_dir='/etc  /var/log'

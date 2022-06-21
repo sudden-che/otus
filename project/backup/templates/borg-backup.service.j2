@@ -10,9 +10,6 @@ Environment=BORG_PASSPHRASE={{borg_repo_passthrase}}
 # Репозиторий
 Environment=REPO={{borg_repo}}{{ansible_hostname}}
 
-# Что бэкапим
-#Environment=BACKUP_TARGET={{bak_dir}}
-
 # Создание бэкапа
 ExecStart=/bin/borg create --stats ${REPO}::bak-{now:%%Y-%%m-%%d_%%H:%%M:%%S} {{bak_dir}}
 
