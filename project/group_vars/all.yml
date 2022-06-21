@@ -6,8 +6,7 @@ clean: false
 
 # пример учетных данных для пользователя сайта
 # wpuser
-#
-#  $secretpas$
+# $secretpas$
 
 # настройки для соединения вордпресс с бд
 wp_db_name: wordpress
@@ -15,10 +14,6 @@ wp_db_user: wordpress
 wp_db_host: 10.10.20.20   # адрес бд сервера для вордпресс
 wp_ip: 10.10.20.10        # адрес сервера где будет wordpress
 wp_db_password: '!OtusLinux2018'
-
-
-# debug and remove
-#mysql_root_password: root
 
 # репозиторий бд percona для установки
 perc_repo: "https://repo.percona.com/yum/percona-release-latest.noarch.rpm"
