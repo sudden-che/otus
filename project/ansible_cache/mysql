@@ -25,16 +25,16 @@ ansible_cmdline:
 ansible_date_time:
   date: '2022-06-21'
   day: '21'
-  epoch: '1655802040'
+  epoch: '1655802483'
   hour: '12'
-  iso8601: '2022-06-21T09:00:40Z'
-  iso8601_basic: 20220621T120040998531
-  iso8601_basic_short: 20220621T120040
-  iso8601_micro: '2022-06-21T09:00:40.998531Z'
-  minute: '00'
+  iso8601: '2022-06-21T09:08:03Z'
+  iso8601_basic: 20220621T120803032953
+  iso8601_basic_short: 20220621T120803
+  iso8601_micro: '2022-06-21T09:08:03.032953Z'
+  minute: 08
   month: '06'
-  second: '40'
-  time: '12:00:40'
+  second: '03'
+  time: '12:08:03'
   tz: MSK
   tz_offset: '+0300'
   weekday: Tuesday
@@ -165,8 +165,8 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-rkhkbueqrbhvaauioksbqamfvbhvxmim ;
-    /usr/libexec/platform-python /home/vagrant/.ansible/tmp/ansible-tmp-1655802060.5977356-2094574-273105179505194/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-swqzwjuoxannhfpuyiquwfsapglcuriq ;
+    /usr/libexec/platform-python /home/vagrant/.ansible/tmp/ansible-tmp-1655802501.096409-2098635-186147098200647/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
@@ -426,10 +426,10 @@ ansible_fqdn: mysql
 ansible_hostname: mysql
 ansible_hostnqn: ''
 ansible_interfaces:
-- eth0
-- lo
 - eth2
+- lo
 - eth1
+- eth0
 ansible_is_chroot: false
 ansible_iscsi_iqn: ''
 ansible_kernel: 4.18.0-383.el8.x86_64
@@ -521,15 +521,15 @@ ansible_lsb:
   release: '8'
 ansible_machine: x86_64
 ansible_machine_id: 753ba404af664d1f83a7128cb1075196
-ansible_memfree_mb: 244
+ansible_memfree_mb: 226
 ansible_memory_mb:
   nocache:
-    free: 1119
-    used: 693
+    free: 1128
+    used: 684
   real:
-    free: 244
+    free: 226
     total: 1812
-    used: 1568
+    used: 1586
   swap:
     cached: 0
     free: 2181
@@ -537,18 +537,18 @@ ansible_memory_mb:
     used: 4
 ansible_memtotal_mb: 1812
 ansible_mounts:
-- block_available: 15504000
+- block_available: 15497335
   block_size: 4096
   block_total: 16209426
-  block_used: 705426
+  block_used: 712091
   device: /dev/sda2
   fstype: xfs
-  inode_available: 32397573
+  inode_available: 32397570
   inode_total: 32434688
-  inode_used: 37115
+  inode_used: 37118
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota
-  size_available: 63504384000
+  size_available: 63477084160
   size_total: 66393808896
   uuid: c7a12ab8-69a7-4fc3-8af2-9bca350a92cc
 ansible_nodename: mysql
@@ -621,7 +621,7 @@ ansible_system: Linux
 ansible_system_capabilities: []
 ansible_system_capabilities_enforced: 'False'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 45855
+ansible_uptime_seconds: 46297
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0

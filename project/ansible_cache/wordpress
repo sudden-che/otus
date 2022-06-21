@@ -106,16 +106,16 @@ ansible_cmdline:
 ansible_date_time:
   date: '2022-06-21'
   day: '21'
-  epoch: '1655765885'
-  hour: '01'
-  iso8601: '2022-06-20T22:58:05Z'
-  iso8601_basic: 20220621T015805981542
-  iso8601_basic_short: 20220621T015805
-  iso8601_micro: '2022-06-20T22:58:05.981542Z'
-  minute: '58'
+  epoch: '1655802484'
+  hour: '12'
+  iso8601: '2022-06-21T09:08:04Z'
+  iso8601_basic: 20220621T120804645814
+  iso8601_basic_short: 20220621T120804
+  iso8601_micro: '2022-06-21T09:08:04.645814Z'
+  minute: 08
   month: '06'
-  second: '05'
-  time: 01:58:05
+  second: '04'
+  time: '12:08:04'
   tz: MSK
   tz_offset: '+0300'
   weekday: Tuesday
@@ -279,15 +279,15 @@ ansible_env:
   PWD: /home/vagrant
   SHELL: /bin/bash
   SHLVL: '1'
-  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-xrtcaalptarcbqxamjdlseyjiuvyykxm ;
-    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655765903.2360213-2009548-14656028238895/AnsiballZ_setup.py
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-uytvmrgmsddanbwfdrwmdliytzvbowbb ;
+    /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1655802502.8982203-2098627-98978724941384/AnsiballZ_setup.py
   SUDO_GID: '1000'
   SUDO_UID: '1000'
   SUDO_USER: vagrant
   TERM: xterm
   USER: root
   USERNAME: root
-  XDG_SESSION_ID: '31'
+  XDG_SESSION_ID: '45'
   _: /usr/bin/python
 ansible_eth0:
   active: true
@@ -606,15 +606,15 @@ ansible_lvm:
   vgs: {}
 ansible_machine: x86_64
 ansible_machine_id: dcd4ba192bee224b8f190ae96978cb1d
-ansible_memfree_mb: 931
+ansible_memfree_mb: 884
 ansible_memory_mb:
   nocache:
-    free: 1503
-    used: 334
+    free: 1479
+    used: 358
   real:
-    free: 931
+    free: 884
     total: 1837
-    used: 906
+    used: 953
   swap:
     cached: 0
     free: 2047
@@ -622,46 +622,46 @@ ansible_memory_mb:
     used: 0
 ansible_memtotal_mb: 1837
 ansible_mounts:
-- block_available: 9378810
+- block_available: 9378824
   block_size: 4096
   block_total: 10480385
-  block_used: 1101575
+  block_used: 1101561
   device: /dev/sda1
   fstype: xfs
-  inode_available: 20909142
+  inode_available: 20909113
   inode_total: 20971008
-  inode_used: 61866
-  mount: /var/lib/docker/overlay2
-  options: rw,seclabel,relatime,attr2,inode64,noquota,bind
-  size_available: 38415605760
-  size_total: 42927656960
-  uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
-- block_available: 9378810
-  block_size: 4096
-  block_total: 10480385
-  block_used: 1101575
-  device: /dev/sda1
-  fstype: xfs
-  inode_available: 20909142
-  inode_total: 20971008
-  inode_used: 61866
-  mount: /var/lib/docker/containers
-  options: rw,seclabel,relatime,attr2,inode64,noquota,bind
-  size_available: 38415605760
-  size_total: 42927656960
-  uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
-- block_available: 9378810
-  block_size: 4096
-  block_total: 10480385
-  block_used: 1101575
-  device: /dev/sda1
-  fstype: xfs
-  inode_available: 20909142
-  inode_total: 20971008
-  inode_used: 61866
+  inode_used: 61895
   mount: /
   options: rw,seclabel,relatime,attr2,inode64,noquota
-  size_available: 38415605760
+  size_available: 38415663104
+  size_total: 42927656960
+  uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
+- block_available: 9378824
+  block_size: 4096
+  block_total: 10480385
+  block_used: 1101561
+  device: /dev/sda1
+  fstype: xfs
+  inode_available: 20909113
+  inode_total: 20971008
+  inode_used: 61895
+  mount: /var/lib/docker/overlay2
+  options: rw,seclabel,relatime,attr2,inode64,noquota,bind
+  size_available: 38415663104
+  size_total: 42927656960
+  uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
+- block_available: 9378824
+  block_size: 4096
+  block_total: 10480385
+  block_used: 1101561
+  device: /dev/sda1
+  fstype: xfs
+  inode_available: 20909113
+  inode_total: 20971008
+  inode_used: 61895
+  mount: /var/lib/docker/containers
+  options: rw,seclabel,relatime,attr2,inode64,noquota,bind
+  size_available: 38415663104
   size_total: 42927656960
   uuid: 1c419d6c-5064-4a2b-953c-05b2c67edb15
 ansible_nodename: wordpress
@@ -774,7 +774,7 @@ ansible_system_capabilities:
 - 36+ep
 ansible_system_capabilities_enforced: 'True'
 ansible_system_vendor: innotek GmbH
-ansible_uptime_seconds: 31029
+ansible_uptime_seconds: 67628
 ansible_user_dir: /root
 ansible_user_gecos: root
 ansible_user_gid: 0
